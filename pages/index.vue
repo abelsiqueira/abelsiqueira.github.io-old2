@@ -1,9 +1,10 @@
 <template>
   <div>
     <TopBanner
+      img="ufpr.jpg"
       description="My name is Abel Soares Siqueira, I'm a Brazilian, working as a Research
         Software Engineer at the Netherlands eScience Center since 2021, I have
-        a YouTube channel, and I maintain a few projects. Read more following
+        a YouTube channel, and I am or was involved in a few projects. Read more following
         the links below."
     />
 
@@ -52,12 +53,6 @@ export default {
         title: 'CV',
         description: '',
         url: '/cv',
-      },
-      {
-        img: 'cidamo.jpg',
-        title: 'CiDAMO',
-        description: '',
-        url: '/cidamo',
       },
       {
         img: 'code.jpg',

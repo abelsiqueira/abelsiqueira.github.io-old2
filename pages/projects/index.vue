@@ -1,11 +1,9 @@
 <template>
   <div>
     <TopBanner
-      backdrop="code.jpg"
-      description="My name is Abel Soares Siqueira, I'm a Brazilian, working as a Research
-    Software Engineer at the Netherlands eScience Center since 2021, I have
-    a YouTube channel, and I maintain a few projects. Read more following
-    the links below."
+      img="code.jpg"
+      description="I have worked on a variety of projects..."
+      title="Projects"
     />
 
     <v-row>
@@ -21,7 +19,7 @@
           :img="card.img"
           :title="card.title"
           :description="card.description"
-          :url="card.url"
+          :url="'/projects' + card.url"
         />
       </v-col>
     </v-row>
@@ -29,12 +27,9 @@
 </template>
 
 <script>
-import PageCard from '~/components/PageCard.vue'
-import TopBanner from '~/components/TopBanner.vue'
 
 export default {
   name: 'ProjectsPage',
-  components: { PageCard },
   setup() {
     const pageCardData = [
       {
@@ -50,39 +45,16 @@ export default {
         url: '/jso',
       },
       {
-        img: 'youtube.jpg',
-        title: 'YouTube channel',
-        description: 'Since 2020 with (almost) weekly videos',
-        url: '/youtube',
-      },
-      {
-        img: 'abel.jpg',
-        title: 'CV',
-        description: '',
-        url: '/cv',
-      },
-      {
         img: 'cidamo.jpg',
         title: 'CiDAMO',
         description: '',
         url: '/cidamo',
       },
       {
-        img: 'code.jpg',
-        title: 'Projects',
-        url: '/projects',
-      },
-      {
         img: 'calculo-numerico.jpg',
         title: 'Cálculo Numérico',
         description: 'Notas de aula',
         url: '/calculo-numerico',
-      },
-      {
-        img: 'research.jpg',
-        title: 'Blog',
-        description: 'Random thoughts',
-        url: '/blog',
       },
     ]
     return {

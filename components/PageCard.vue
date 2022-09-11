@@ -5,7 +5,11 @@
         <NuxtLink :to="url">
           <v-img
             :aspect-ratio="16 / 9"
-            :gradient="'to top right, rgba(0,0,0,0.6), rgba(0,0,0,' + (hover ? '0.3' : '0.6') + ')'"
+            :gradient="
+              'to top right, rgba(0,0,0,0.6), rgba(0,0,0,' +
+              (hover ? '0.3' : '0.6') +
+              ')'
+            "
             :src="srcImg"
           >
             <v-card-title class="white--text mt-8">
@@ -37,8 +41,8 @@ export default {
     },
     url: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   setup(props) {
     return {
