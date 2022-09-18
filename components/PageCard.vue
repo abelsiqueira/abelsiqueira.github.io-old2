@@ -2,22 +2,24 @@
   <v-hover v-slot="{ hover }">
     <v-card tile>
       <v-responsive :aspect-ratio="16 / 9">
-        <NuxtLink :to="url">
-          <v-img
-            :aspect-ratio="16 / 9"
-            :gradient="
-              'to top right, rgba(0,0,0,0.6), rgba(0,0,0,' +
-              (hover ? '0.3' : '0.6') +
-              ')'
-            "
-            :src="srcImg"
-          >
-            <v-card-title class="white--text mt-8">
-              {{ title }}
-            </v-card-title>
-            <p class="ml-3">{{ description }}</p>
-          </v-img>
+        <NuxtLink v-if="nuxtLinkInsteadOfA" :to="url">
+          <PageCardImage
+            :hover="hover"
+            :src-img="srcImg"
+            :title="title"
+            :description="description"
+            :hide-text="hideText"
+          />
         </NuxtLink>
+        <a v-if="!nuxtLinkInsteadOfA" :href="url">
+          <PageCardImage
+            :hover="hover"
+            :src-img="srcImg"
+            :title="title"
+            :description="description"
+            :hide-text="hideText"
+          />
+        </a>
       </v-responsive>
     </v-card>
   </v-hover>
@@ -43,6 +45,14 @@ export default {
       type: String,
       required: true,
     },
+    nuxtLinkInsteadOfA: {
+      type: Boolean,
+      default: true,
+    },
+    hideText: {
+      type: Boolean,
+      default: false,
+    }
   },
   setup(props) {
     return {
