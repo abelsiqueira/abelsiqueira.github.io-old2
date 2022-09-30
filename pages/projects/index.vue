@@ -47,14 +47,14 @@ export default {
       {
         img: 'cidamo.jpg',
         title: 'CiDAMO',
-        description: '',
+        description: 'Data Science, Machine Learning, and Optimization group',
         url: '/cidamo',
       },
       {
-        img: 'calculo-numerico.jpg',
-        title: 'Cálculo Numérico',
-        description: 'Notas de aula',
-        url: '/calculo-numerico',
+        img: 'book.jpg',
+        title: 'ThinkJulia',
+        description: 'Translation to Portuguese',
+        url: '/thinkjulia',
       },
     ]
     return {

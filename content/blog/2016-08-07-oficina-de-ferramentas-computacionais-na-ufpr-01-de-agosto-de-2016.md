@@ -55,13 +55,13 @@ complexidade da ferramenta, tivemos bons resultados.
 O segundo tutorial da manhã foi a segunda parte de R. Nessa parte vimos os
 gráficos e a análise de dados.
 
-![Fernando]({{local_prefix}}/assets/2016-08-01-swc3.jpg)
+![Fernando](/blog/2016-08-01-swc3.jpg)
 
 A tarde foi apenas de LaTeX. Fizemos uma aula lendo um .tex pronto e modificando
 algumas coisas. Conseguimos fazer as partes principais para fazer uma tese.
 Inclusive BibTeX com Biblatex (básico).
 
-![Abel]({{local_prefix}}/assets/2016-08-01-swc4.jpg)
+![Abel](/blog/2016-08-01-swc4.jpg)
 
 O último dia de workshop teve o fim da aula de Git: a parte remota.
 Fizemos contas no github, subimos o trabalho do dia anterior, baixamos e fizemos
@@ -77,8 +77,8 @@ Como sempre, tivemos algumas dificuldades com tempo e internet.
 
 Fotos:
 
-![Wrap 1]({{local_prefix}}/assets/2016-08-01-swc1.jpg)
+![Wrap 1](/blog/2016-08-01-swc1.jpg)
 
-![Wrap 2]({{local_prefix}}/assets/2016-08-01-swc2.jpg)
+![Wrap 2](/blog/2016-08-01-swc2.jpg)
 
 Infelizmente não tiramos fotos da Kally ensinando.

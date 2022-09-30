@@ -17,34 +17,20 @@ pass both. And so forth until you complete your specification.
 
 This is good because:
 
-  - Wherever you stop, you know what is working.
-  - When you finish, your code already has tests.
-  - [You don't have to optimize
-```
-prematurely.](http://c2.com/cgi/wiki?PrematureOptimization)
-```
+- Wherever you stop, you know what is working.
+- When you finish, your code already has tests.
+- [You don't have to optimize prematurely.](http://c2.com/cgi/wiki?PrematureOptimization)
 
 The steps of TDD can be described as [from
 Wikipedia](https://en.wikipedia.org/wiki/Test-driven_development)
 
-  1. **Add tests**: These should be useful, *and should fail*.
-  2. **Run tests**: Verify that the test fails. If not, go back to 1.
-  3. **Write code**: Write enough code to pass the test.
-  4. **Run tests**: Verify that **all** tests pass. If some of the tests fail,
-```
-go back to 3.
-```
-  5. **Refactor**: Now that everything passes, make the code looks nicer. This
-```
-is harder for non-seasoned programmers, becauses it's vague. Essentially,
-it means removing duplicate code, magic numbers, clarifying names, etc.
-```
-  6. **Run tests**: Again. Should be done during refactoring, to guarantee
-```
-you're not breaking anything. But just to be very clear: *your tests should
-pass at the end of refactoring*.
-```
-  7. **Repeat**.
+1. **Add tests**: These should be useful, *and should fail*.
+2. **Run tests**: Verify that the test fails. If not, go back to 1.
+3. **Write code**: Write enough code to pass the test.
+4. **Run tests**: Verify that **all** tests pass. If some of the tests fail, go back to 3.
+5. **Refactor**: Now that everything passes, make the code looks nicer. This is harder for non-seasoned programmers, because it's vague. Essentially, it means removing duplicate code, magic numbers, clarifying names, etc.
+6. **Run tests**: Again. Should be done during refactoring, to guarantee you're not breaking  anything. But just to be very clear: *your tests should pass at the end of refactoring*.
+7. **Repeat**.
 
 This is one way of describing TDD, but there are other. Many others, by the way.
 In fact, there are many images describing it, so you can print one and staple it
@@ -56,15 +42,13 @@ First, we are gonna follow the *package* layout in Julia.
 [This post]({{local_prefix}}/automated-testing/) mentions it at the end.
 Basically, we need
 
-  - Folder PackageName.jl
-```
-- Folder `src`
-- PackageName.jl
-- Folder `test`
-- runtests.jl
-- README.md
-- LICENSE.md
-```
+- Folder PackageName.jl
+  - Folder `src`
+  - PackageName.jl
+  - Folder `test`
+  - runtests.jl
+  - README.md
+  - LICENSE.md
 
 In our example, we're gonna write a program to convert Roman numbers to decimal,
 and vice-versa.

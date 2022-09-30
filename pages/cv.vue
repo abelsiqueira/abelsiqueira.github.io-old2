@@ -1,9 +1,9 @@
 <template>
   <div>
-    <TopBanner img="abel.jpg" title="Resume / Curriculum" />
+    <TopBanner img="cv.jpg" title="Resume / Curriculum" />
 
     <v-row>
-      <v-col v-for="(section, section_idx) in sections" :key="section_idx" cols="12" md="12" lg="6" xl="4">
+      <v-col v-for="(section, section_idx) in sections" :key="section_idx" cols="12" md="6" lg="6" xl="3">
         <v-card class="mx-auto mb-3">
           <v-card-title class="primary white--text">
             <span class="text-h6">{{ section.name }}</span>

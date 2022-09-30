@@ -10,7 +10,6 @@ tags:
 
 # Introduction to Performance Profile
 
-
 The comparison of algorithms is an active area of work.
 When we start learning algorithms, or more advanced programming,
 we learn of different ways of doing the same complex task.
@@ -36,7 +35,6 @@ account the number of problems that are solved.
 
 ### Performance Profile
 
-
 Described by Dolan and Moré [1] --
 
 > (Edit: 08/08/2022) Professor André L. Tits brought to my attention the 1996 paper by Tits and Yang [3] that was already doing a profile comparison using a cumulative distribution of relative time.
@@ -61,7 +59,7 @@ Notice that $r _ {s,p} \geq 1$, with $r _ {s,p} = 1$ meaning that algorithm
 $s$ is (one of) the best for problem $p$.
 Finally, the performance function of algorithm $s$ is given by
 
-$$ P_s(t) = \frac{ \#\{p \in P \mid\ r _ {s,p} \leq t\} }{ \#P }. $$
+$$ P_s(t) = \frac{ |\\{p \in P \mid\ r _ {s,p} \leq t\\}| }{ |P| }. $$
 
 See that $P_s(1)$ is the number of problems such that $r _ {s,p} = 1$, that is
 the number of problems for which algorithm $s$ is one of the best.
@@ -75,7 +73,7 @@ The value $P_s(1)$ is called the efficiency of algorithm $s$ and $P_s(r _
 
 The following image shows an example of performance profile:
 
-![]({{local_prefix}}/assets/perprof-example.png).
+![](/blog/perprof-example.png).
 
 ### Example
 
@@ -106,7 +104,7 @@ ylims!(0, 1)
 
 The resulting image is
 
-![]({{local_prefix}}/assets/perprof-julia.png).
+![](/blog/perprof-julia.png).
 
 ### Implementations
 

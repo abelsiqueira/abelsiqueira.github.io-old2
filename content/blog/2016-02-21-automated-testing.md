@@ -15,10 +15,9 @@ tags:
 We're gonna learn how to make a test for your Julia code that runs whenever you
 publish it online. We're gonna use
 
- - [GitHub](http://github.com) to store the code;
- - [Travis CI](http://travis-ci.com) to run your tests;
- - [Coveralls.io](http://coveralls.io) to verify which lines of code your test
-   are missing.
+- [GitHub](http://github.com) to store the code;
+- [Travis CI](http://travis-ci.com) to run your tests;
+- [Coveralls.io](http://coveralls.io) to verify which lines of code your test are missing.
 
 Alternatively, for a open source alternative, see [GitLab](http://gitlab.com),
 which I don't know enough yet.
@@ -28,7 +27,7 @@ which I don't know enough yet.
 Let's make a litte code to solve a linear system, paying attention to the
 problems it may arise, like incorrect dimensions, underdetermined and
 overdetermined systems, singular matrices, etc.
-And we'll be using the factorizations, but not `\\`.
+And we'll be using the factorizations, but not `\`.
 
 ## The math
 
@@ -51,9 +50,7 @@ Now, we have
 
 $$
   Ax = \sum_{i=1}^r \sum_{j=1}^n \sigma_i \alpha_j u_i v_i^Tv_j
-```
-= \sum_{i=1}^r \sigma_i \alpha_i u_i
-```
+     = \sum_{i=1}^r \sigma_i \alpha_i u_i
 $$
 
 If the system has a solution, that is $Ax = b$, then we multiply by $u_j^T$,
@@ -61,21 +58,19 @@ obtaining
 
 $$
   u_j^TAx = \sum_{i=1}^r \sigma_i \alpha_i u_j^Tu_i
-```
-= \sigma_j\alpha_j = u_j^Tb
-```
+          = \sigma_j\alpha_j = u_j^Tb
 $$
 
-Thus, $$ \alpha_j = \dfrac{u_j^Tb}{\sigma_j} $$.
+Thus, $ \alpha_j = \dfrac{u_j^Tb}{\sigma_j} $.
 If the system doesn't have a solution, this still holds. I'll leave the steps to
 you.
 
-If $$r < n$$, then $\alpha$ has undetermined values. However, when that's the
+If $r < n$, then $\alpha$ has undetermined values. However, when that's the
 case, the solution we'll use is the one with the smallest norm, that is, the one
 that minimizes $\Vert x\Vert$.
-Since $$v_i$$ are orthonormal, then
-$$ \Vert x\Vert^2 = \sum_{i=1}^n \alpha_i^2 $$.
-So, in order to minimize the norm of x, we use $$\alpha_i = 0$$ for $i > r$.
+Since $v_i$ are orthonormal, then
+$$ \Vert x\Vert^2 = \sum_{i=1}^n \alpha_i^2.$$
+So, in order to minimize the norm of x, we use $\alpha_i = 0$ for $i > r$.
 
 ## The code
 
@@ -99,7 +94,7 @@ julia> include("src/solve_linear.jl")
 julia> norm(linear_system(A,b) - A\b)
 ```
 
-If the result is around $1e-16$, then everything went well.
+If the result is around $10^{-16}$, then everything went well.
 Very rarely, the generated matrix could be ill-conditioned.
 Run again, to verify if that's the case.
 
@@ -107,17 +102,17 @@ If everything went well, we'll write a test now.
 
 For now, let's write a simple test running a lot of square linear systems.
 For each system, to avoid using `A\b`, we'll create a vector `b` from a known
-solution. Then we'll **assure** that $$\Vert Ax-b\Vert < \epsilon$$
-and $$\Vert x-e\Vert < \epsilon$$.
+solution. Then we'll **assure** that $\Vert Ax-b\Vert < \epsilon$
+and $\Vert x-e\Vert < \epsilon$.
 To do that, we'll use `Base.Test`.
 Note however, that the condition of the matrix influences the error, and there
 are numerical errors involved. So we'll use the condition
-$$\Vert x-e\Vert < 10^{-12}cond(A)$$.
+$$\Vert x-e\Vert < 10^{-12} \text{cond}(A).$$
 The code is
 
 ```
 # file test/test1.jl
-{% include_relative {{ page.name }}/test11.jl %}
+{% include_relative {{ page.name }}/test1.jl %}
 ```
 
 Run with

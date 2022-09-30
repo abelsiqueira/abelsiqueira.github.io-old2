@@ -40,7 +40,7 @@ export default {
   props: {},
   data() {
     return {
-      drawer: false,
+      drawer: true,
       items: [
         {
           icon: 'mdi-apps',
@@ -48,9 +48,24 @@ export default {
           to: '/',
         },
         {
-          icon: 'mdi-chart-bubble',
+          icon: 'mdi-graph',
           title: 'Projects',
           to: '/projects',
+        },
+        {
+          icon: 'mdi-laptop',
+          title: 'Blog',
+          to: '/blog',
+        },
+        {
+          icon: 'mdi-youtube',
+          title: 'YouTube',
+          to: '/youtube',
+        },
+        {
+          icon: 'mdi-tie',
+          title: 'Resume/Curriculum',
+          to: '/cv',
         },
       ],
       title: 'Abel Soares Siqueira',
@@ -61,12 +76,12 @@ export default {
       const output = this.$route.path.split('/').map((step, index, array) => {
         return {
           text: step,
-          href: array.slice(0,index+1).join('/'),
+          href: array.slice(0, index + 1).join('/'),
           disabled: index === array.length - 1,
         }
       })
       return output
-    }
+    },
   },
 }
 </script>

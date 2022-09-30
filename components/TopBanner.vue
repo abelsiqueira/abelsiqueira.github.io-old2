@@ -1,5 +1,5 @@
 <template>
-  <v-parallax class="mb-3" :src="bgImage" height="200">
+  <v-parallax class="mb-3" :src="bgImage" height="150">
     <v-row>
       <v-spacer class="d-none d-md-flex"></v-spacer>
       <v-col class="tint" cols="12" lg="6" xs="12" align-self="center">

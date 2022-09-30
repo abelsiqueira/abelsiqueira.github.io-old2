@@ -22,18 +22,17 @@ On Julia 1.0, this is one possible way, while using the REPL.
 **Choose a folder to develop it and create the necessary files**
 
 You'll need
+
+```
 - MyPackage.jl/
   - src/
-```
-- MyPackage.jl
-```
+    - MyPackage.jl
   - test/
-```
-- runtests.jl
-```
+    - runtests.jl
   - README.md (eventually)
   - LICENSE.md (eventually)
   - .travis.yml (eventually)
+```
 
 The file `src/MyPackage.jl` is the file included by Julia when you enter
 `Using MyPackage`. `test/runtests.jl` is what is run to test your package. It is

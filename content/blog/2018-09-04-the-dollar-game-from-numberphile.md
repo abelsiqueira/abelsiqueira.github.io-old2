@@ -18,7 +18,7 @@ I recommend you watch the video for complete information.
 The game involves a graph with integer values on its nodes, positive and
 negative. For instance, the following graph:
 
-![]({{local_prefix}}/assets/2018-09-04/example.png)
+![](/blog/2018-09-04/example.png)
 
 Each **node** corresponds to a person, the **node value** is the amount of
 money that person has, the **edges** are the people that person can give or
@@ -36,16 +36,16 @@ took more time drawing graphs than modelling. Still fun though.
 
 ## The model
 
-Given the undirected graph $$G = (V, E)$$, and values $$w_i, i \in V$$, our
+Given the undirected graph $G = (V, E)$, and values $w_i, i \in V$, our
 model is based on the following observations:
 - The order of moves is irrelevant;
 - Whether the move is a *give* or a *take*, is just a question of **sign**;
 - The value of a node after the moves can be computed by accounting for the
   moves done by the done and by its neighbours.
 
-Hence, we can model it using two non-negative integer variables $$g_i$$ and
-$$t_i$$ storing the number of gives and takes of node $$i$$. Notice that we
-could use $$y_i = g_i - t_i$$, but this is more descriptive.
+Hence, we can model it using two non-negative integer variables $g_i$ and
+$t_i$ storing the number of gives and takes of node $i$. Notice that we
+could use $y_i = g_i - t_i$, but this is more descriptive.
 
 - Objective: minimize the number of moves
 
@@ -95,11 +95,11 @@ Using the results and ~~*mad plotting skillz*~~ the packages Plots and GR, we
 obtain a solution for the problem above. The moves are illustrated below, where
 blue means giving, and red means taking.
 
-![]({{local_prefix}}/assets/2018-09-04/example-000.png)
-![]({{local_prefix}}/assets/2018-09-04/example-001.png)
-![]({{local_prefix}}/assets/2018-09-04/example-002.png)
-![]({{local_prefix}}/assets/2018-09-04/example-003.png)
-![]({{local_prefix}}/assets/2018-09-04/example-004.png)
-![]({{local_prefix}}/assets/2018-09-04/example-005.png)
+![](/blog/2018-09-04/example-000.png)
+![](/blog/2018-09-04/example-001.png)
+![](/blog/2018-09-04/example-002.png)
+![](/blog/2018-09-04/example-003.png)
+![](/blog/2018-09-04/example-004.png)
+![](/blog/2018-09-04/example-005.png)
 
 The full code is available at [GitHub](https://github.com/abelsiqueira/DollarGame.jl).

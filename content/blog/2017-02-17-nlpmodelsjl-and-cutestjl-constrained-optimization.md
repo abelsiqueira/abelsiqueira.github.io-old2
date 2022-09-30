@@ -1,5 +1,5 @@
 ---
-title: "NLPModels.jl and CUTEst.jl&#58; Constrained optimization"
+title: "NLPModels.jl and CUTEst.jl: Constrained optimization"
 date: "2017-02-17"
 tags:
 - "julia"

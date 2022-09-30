@@ -1,40 +1,13 @@
 <template>
   <div>
     <TopBanner
-      img="book.jpg"
+      img="written-math.jpg"
       :title="page.title"
       :description="page.description"
     />
     <v-container>
       <span>{{ formatDate(page.date) }}</span>
       <nuxt-content :document="page" />
-
-      <v-row>
-        <v-col>
-          <v-btn
-            v-if="prev"
-            :to="{ name: 'blog-slug', params: { slug: prev.slug } }"
-            class="font-bold text-primary hover:underline primary"
-            small
-          >
-            <v-icon>mdi-arrow-left</v-icon>
-            {{ prev.title }}
-          </v-btn>
-        </v-col>
-        <v-spacer>
-        </v-spacer>
-        <v-col>
-          <v-btn
-            v-if="next"
-            :to="{ name: 'blog-slug', params: { slug: next.slug } }"
-            class="font-bold hover:underline primary"
-            small
-          >
-            {{ next.title }}
-            <v-icon>mdi-arrow-right</v-icon>
-          </v-btn>
-        </v-col>
-      </v-row>
     </v-container>
   </div>
 </template>
@@ -61,6 +34,37 @@ export default {
       next,
     }
   },
+  head() {
+    return {
+      script: [
+        {
+          src: 'https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.js',
+          crossorigin: 'anonymous',
+        },
+        {
+          src: 'https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/auto-render.min.js',
+          onload: `renderMathInElement(document.body, {
+            delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+            ]
+          });`,
+          crossorigin: 'anonymous',
+          defer: true,
+        },
+      ],
+      link: [
+        {
+          rel: 'stylesheet',
+          href: 'https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css',
+          crossorigin: 'anonymous',
+        },
+      ],
+    }
+  },
+  mounted() {
+    console.log('oi')
+  },
   methods: {
     formatDate(date) {
       const options = { year: 'numeric', month: 'long', day: 'numeric' }
@@ -69,3 +73,9 @@ export default {
   },
 }
 </script>
+
+<style>
+img {
+  max-width: 100%;
+}
+</style>

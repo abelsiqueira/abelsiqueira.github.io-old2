@@ -1,7 +1,7 @@
 <template>
   <div>
     <TopBanner
-      img="ufpr.jpg"
+      img="fractal.png"
       description="My name is Abel Soares Siqueira, I'm a Brazilian, working as a Research
         Software Engineer at the Netherlands eScience Center since 2021, I have
         a YouTube channel, and I am or was involved in a few projects. Read more following
@@ -14,7 +14,7 @@
         :key="index"
         cols="12"
         lg="3"
-        md="4"
+        md="6"
         sm="6"
       >
         <PageCard
@@ -37,10 +37,9 @@ export default {
   setup() {
     const pageCardData = [
       {
-        img: 'abel.png',
-        title: 'Personal life',
-        description: '',
-        url: '/personal',
+        img: 'code.jpg',
+        title: 'Projects',
+        url: '/projects',
       },
       {
         img: 'youtube.jpg',
@@ -49,18 +48,13 @@ export default {
         url: '/youtube',
       },
       {
-        img: 'abel.jpg',
-        title: 'CV',
+        img: 'cv.jpg',
+        title: 'Resume/Curriculum',
         description: '',
         url: '/cv',
       },
       {
-        img: 'code.jpg',
-        title: 'Projects',
-        url: '/projects',
-      },
-      {
-        img: 'research.jpg',
+        img: 'written-math.jpg',
         title: 'Blog',
         description: 'Random thoughts',
         url: '/blog',

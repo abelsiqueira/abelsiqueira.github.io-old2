@@ -1,23 +1,23 @@
 <template>
   <div>
-    <TopBanner img="code.jpg" title="Blog posts" />
+    <TopBanner img="written-math.jpg" title="Blog posts" />
 
     <v-container>
       <v-list>
-        <v-list-item-group v-model="selectedItem" color="primary">
+        <!-- <v-list-item-group v-model="selectedItem" color="primary"> -->
           <v-list-item
             v-for="article of articles"
             :key="article.slug"
             :to="{ name: 'blog-slug', params: { slug: article.slug } }"
           >
-            <v-list-content>
+            <v-list-item-content>
               <v-list-item-title v-html="article.title" />
               <v-list-item-subtitle>
                 {{ formatDate(article.date) }}
               </v-list-item-subtitle>
-            </v-list-content>
+            </v-list-item-content>
           </v-list-item>
-        </v-list-item-group>
+        <!-- </v-list-item-group> -->
       </v-list>
     </v-container>
   </div>

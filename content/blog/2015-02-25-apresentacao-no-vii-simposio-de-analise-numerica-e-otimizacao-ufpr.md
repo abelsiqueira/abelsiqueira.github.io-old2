@@ -14,7 +14,7 @@ No dia 24 de Fevereiro de 2015 aconteceu o (primeiro dia do) VII Simpósio de
 Análise Numérica e Otimização.
 Participei deste congresso fazendo uma apresentação sobre
 [Ferramentas Computacionais para
-Pesquisadores]({{local_prefix}}/assets/2015-02-25-vii-simposio.pdf)
+Pesquisadores](/blog/2015-02-25-vii-simposio.pdf)
 (ver [código](http://github.com/abelsiqueira/pres-ferramentas-computacionais)).
 
 Nesta apresentação, introduzo algumas ferramentas que considero bastante

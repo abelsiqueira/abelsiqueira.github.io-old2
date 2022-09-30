@@ -8,7 +8,6 @@ tags:
 
 # Ubuntu graphic interface stopped working
 
-
 Some time ago, I helped a colleague [install Ubuntu in a Sony Vaio, which ended
 up having SSD
 problems]({{local_prefix}}/instalando-o-ubuntu-14.10-no-sony-vaio/).
@@ -22,9 +21,9 @@ that worked like a charm.
 
 The steps were simply:
 
- 1 - Enter the terminal mode with Ctrl+Shift+F2 (or other number);
- 2 - Login;
- 3 - Enter the commands
+1. Enter the terminal mode with Ctrl+Shift+F2 (or other number);
+2. Login;
+3. Enter the commands
 
 ```
 export DISPLAY=:0
@@ -32,12 +31,12 @@ sudo dconf reset -f /org/compiz/
 setsid unity
 ```
 
- 4 - Reboot with
+4. Reboot with
 
 ```
 sudo reboot
 ```
 
- 5 - Verify everything is working now.
+5. Verify everything is working now.
 
 This was enough to fix it.

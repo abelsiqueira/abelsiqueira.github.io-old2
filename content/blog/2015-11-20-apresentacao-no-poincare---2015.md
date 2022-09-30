@@ -15,6 +15,6 @@ Irei falar sobre o Método de Newton para zeros de funções, sistemas não
 lineares, e para otimização.
 
 A apresentação será hoje, dia 20 de Novembro, às 17h40. Os slides você pode
-pegar [aqui]({{local_prefix}}/assets/pres-poincare-2015.pdf) ou ver o código no
+pegar [aqui](/blog/pres-poincare-2015.pdf) ou ver o código no
 [GitHub](https://github.com/abelsiqueira/pres-poincare-2015).
 

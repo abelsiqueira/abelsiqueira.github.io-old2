@@ -23,11 +23,11 @@ sobre a oficina.
 
 Eu utilizei os materiais
 
-  - [Slides de Julia]({{local_prefix}}/assets/2015-05-30-slides-julia.pdf) -
+  - [Slides de Julia](/blog/2015-05-30-slides-julia.pdf) -
 ```
 [Código](http://gitlab.com/abelsiqueira/pres-julia).
 ```
-  - [Slides de Git]({{local_prefix}}/assets/2015-05-30-slides-git.pdf) -
+  - [Slides de Git](/blog/2015-05-30-slides-git.pdf) -
 ```
 [Código](http://github.com/abelsiqueira/workshop).
 ```
