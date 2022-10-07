@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid id="top-banner-image" class="pa-5" :style="topBarStyle">
+  <v-container id="top-banner-image" class="pa-5" fluid :style="topBarStyle">
     <v-row>
       <v-spacer class="d-none d-md-flex"></v-spacer>
       <v-col cols="12" lg="6" xs="12" align-self="center">
@@ -40,6 +40,7 @@ export default {
     const topBarStyle = {
       background: `url(${bgImage})`,
       'background-position': 'center center',
+      'background-size': 'cover',
     }
 
     return {
