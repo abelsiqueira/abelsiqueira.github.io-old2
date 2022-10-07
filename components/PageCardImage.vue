@@ -7,12 +7,13 @@
       ')'
     "
     :src="srcImg"
+    class="pa-1"
     :alt="title + ' - ' + description"
   >
-    <v-card-title v-if="!hideText" class="white--text mt-8">
+    <v-card-title v-if="!hideText" class="white--text ma-0 pa-0">
       {{ title }}
     </v-card-title>
-    <p v-if="!hideText" class="ml-3">{{ description }}</p>
+    <p v-if="!hideText" class="ma-0 pa-0">{{ description }}</p>
   </v-img>
 </template>
 

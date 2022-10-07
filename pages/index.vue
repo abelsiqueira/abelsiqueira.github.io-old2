@@ -21,7 +21,6 @@ export default {
       {
         img: 'youtube.jpg',
         title: 'YouTube channel',
-        description: 'Since 2020 with (almost) weekly videos',
         url: '/youtube',
       },
       {
