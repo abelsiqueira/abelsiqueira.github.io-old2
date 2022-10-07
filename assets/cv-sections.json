@@ -1,0 +1,569 @@
+{
+  "sections": [
+    {
+      "name": "Professional Career",
+      "subsections": [
+        {
+          "name": "Netherlands eScience Center | Sep/2021 - Current",
+          "topics": [
+            {
+              "name": "Senior Research Software Engineer",
+              "points": [
+                "Helped maintain, developed and consulted on research software, focusing on best practices, such as licensing, testing, automated documentation, testing, CI, and other workflows.",
+                "Worked on and maintained cffinit, a web application for creating CITATION.cff files. I learned Typescript, Vue and Quasar for this project.",
+                "Co-organized and talked at a Julia for High-Performance Computing webinar with external speakers and over 50 attendants."
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Federal University of Paraná | Nov/2014 - Aug/2021",
+          "topics": [
+            {
+              "name": "Professor Adjunto (equivalent to Assistant Professor)",
+              "points": [
+                "Taught around 5 courses a year.",
+                "Advised over 15 students.",
+                "10 talks, 5 at international conferences.",
+                "Industrial Mathematics curriculum planning committee."
+              ]
+            },
+            {
+              "name": "Data Science specialization program",
+              "points": [
+                "Taught optimization and machine learning.",
+                "Advised students in various topics."
+              ]
+            },
+            {
+              "name": "Researcher in optimization",
+              "points": [
+                "Co-creator of several packages related to nonlinear optimization and numerical linear algebra inside the JuliaSmoothOptimizers organization.",
+                "Advised students in nonlinear optimization, operations research, and machine learning.",
+                "Co-creator of the CiDAMO study and research group.",
+                "3 published papers.",
+                "Referee in various journals."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Education and courses",
+      "subsections": [
+        {
+          "name": "Udemy",
+          "topics": [
+            {
+              "name": "Machine Learning A-Z, 2019",
+              "points": [
+                "https://ude.my/UC-BZ056X6A"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "State University of Campinas",
+          "topics": [
+            {
+              "name": "PhD in Applied Mathematics, 2009-2013",
+              "points": [
+                "Title: Dynamic Control of Infeasibility for Nonlinear Programming",
+                "Advisor: Francisco de Assis Magalhães Gomes Neto"
+              ]
+            },
+            {
+              "name": "Bachelor's degree in Computational and Applied Mathematics, 2005-2008",
+              "points": [
+                "Scientific initiation project on quadratic optimization. Wrote a C++ code."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Professional Skills",
+      "subsections": [
+        {
+          "name": "Technical",
+          "topics": [
+            {
+              "name": "",
+              "points": [
+                "Programming since 2005, having used multiple programming languages, including C, C++, Python, MatLab, Fortran, Javascript, Typescript, and Bash.",
+                "8 years experience with the Julia language for research software.",
+                "My PhD and scientific initiation projects were in C++, accruing 5 years of experience.",
+                "I have supervised students on machine learning topics, using Python's scikit-learn stack.",
+                "I have consulted and supervised on optimization modeling topics, include Julia's JuMP modeling language.",
+                "I manage several GitHub repositories, setting continuous integration for automated testing, building documentation, code coverage, and various other workflows. I have used GitHub Actions, Travis, Codecov, and Coveralls.",
+                "I have experience building a Single Page Application in Typescript, Vue 3 and Quasar."
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Social and community",
+          "topics": [
+            {
+              "name": "",
+              "points": [
+                "I am a native Portuguese speaker and a fluent English speaker.",
+                "I have basic knowledge of Spanish and French, and I know a few words of Dutch and Russian.",
+                "I have solid written and verbal skills.",
+                "I am organized, proactive, and I am a team worker.",
+                "I can produce documentation in various formats, such as written tutorials and APIA reference documents, as well as videos and live coding on specific topics.",
+                "I managed a team translating the Think Julia book."
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Open science and research software",
+          "topics": [
+            {
+              "name": "",
+              "points": [
+                "I taught Shell, Git, LaTeX, and Julia in many workshops.",
+                "I helped organize 2 workshops related to Software Carpentry, 1 related to Hacktoberfest, and other local tutorial sessions.",
+                "I taught at the 2017 CODATA-RDA School of Research Data Science.",
+                "I have reviewed for the Journal of Open Source Software and the Journal of Open Research Software."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Projects",
+      "subsections": [
+        {
+          "name": "cffinit - Citation File Format initializer",
+          "topics": [
+            {
+              "name": "https://citation-file-format.github.io/cff-initializer-javascript/",
+              "points": [
+                "Web application to generate valid CITATION.cff files.",
+                "I joined the project during the implementation of v2.",
+                "Uses Typescript, Vue 3, and Quasar, which I learned on the job."
+              ]
+            }
+          ]
+        },
+        {
+          "name": "CiDAMO",
+          "topics": [
+            {
+              "name": "https://cidamo.com.br",
+              "points": [
+                "Study and research group on data science, machine learning, and optimization.",
+                "Co-creator of the group and supervisor of several students.",
+                "Organized a week-long data science event with over 300 participants and 8 companies, named CiDWeek."
+              ]
+            }
+          ]
+        },
+        {
+          "name": "JuliaSmoothOptimizers",
+          "topics": [
+            {
+              "name": "https://JuliaSmoothOptimizers.github.io",
+              "points": [
+                "GitHub organization with over 60 packages related to Linear Algebra and Nonlinear Optimization in Julia.",
+                "Co-creator of around 20 of those packages. My contributions span over 700 commits and tens of thousands of lines of code.",
+                "My involvement included software programming, reviewing, planning, theoretical research, advising, and publicizing the work through papers, talks, posts, and videos."
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Jill",
+          "topics": [
+            {
+              "name": "https://github.com/abelsiqueira/jill",
+              "points": [
+                "Bash script to install various versions of Julia on Linux and MacOS"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Intro a Julia BR (Think Julia book translation)",
+          "topics": [
+            {
+              "name": "https://juliaintro.github.io/JuliaIntroBR.jl",
+              "points": [
+                "Open source translation of Think Julia",
+                "I managed the translation team and reviewed each chapter"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "perprof-py",
+          "topics": [
+            {
+              "name": "https://github.com/ufpr-opt/perprof-py",
+              "points": [
+                "Python package for producing performance profiles.",
+                "One paper was published with occasional citations."
+              ]
+            }
+          ]
+        },
+        {
+          "name": "DCICPP",
+          "topics": [
+            {
+              "name": "https://github.com/abelsiqueira/dcicpp",
+              "points": [
+                "C++ implementation of a Trust Cylinder method for equality-constrained optimization",
+                "Main part of the code produced in my doctorate"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Events",
+      "subsections": [
+        {
+          "link": "https://cidamo.com.br/II-CiDWeek/",
+          "name": "II CiDWeek - Semana de Ciência de dados",
+          "topics": [
+            {
+              "name": "24 a 30 de Abril de 2021, Online, Brazil",
+              "points": [
+                "Organização"
+              ]
+            }
+          ]
+        },
+        {
+          "link": "https://cidamo.com.br/CiDWeek/",
+          "name": "I CiDWeek - Semana de Ciência de dados",
+          "topics": [
+            {
+              "name": "3 a 7 de Fevereiro de 2020, Curitiba/PR, Brazil",
+              "points": [
+                "Organização"
+              ]
+            }
+          ]
+        },
+        {
+          "link": "https://docs.google.com/presentation/d/e/2PACX-1vTExSw03IXqsEOOjWeFvvC0FLodFUw5RpIQJLNUALql9jWPjS6GG4fyVeRn3BqehrT5AmfpWYvR4Tpo/pub?start=true&loop=false&delayms=5000&slide=id.g5c57578bdc_0_1264",
+          "name": "Congresso Internacional de Biomassa - 4° Expo Biomassa",
+          "topics": [
+            {
+              "name": "26 de Junho de 2019, Curitiba/PR, Brazil.",
+              "points": [
+                "Título: Otimização na Linguagem Julia"
+              ]
+            }
+          ]
+        },
+        {
+          "link": "/static/2019-05-31-PPGM.ipynb",
+          "name": "Talk at PPGM - UFPR",
+          "topics": [
+            {
+              "name": "May 31st, 2019, Curitiba/PR, Brazil.",
+              "points": [
+                "Title: JuliaSmoothOptimizers"
+              ]
+            }
+          ]
+        },
+        {
+          "link": "/static/2019-02-07-GERAD.tar.gz",
+          "name": "Invited talk at Université de Sherbrooke",
+          "topics": [
+            {
+              "name": "February 15th, 2019, Sherbrooke/QC, Canada.",
+              "points": [
+                "Title: Developing optimization software with JuliaSmoothOptimizers"
+              ]
+            }
+          ]
+        },
+        {
+          "link": "/static/2019-02-07-GERAD.tar.gz",
+          "name": "Modeling and optimization tools in Julia - An introduction to JuMP and JSO.",
+          "topics": [
+            {
+              "name": "February 7th, 2019, Montreal, Canada.",
+              "points": [
+                "Title: JuliaSmoothOptimizers"
+              ]
+            }
+          ]
+        },
+        {
+          "link": "/static/2018-07-23-xiibrazopt.pdf",
+          "name": "XII Brazilian Workshop on Continuous Optimization.",
+          "topics": [
+            {
+              "name": "July 23rd, 2018, Foz do Iguaçu/PR, Brasil.",
+              "points": [
+                "Title: A Regularized Interior-Point Method for Constrained Nonlinear Least Squares"
+              ]
+            }
+          ]
+        },
+        {
+          "link": "/static/2018-06-28-jump-dev.pdf",
+          "name": "Second Annual JuMP-dev Workshop",
+          "topics": [
+            {
+              "name": "June 28th, 2018, Université de Bordeaux, Bordeaux, France.",
+              "points": [
+                "Title: Developing new optimization methods with packages from the JuliaSmoothOptimzers organization"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "CODATA-RDA School of Research Data Science.",
+          "topics": [
+            {
+              "name": "December 4th, 2017, ICPT-SAIFR/NCC-UNESP, São Paulo/SP, Brasil.",
+              "points": [
+                "Tutorial: The Unix Shell"
+              ]
+            }
+          ]
+        },
+        {
+          "link": "/static/2017-12-01-ufsc.pdf",
+          "name": "Seminars on Convex Analysis and Optimization.",
+          "topics": [
+            {
+              "name": "December 1st, 2017, UFSC, Florianópolis/SC, Brazil.",
+              "points": [
+                "Title: Otimização Não-Linear na Linguagem Julia"
+              ]
+            }
+          ]
+        },
+        {
+          "link": "/static/2017-07-12-europt2017.pdf",
+          "name": "15th EUROPT Workshop on Advances in Continuous Optimization",
+          "topics": [
+            {
+              "name": "July 12th, 2017, Montréal, Canada.",
+              "points": [
+                "Title: Parameter Optimization in the Nonlinear Stepsize Control Framework for Trust-Region Methods"
+              ]
+            }
+          ]
+        },
+        {
+          "link": "github.com/abelsiqueira/julia-simposio2017",
+          "name": "IX Simpósio de Análise Numérica e Otimização",
+          "topics": [
+            {
+              "name": "February 20th to 22nd, 2017, UFPR, Curitiba, Brazil.",
+              "points": [
+                "Tutorial: Introdução à linguagem Julia"
+              ]
+            }
+          ]
+        },
+        {
+          "link": "github.com/abelsiqueira/smne-2016-julia",
+          "name": "I Simpósio de Métodos Numéricos em Engenharia",
+          "topics": [
+            {
+              "name": "November 30th to December 1st, 2016, UFPR, Curitiba, Brazil.",
+              "points": [
+                "Tutorial: Introdução à linguagem Julia"
+              ]
+            }
+          ]
+        },
+        {
+          "link": "/static/brazopt-2016.pdf",
+          "name": "XI Brazilian Workshop on Continuous Optimization.",
+          "topics": [
+            {
+              "name": "May 23rd, 2016, UFAM, Manaus, Brazil",
+              "points": [
+                "Title: Numerical Experience with a Class of Trust-Region Algorithms for Unconstrained Smooth Optimization"
+              ]
+            }
+          ]
+        },
+        {
+          "link": "/static/jopt-2016.pdf",
+          "name": "2016 Optimization Days.",
+          "topics": [
+            {
+              "name": "May 4th, 2016, HEC Montréal, Montreal, Canada.",
+              "points": [
+                "Title: A Workflow for Designing Optimization Methods in the Julia Language"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "VIII Simpósio de Análise Numérica e Otimização",
+          "topics": [
+            {
+              "name": "2016, UFPR, Curitiba, PR, Brazil, ",
+              "points": [
+                "Tutorial: Otimização Não-Linear na Linguagem Julia"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Oficina de Ferramentas Computacionais",
+          "topics": [
+            {
+              "name": "Maio de 2015, UFPR, Curitiba, PR, Brazil",
+              "points": [
+                "Member of the organization"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "VII Simpósio de Análise Numérica e Otimização",
+          "topics": [
+            {
+              "name": "2015, UFPR, Curitiba, PR, Brazil",
+              "points": [
+                "Title: Ferramentas computacionais para pesquisadores"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "X Brazilian Workshop on Continuous Optimization.",
+          "topics": [
+            {
+              "name": "2014, Florianópolis, SC, Brazil",
+              "points": [
+                "Title: Dynamic Control of Infeasibility for Nonlinear Programming"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "26th European Conference on Operational Research.",
+          "topics": [
+            {
+              "name": "2013, Rome, Italy",
+              "points": [
+                "Title: Dynamic Control of Infeasibility for Nonlinear Programming"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "11th EUROPT Workshop on Advances in Continuous Optimization",
+          "topics": [
+            {
+              "name": "2013, Florence, Italy",
+              "points": [
+                "Participation"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Supervision",
+      "subsections": [
+        {
+          "name": "Rogério Otavio Mainardes da Silva | March/2021",
+          "topics": [
+            {
+              "name": "Método do Gradiente Estocástico para otimização de funções separáveis em Aprendizagem de Máquina",
+              "points": [
+                "Program Conclusion Project.",
+                "Universidade Federal do Paraná."
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Egmara Antunes dos Santos | August/2020",
+          "topics": [
+            {
+              "name": "Aspectos Teóricos e Computacionais de um Método de Lagrangiano Aumentado com Subproblemas de Caixa Resolvidos por Região de Confiança",
+              "points": [
+                "Master's.",
+                "Universidade Federal do Paraná."
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Thaiza Rafaele dos Santos Rievrs | Dec/2018",
+          "topics": [
+            {
+              "name": "Problema de Estoque e Roteirização com Transbordo",
+              "points": [
+                "Program Conclusion Project.",
+                "Universidade Federal do Paraná."
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Francine Luise Milian Ribas | Jul/2017",
+          "topics": [
+            {
+              "name": "Métodos de Região de Confiança para Minimização Irrestrita",
+              "points": [
+                "Program Conclusion Project.",
+                "Universidade Federal do Paraná."
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Oksana Heringer da Silva | Jul/2017",
+          "topics": [
+            {
+              "name": "Métodos de Penalidade e o Lagrangiano Aumentado",
+              "points": [
+                "Program Conclusion Project.",
+                "Universidade Federal do Paraná."
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Adrean Cebola | Jun/2017",
+          "topics": [
+            {
+              "name": "Resolução de Programas Lineares com Método de Pontos Interiores",
+              "points": [
+                "Program Conclusion Project.",
+                "Universidade Federal do Paraná."
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Carlos Henrique Venturi Ronchi | May/2017",
+          "topics": [
+            {
+              "name": "Estudo Matemático de Reconhecimento de Caracteres",
+              "points": [
+                "Program Conclusion Project.",
+                "Universidade Federal do Paraná."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

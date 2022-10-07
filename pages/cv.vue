@@ -7,9 +7,9 @@
         v-for="(section, section_idx) in sections"
         :key="section_idx"
         cols="12"
-        md="6"
+        md="12"
         lg="6"
-        xl="3"
+        xl="4"
       >
         <v-card class="mx-auto mb-3">
           <v-card-title class="primary white--text">
@@ -61,13 +61,15 @@
         </v-card>
       </v-col>
 
-      <v-col cols="12" md="6" lg="6" xl="3">
+      <v-col cols="12" md="12" lg="6" xl="4">
         <v-card class="mx-auto mb-3">
           <v-card-title class="primary white--text">
             <span class="text-h6">Publications</span>
             <v-spacer></v-spacer>
           </v-card-title>
-          <v-card-text class="py-0"> </v-card-text>
+          <v-card-text>
+            <Bibliography />
+          </v-card-text>
         </v-card>
       </v-col>
     </v-row>
@@ -76,9 +78,19 @@
 
 <script>
 import sections from '@/assets/cv-sections.json'
+import Bibliography from '~/components/Bibliography.vue'
 export default {
+  components: { Bibliography },
   data() {
     return sections
+  },
+  mounted() {
+    const bibtexScript = document.createElement('script')
+    bibtexScript.setAttribute(
+      'src',
+      'https://cdn.jsdelivr.net/gh/pcooksey/bibtex-js@1.0.0/src/bibtex_js.min.js'
+    )
+    document.head.appendChild(bibtexScript)
   },
 }
 </script>
