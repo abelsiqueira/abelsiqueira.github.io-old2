@@ -1,47 +1,19 @@
 <template>
-  <div>
-    <TopBanner img="youtube.jpg" title="YouTube" />
-
-    <v-container>
-      <p>
-        I have an active YouTube channel since 2019. Most of the current videos
-        are in Brazilian Portuguese, but not all.
-      </p>
-      <p>
-        Desde 2019 eu tenha um canal do YouTube ativo. A maior parte dos vídeos
-        atuais são em Português, mas não todos.
-      </p>
-    </v-container>
-    <v-row>
-      <v-col
-        v-for="(card, index) in pageCardData"
-        :key="index"
-        cols="12"
-        lg="4"
-        md="6"
-        sm="12"
-      >
-        <PageCard
-          :img="card.img"
-          :title="card.title"
-          :description="card.description"
-          :url="card.url"
-          :nuxt-link-instead-of-a="false"
-          :hide-text="true"
-        />
-      </v-col>
-    </v-row>
-  </div>
+  <WrapperBannerCard
+    img="youtube.jpg"
+    title="YouTube"
+    description="I have an active YouTube channel since 2019. Most of the current videos are in Brazilian Portuguese, but not all."
+    :card-data="cardData"
+  />
 </template>
 
 <script>
-import PageCard from '~/components/PageCard.vue'
-import TopBanner from '~/components/TopBanner.vue'
+import WrapperBannerCard from '~/components/WrapperBannerCard.vue'
 export default {
   name: 'InspirePage',
-  components: { PageCard, TopBanner },
+  components: { WrapperBannerCard },
   setup() {
-    const pageCardData = [
+    const cardData = [
       {
         img: 'youtube-main.jpg',
         title: 'YouTube.com/AbelSiqueira',
@@ -97,8 +69,12 @@ export default {
         url: 'https://www.youtube.com/watch?v=xp-tyHCreU8&list=PLOOY0eChA1uwcqU0Z69_XgXniczzqzsQT',
       },
     ]
+    for(const data of cardData) {
+      data.nuxtLinkInsteadOfA = false
+      data.hideText = true
+    }
     return {
-      pageCardData,
+      cardData,
     }
   },
 }

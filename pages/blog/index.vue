@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-container fluid fill-height>
     <TopBanner img="written-math.jpg" title="Blog posts" />
 
     <v-container>
@@ -20,7 +20,7 @@
         <!-- </v-list-item-group> -->
       </v-list>
     </v-container>
-  </div>
+  </v-container>
 </template>
 
 <script>

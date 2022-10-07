@@ -1,41 +1,18 @@
 <template>
-  <div>
-    <TopBanner
-      img="fractal.png"
-      description="My name is Abel Soares Siqueira, I'm a Brazilian, working as a Research
-        Software Engineer at the Netherlands eScience Center since 2021, I have
-        a YouTube channel, and I am or was involved in a few projects. Read more following
-        the links below."
-    />
-
-    <v-row>
-      <v-col
-        v-for="(card, index) in pageCardData"
-        :key="index"
-        cols="12"
-        lg="3"
-        md="6"
-        sm="6"
-      >
-        <PageCard
-          :img="card.img"
-          :title="card.title"
-          :description="card.description"
-          :url="card.url"
-        />
-      </v-col>
-    </v-row>
-  </div>
+  <WrapperBannerCard
+    img="fractal.png"
+    description="My name is Abel Soares Siqueira, I'm a Brazilian, working as a Research Software Engineer at the Netherlands eScience Center since 2021, I have a YouTube channel, and I am or was involved in a few projects. Read more following the links below."
+    :card-data="cardData"
+  />
 </template>
 
 <script>
-import PageCard from '~/components/PageCard.vue'
-import TopBanner from '~/components/TopBanner.vue'
+import WrapperBannerCard from '~/components/WrapperBannerCard.vue'
 export default {
   name: 'InspirePage',
-  components: { PageCard, TopBanner },
+  components: { WrapperBannerCard },
   setup() {
-    const pageCardData = [
+    const cardData = [
       {
         img: 'code.jpg',
         title: 'Projects',
@@ -61,7 +38,7 @@ export default {
       },
     ]
     return {
-      pageCardData,
+      cardData,
     }
   },
 }

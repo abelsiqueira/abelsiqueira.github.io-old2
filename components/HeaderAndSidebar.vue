@@ -1,6 +1,13 @@
 <template>
   <div>
-    <v-navigation-drawer v-model="drawer" :clipped="true" fixed app temporary>
+    <v-navigation-drawer
+      v-model="drawer"
+      class="primary"
+      :clipped="true"
+      fixed
+      app
+      temporary
+    >
       <v-list>
         <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" exact>
           <v-list-item-action>
@@ -13,12 +20,15 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar :clipped-left="true" fixed app>
+    <v-app-bar class="primary" :clipped-left="true" fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-hover v-slot="{ hover }">
         <nuxt-link to="/">
           <v-toolbar-title
-            :class="'white--text ' + (hover ? 'text-decoration-underline' : '')"
+            :class="
+              'white--text font-weight-bold ' +
+              (hover ? 'text-decoration-underline' : '')
+            "
             v-text="title"
           />
         </nuxt-link>
@@ -26,21 +36,31 @@
       <v-breadcrumbs divider="/" :items="currentRouteName" large>
         <template v-slot:item="{ item }">
           <v-breadcrumbs-item>
-            <nuxt-link v-if="!item.disabled" :to="item.href">
-              {{ item.text }}
-            </nuxt-link>
-            <span v-else>
-              {{ item.text }}
-            </span>
+            <v-hover v-slot="{ hover }">
+              <nuxt-link
+                v-if="!item.disabled"
+                :class="
+                  'white--text font-weight-bold + ' +
+                  (hover ? 'text-decoration-underline' : '')
+                "
+                :to="item.href"
+              >
+                {{ item.text }}
+              </nuxt-link>
+              <span v-else>
+                {{ item.text }}
+              </span>
+            </v-hover>
           </v-breadcrumbs-item>
         </template>
       </v-breadcrumbs>
       <v-spacer />
-      <div v-for="x in ['xs', 'sm', 'md', 'lg', 'xl']" :key="x">
+      <!-- For debugging screen sizes -->
+      <!-- <div v-for="x in ['xs', 'sm', 'md', 'lg', 'xl']" :key="x">
         <v-btn :class="'d-none d-' + x + '-flex'">
           {{ x }}
         </v-btn>
-      </div>
+      </div> -->
     </v-app-bar>
   </div>
 </template>
@@ -91,7 +111,6 @@ export default {
           disabled: index === array.length - 1,
         }
       })
-      console.log(output)
       if (output.length > 2 && output[1].text === 'blog') {
         output[2].text = 'post'
       }

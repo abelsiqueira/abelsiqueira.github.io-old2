@@ -1,64 +1,47 @@
 <template>
-  <div>
-    <TopBanner
-      img="code.jpg"
-      description="I have worked on a variety of projects..."
-      title="Projects"
-    />
-
-    <v-row>
-      <v-col
-        v-for="(card, index) in pageCardData"
-        :key="index"
-        cols="12"
-        lg="3"
-        md="4"
-        sm="6"
-      >
-        <PageCard
-          :img="card.img"
-          :title="card.title"
-          :description="card.description"
-          :url="'/projects' + card.url"
-        />
-      </v-col>
-    </v-row>
-  </div>
+  <WrapperBannerCard
+    img="code.jpg"
+    description="I have worked on a variety of projects..."
+    title="Projects"
+    :card-data="cardData"
+  />
 </template>
 
 <script>
+import WrapperBannerCard from '~/components/WrapperBannerCard.vue'
 
 export default {
   name: 'ProjectsPage',
+  components: { WrapperBannerCard },
   setup() {
-    const pageCardData = [
+    const cardData = [
       {
         img: 'jill.jpg',
         title: 'Jill',
         description: 'Julia installer',
-        url: '/jill',
+        url: '/projects/jill',
       },
       {
         img: 'jso.jpg',
         title: 'JuliaSmoothOptimizers',
         description: 'Optimization in Julia',
-        url: '/jso',
+        url: '/projects/jso',
       },
       {
         img: 'cidamo.jpg',
         title: 'CiDAMO',
         description: 'Data Science, Machine Learning, and Optimization group',
-        url: '/cidamo',
+        url: '/projects/cidamo',
       },
       {
         img: 'book.jpg',
         title: 'ThinkJulia',
         description: 'Translation to Portuguese',
-        url: '/thinkjulia',
+        url: '/projects/thinkjulia',
       },
     ]
     return {
-      pageCardData,
+      cardData,
     }
   },
 }

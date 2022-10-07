@@ -2,13 +2,11 @@
   <v-app dark>
     <HeaderAndSidebar />
 
-    <v-main>
-      <v-container fluid>
-        <Nuxt />
-      </v-container>
+    <v-main fill-height>
+      <Nuxt />
     </v-main>
 
-    <v-footer :absolute="true" app>
+    <v-footer :absolute="false" app class="secondary">
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
@@ -19,3 +17,9 @@ export default {
   name: 'DefaultLayout',
 }
 </script>
+
+<style scoped>
+.theme--dark.v-application {
+  background-color: var(--v-background-base, #000) !important;
+}
+</style>

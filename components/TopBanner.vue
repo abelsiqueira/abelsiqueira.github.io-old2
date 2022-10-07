@@ -1,5 +1,5 @@
 <template>
-  <div id="top-banner-image" class="pa-4" :style="topBarStyle">
+  <v-container fluid id="top-banner-image" class="pa-5" :style="topBarStyle">
     <v-row>
       <v-spacer class="d-none d-md-flex"></v-spacer>
       <v-col class="tint" cols="12" lg="6" xs="12" align-self="center">
@@ -12,7 +12,7 @@
       </v-col>
       <v-spacer class="d-none d-md-flex"></v-spacer>
     </v-row>
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -49,6 +49,7 @@ export default {
 
 <style scoped>
 .tint {
-  background-color: rgba(0, 0, 0, 0.4) !important;
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  border-radius: 10px;
 }
 </style>
