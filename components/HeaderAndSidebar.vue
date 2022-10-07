@@ -22,19 +22,8 @@
 
     <v-app-bar class="primary" :clipped-left="true" fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-hover v-slot="{ hover }">
-        <nuxt-link to="/">
-          <v-toolbar-title
-            :class="
-              'white--text font-weight-bold ' +
-              (hover ? 'text-decoration-underline' : '')
-            "
-            v-text="title"
-          />
-        </nuxt-link>
-      </v-hover>
-      <v-breadcrumbs divider="/" :items="currentRouteName" large>
-        <template v-slot:item="{ item }">
+      <v-breadcrumbs class="pa-0 ma-0" divider="/" :items="currentRouteName" large>
+        <template #item="{ item }">
           <v-breadcrumbs-item>
             <v-hover v-slot="{ hover }">
               <nuxt-link
@@ -75,7 +64,7 @@ export default {
       items: [
         {
           icon: 'mdi-apps',
-          title: 'Main',
+          title: 'Home',
           to: '/',
         },
         {
@@ -104,13 +93,18 @@ export default {
   },
   computed: {
     currentRouteName() {
-      const output = this.$route.path.split('/').map((step, index, array) => {
+      const slicedPath = this.$route.path.slice(1)
+      const output = [{
+        text: 'Home',
+        href: '/',
+        disabled: slicedPath.length === 0,
+      }].concat(slicedPath.split('/').map((step, index, array) => {
         return {
           text: step,
-          href: array.slice(0, index + 1).join('/'),
+          href: '/' + array.slice(0, index + 1).join('/'),
           disabled: index === array.length - 1,
         }
-      })
+      }))
       if (output.length > 2 && output[1].text === 'blog') {
         output[2].text = 'post'
       }

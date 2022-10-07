@@ -1,6 +1,7 @@
 <template>
   <WrapperBannerCard
     img="fractal.png"
+    title='Abel Soares Siqueira'
     description="My name is Abel Soares Siqueira, I'm a Brazilian, working as a Research Software Engineer at the Netherlands eScience Center since 2021, I have a YouTube channel, and I am or was involved in a few projects. Read more following the links below."
     :card-data="cardData"
   />
