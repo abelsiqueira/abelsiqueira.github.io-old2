@@ -23,7 +23,18 @@
           />
         </nuxt-link>
       </v-hover>
-      <v-breadcrumbs divider="/" :items="currentRouteName" large />
+      <v-breadcrumbs divider="/" :items="currentRouteName" large>
+        <template v-slot:item="{ item }">
+          <v-breadcrumbs-item>
+            <nuxt-link v-if="!item.disabled" :to="item.href">
+              {{ item.text }}
+            </nuxt-link>
+            <span v-else>
+              {{ item.text }}
+            </span>
+          </v-breadcrumbs-item>
+        </template>
+      </v-breadcrumbs>
       <v-spacer />
       <div v-for="x in ['xs', 'sm', 'md', 'lg', 'xl']" :key="x">
         <v-btn :class="'d-none d-' + x + '-flex'">
@@ -80,6 +91,10 @@ export default {
           disabled: index === array.length - 1,
         }
       })
+      console.log(output)
+      if (output.length > 2 && output[1].text === 'blog') {
+        output[2].text = 'post'
+      }
       return output
     },
   },
