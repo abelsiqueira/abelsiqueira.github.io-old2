@@ -1,31 +1,33 @@
 <template>
-  <v-container fluid fill-height>
+  <div>
     <TopBanner img="written-math.jpg" title="Blog posts" />
 
     <v-container>
-      <v-list>
-        <!-- <v-list-item-group v-model="selectedItem" color="primary"> -->
-          <v-list-item
-            v-for="article of articles"
-            :key="article.slug"
-            :to="{ name: 'blog-slug', params: { slug: article.slug } }"
-          >
-            <v-list-item-content>
-              <v-list-item-title v-html="article.title" />
-              <v-list-item-subtitle>
-                {{ formatDate(article.date) }}
-              </v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-        <!-- </v-list-item-group> -->
+      <v-list class="pa-0 elevation-5 grey darken-4">
+        <v-list-item
+          v-for="article of articles"
+          :key="article.slug"
+          class="post-link elevation-1"
+          :to="{ name: 'blog-slug', params: { slug: article.slug } }"
+        >
+          <v-list-item-content>
+            <v-list-item-title
+            class="secondary--text"
+              v-text="article.title"
+            />
+            <v-list-item-subtitle>
+              {{ formatDate(article.date) }}
+            </v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-container>
-  </v-container>
+  </div>
 </template>
 
 <script>
 export default {
-  async asyncData({ $content, params }) {
+  async asyncData({ $content }) {
     const articles = await $content('blog').sortBy('slug', 'desc').fetch()
 
     return {
@@ -40,3 +42,12 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.post-link::before {
+  background-color: var(--v-accent-base) !important;
+}
+.post-link:hover::before {
+  opacity: 0.1;
+}
+</style>

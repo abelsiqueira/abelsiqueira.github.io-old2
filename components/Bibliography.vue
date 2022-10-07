@@ -1,49 +1,41 @@
 <template>
   <div>
     <textarea id="bibtex_input" v-model="data" style="display: none" />
-    <v-timeline dense>
-      <div id="bibtex_display">
-        <div class="bibtex_template">
-          <v-timeline-item>
-            <v-card color="#333">
-              <v-card-text>
-                <span class="author"></span>,
-                <span class="if year"> (<span class="year"></span>) </span>.
-                <span class="title"></span>.
-                <span class="if journal">
-                  <span class="journal"></span>,
-                  <span class="if volume">
-                    <span class="if number">
-                      <span class="volume"></span>(<span class="number"></span
-                      >).
-                    </span>
-                    <span class="if !number">
-                      <span class="volume"></span>.
-                    </span>
-                  </span>
-                  <span class="if pages"><span class="pages"></span>.</span>
+    <div id="bibtex_display">
+      <div class="bibtex_template">
+        <v-card class="" color="transparent" elevation="0">
+          <v-card-text class="">
+            <span class="author"></span>,
+            <span class="if year"> (<span class="year"></span>) </span>.
+            <span class="title accent--text"></span>.
+            <span class="if journal">
+              <span class="journal"></span>,
+              <span class="if volume">
+                <span class="if number">
+                  <span class="volume"></span>(<span class="number"></span>).
                 </span>
-                <span class="if institution">
-                  <span class="type"></span>.
-                  <span class="number"></span>
-                  <span class="address"></span>,
-                  <span class="institution"></span>.
-                </span>
-                <span class="if booktitle">
-                  In <span class="booktitle"></span>.
-                </span>
-                <span class="if doi">
-                  <a class="url"><span class="doi"></span></a>.
-                </span>
-                <span class="if !doi">
-                  <span class="if url"> <a class="url">[link]</a>. </span>
-                </span>
-              </v-card-text>
-            </v-card>
-          </v-timeline-item>
-        </div>
+                <span class="if !number"> <span class="volume"></span>. </span>
+              </span>
+              <span class="if pages"><span class="pages"></span>.</span>
+            </span>
+            <span class="if institution">
+              <span class="type"></span>.
+              <span class="number"></span>
+              <span class="address"></span>, <span class="institution"></span>.
+            </span>
+            <span class="if booktitle">
+              In <span class="booktitle"></span>.
+            </span>
+            <span class="if doi">
+              <a class="url"><span class="doi"></span></a>.
+            </span>
+            <span class="if !doi">
+              <span class="if url"> <a class="url">[link]</a>. </span>
+            </span>
+          </v-card-text>
+        </v-card>
       </div>
-    </v-timeline>
+    </div>
   </div>
 </template>
 
