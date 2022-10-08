@@ -1,4 +1,4 @@
-# cat static/cv-sections.yml | yq > static/cv-sections.json
+# cat static/resume-sections.yml | yq > static/resume-sections.json
 sections:
   - name: Professional Career
     subsections:

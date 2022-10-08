@@ -85,7 +85,7 @@ export default {
         {
           icon: 'mdi-tie',
           title: 'Resume/Curriculum',
-          to: '/cv',
+          to: '/resume',
         },
       ],
       title: 'Abel Soares Siqueira',

@@ -25,10 +25,10 @@ export default {
         url: '/youtube',
       },
       {
-        img: 'cv.jpg',
+        img: 'resume.jpg',
         title: 'Resume/Curriculum',
         description: '',
-        url: '/cv',
+        url: '/resume',
       },
       {
         img: 'written-math.jpg',
