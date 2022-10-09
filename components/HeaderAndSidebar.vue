@@ -20,13 +20,12 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar class="primary" :clipped-left="true" fixed app>
+    <v-app-bar class="primary" :clipped-left="true" fixed app dense>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-breadcrumbs
         class="pa-0 ma-0"
         divider="/"
         :items="currentRouteName"
-        large
       >
         <template #item="{ item }">
           <v-breadcrumbs-item>
@@ -55,6 +54,15 @@
           {{ x }}
         </v-btn>
       </div> -->
+      <v-btn
+        v-for="(socialIcon, index) in socialIcons"
+        :key="index"
+        icon
+        :href="socialIcon.link"
+        target="_blank"
+      >
+        <font-awesome-icon :icon="socialIcon.icon" style="font-size: 24px;" />
+      </v-btn>
     </v-app-bar>
   </div>
 </template>
@@ -91,6 +99,24 @@ export default {
           icon: 'mdi-tie',
           title: 'Resume',
           to: '/resume',
+        },
+      ],
+      socialIcons: [
+        {
+          icon: ['fa', 'envelope'],
+          link: 'mailto:abel.s.siqueira@gmail.com',
+        },
+        {
+          icon: ['fab', 'github'],
+          link: 'https://github.com/abelsiqueira',
+        },
+        {
+          icon: ['fab', 'twitter'],
+          link: 'https://twitter.com/abel_siqueira',
+        },
+        {
+          icon: ['fab', 'linkedin'],
+          link: 'https://linkedin.com/in/abel-siqueira',
         },
       ],
       title: 'Abel Soares Siqueira',
