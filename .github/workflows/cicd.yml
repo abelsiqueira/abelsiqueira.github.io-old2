@@ -1,4 +1,4 @@
-name: ci
+name: ci-cd
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  ci:
+  cicd:
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -40,3 +40,12 @@ jobs:
 
       - name: Run linter 👀
         run: npm run lint
+
+      - name: Generate
+        run: npx nuxt generate
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
