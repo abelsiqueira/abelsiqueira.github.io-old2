@@ -1,6 +1,6 @@
 ---
-title: "Migração do site para Franklin.jl"
-date: "2021-06-28"
+title: 'Migração do site para Franklin.jl'
+date: '2021-06-28'
 ---
 
 # Migração do site para Franklin.jl
@@ -35,6 +35,7 @@ Eu posso colocar `if`s pra separar conteúdo, mas não é tão natural.
 ## Gambiarra
 
 Meu site tem 3 partes:
+
 - a base, que consiste principalmente de material estático que eu pretendo atualizar de vez em quando (novos pacotes, pesquisa, orientações, cargos, etc.);
 - as notas de cálculo numérico, que depois de pronto deve ver pouca atualização, mas que leva 40 minutos pra compilar no GitHub Actions.
 - o blog, que idealmente vê atualizações frequentes, e por isso vou fingir que terá atualizações frequentes.

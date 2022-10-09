@@ -1,9 +1,9 @@
 ---
-title: "Ubuntu graphic interface stopped working"
-date: "2016-02-23"
+title: 'Ubuntu graphic interface stopped working'
+date: '2016-02-23'
 tags:
-- "work"
-- "ubuntu"
+  - 'work'
+  - 'ubuntu'
 ---
 
 # Ubuntu graphic interface stopped working

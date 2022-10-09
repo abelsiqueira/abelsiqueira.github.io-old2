@@ -1,9 +1,9 @@
 ---
-title: "A CLI Reminder - Remind"
-date: "2015-04-13"
+title: 'A CLI Reminder - Remind'
+date: '2015-04-13'
 tags:
-- "review"
-- "remind"
+  - 'review'
+  - 'remind'
 ---
 
 # A CLI Reminder - Remind

@@ -1,10 +1,10 @@
 ---
-title: "CUTEst Com Matlab"
-date: "2015-01-08"
+title: 'CUTEst Com Matlab'
+date: '2015-01-08'
 tags:
-- "cutest"
-- "matlab"
-- "tech"
+  - 'cutest'
+  - 'matlab'
+  - 'tech'
 ---
 
 # CUTEst Com Matlab
@@ -17,7 +17,8 @@ talvez o vídeo seja mais indicado.
 Inicialmente instale o Matlab. Não vou entrar em detalhes, mas atente-se a duas
 coisas:
 
-  - Algumas versões do matlab não colocam o executável num lugar "visível pelo
+- Algumas versões do matlab não colocam o executável num lugar "visível pelo
+
 ```
 terminal".
 Para resolver, usando o bash, adicione o caminho dos executáveis do MATLAB
@@ -29,7 +30,8 @@ Por exemplo, adicionando
 PATH=/usr/local/MATLAB/R20XXc/bin:$PATH
 ```
 
-  - Você vai precisar do `mex` (um link para ele é suficiente) no /bin.
+- Você vai precisar do `mex` (um link para ele é suficiente) no /bin.
+
 ```
 Para resolver, pode fazer um link a partir do caminho original
 ```
@@ -43,11 +45,11 @@ vamos instalar o CUTEst. Você precisará do `subversion` instalado (que
 disponibiliza o comando `svn`), e do compilador de fortran.
 **A versão do compilador de fortran depende da versão do Matlab.**
 
-  | Versão do Matlab    | Versão do compilador |
-  |:-------------------:|:--------------------:|
-  | Antes do R2011a     |            g95       |
-  | R2011a - R2013a     |   gfortran-4.4       |
-  | R2013b ou mais novo |   gfortran-4.7       |
+|  Versão do Matlab   | Versão do compilador |
+| :-----------------: | :------------------: |
+|   Antes do R2011a   |         g95          |
+|   R2011a - R2013a   |     gfortran-4.4     |
+| R2013b ou mais novo |     gfortran-4.7     |
 
 Crie ou escolha uma pasta para as biblioteca do cutest.
 A nossa será `$HOME/libraries`.

@@ -1,17 +1,16 @@
 ---
-title: "NLPModels.jl and CUTEst.jl: Constrained optimization"
-date: "2017-02-17"
+title: 'NLPModels.jl and CUTEst.jl: Constrained optimization'
+date: '2017-02-17'
 tags:
-- "julia"
-- "nlpmodels"
-- "cutest"
-- "work"
-- "optimization"
-- "constrained"
+  - 'julia'
+  - 'nlpmodels'
+  - 'cutest'
+  - 'work'
+  - 'optimization'
+  - 'constrained'
 ---
 
 # NLPModels.jl and CUTEst.jl&#58; Constrained optimization
-
 
 This is a continuation of [this
 post](https://abelsiqueira.github.io{{local_prefix}}nlpmodelsjl-cutestjl-and-other-nonlinear-optimization-packages-on-julia/).
@@ -33,16 +32,19 @@ The NLPModels internal structure is based on the CUTEst way of storing a
 problem.
 We use the following form for the optimization problem:
 
-$$\begin{align}
+$$
+\begin{align}
 \min \quad & f(x) \\
 s.t. \quad & c_L \leq c(x) \leq c_U \\
-& \ell \leq x \leq u\end{align} $$
+& \ell \leq x \leq u\end{align}
+$$
 
 Given an `AbstractNLPModel` named `nlp`, the values for $\ell$, $u$, $c_L$ and
 $c_U$ are stored in an `NLPModelMeta` structure, and can be accessed by
 through `nlp.meta`.
 
 Let's look back at the simple Rosenbrock problem of before.
+
 ```
 using NLPModels
 
@@ -51,7 +53,9 @@ x0 = [-1.2; 1.0]
 nlp = ADNLPModel(f, x0)
 print(nlp.meta)
 ```
+
 You should be seeing this:
+
 ```
 Minimization problem Generic
 nvar = 2, ncon = 0 (0 linear)
@@ -64,6 +68,7 @@ y0 = ∅
 nnzh = 4
 nnzj = 0
 ```
+
 Although the meaning of these values is reasonably straigthforward, I'll explain a bit.
 
 - `nvar` is the number of variables in a problem;
@@ -77,9 +82,10 @@ Although the meaning of these values is reasonably straigthforward, I'll explain
 - `nnzh` is the number of nonzeros on the Hessian¹;
 - `nnzj` is the number of nonzeros on the Jacobian¹;
 
-*¹ `nnzh` and `nnzj` are not consistent between models, because some consider the dense matrix, and for the Hessian, some consider only the triangle. However, if you're possibly considering using `nnzh`, you're probably looking for `hess_coord` too, and `hess_coord` returns with the correct size.*
+_¹ `nnzh` and `nnzj` are not consistent between models, because some consider the dense matrix, and for the Hessian, some consider only the triangle. However, if you're possibly considering using `nnzh`, you're probably looking for `hess_coord` too, and `hess_coord` returns with the correct size._
 
 These values can be accessed directly as fields in `meta` with the same name above.
+
 ```
 nlp.meta.ncon
 nlp.meta.x0
@@ -89,11 +95,14 @@ nlp.meta.lvar
 **Bounds**
 
 Now, let's create a bounded problem.
+
 ```
 nlp = ADNLPModel(f, x0, lvar=zeros(2), uvar=[0.4; 0.6])
 print(nlp.meta)
 ```
+
 Now the bounds are set, and you can access them with
+
 ```
 nlp.meta.lvar
 nlp.meta.uvar
@@ -116,6 +125,7 @@ print(mpbnlp.meta)
 For CUTEst, there is no differentiation on creating a problem with bounds or
 not, since it uses the internal description of the problem.
 For instance, `HS4` is a bounded problem.
+
 ```
 using CUTEst
 
@@ -147,6 +157,7 @@ there are 6 possible situations:
 - Infeasible variables, stored in `meta.iinf`.
 
 Here is one example with one of each of them
+
 ```
 nlp = ADNLPModel(x->dot(x,x), zeros(6),
   lvar = [-Inf, -Inf, 0.0, 0.0, 0.0,  0.0],
@@ -169,44 +180,56 @@ For `ADNLPModel`, you need to pass three keywords arguments: `c`, `lcon` and `uc
 which represent $c(x)$, $c_L$ and $c_U$, respectively.
 For instance, the problem
 
-$$\begin{align}
+$$
+\begin{align}
 \min \quad & x_1^2 + x_2^2 \\
 s.t. \quad & x_1 + x_2 = 1
-\end{align}$$
+\end{align}
+$$
 
 is created by doing
+
 ```
 c(x) = [x[1] + x[2] - 1]
 lcon = [0.0]
 ucon = [0.0]
 nlp = ADNLPModel(x->dot(x,x), zeros(2), c=c, lcon=lcon, ucon=ucon)
 ```
+
 or alternatively, if you don't want the intermediary functions
+
 ```
 nlp = ADNLPModel(x->dot(x,x), zeros(2), c=x->[x[1]+x[2]-1], lcon=[0.0], ucon=[0.0])
 ```
+
 Another possibility is to do
+
 ```
 nlp = ADNLPModel(x->dot(x,x), zeros(2), c=x->[x[1]+x[2]], lcon=[1.0], ucon=[1.0])
 ```
+
 Personally, I prefer the former.
 
 For inequalities, you can have only lower, only upper, and both.
 The commands
+
 ```
 nlp = ADNLPModel(x->dot(x,x), zeros(2),
   c=x->[x[1] + x[2]; 3x[1] + 2x[2]; x[1]*x[2]],
   lcon = [-1.0; -Inf; 1.0],
   ucon = [Inf;   3.0; 2.0])
 ```
+
 implement the problem
 
-$$\begin{align}
+$$
+\begin{align}
 \min \quad & x_1^2 + x_2^2 \\
 s.t. \quad & x_1 + x_2 \geq -1 \\
 & 3x_1 + 2x_2 \leq 3 \\
 & 1 \leq x_1x_2 \leq 2.
-\end{align}$$
+\end{align}
+$$
 
 Again, the types of constraints can be accessed in `meta`, through
 `nlp.meta.jfix`, `jfree`, `jinf`, `jlow`, `jrng` and `jupp`.
@@ -215,15 +238,20 @@ constraints, even though `c` is set. This is because the number of
 constraints is taken from the lenght of these vectors.
 
 Now, to access these constraints, let's consider this simple problem.
+
 ```
 nlp = ADNLPModel(f, x0, c=x->[x[1]*x[2] - 0.5], lcon=[0.0], ucon=[0.0])
 ```
+
 The function `cons` return $c(x)$.
+
 ```
 cons(nlp, nlp.meta.x0)
 ```
+
 The function `jac` returns the Jacobian of $c$. `jprod` and `jtprod` the
 Jacobian product times a vector, and `jac_op` the LinearOperator.
+
 ```
 jac(nlp, nlp.meta.x0)
 jprod(nlp, nlp.meta.x0, ones(2))
@@ -232,8 +260,10 @@ J = jac_op(nlp, nlp.meta.x0)
 J * ones(2)
 J' * ones(1)
 ```
+
 To get the Hessian we'll use the same functions as the unconstrained case,
 with the addition of a keyword parameter `y`.
+
 ```
 y = [1e4]
 hess(nlp, nlp.meta.x0, y=y)
@@ -241,8 +271,10 @@ hprod(nlp, nlp.meat.x0, ones(2))
 H = hess_op(nlp, nlp.meta.x0, y=y)
 H * ones(2)
 ```
+
 If you want to ignore the objective function, or scale it by some value,
 you can use the keyword parameter `obj_weight`.
+
 ```
 s = 0.0
 hess(nlp, nlp.meta.x0, y=y, obj_weight=s)
@@ -256,6 +288,7 @@ Check the
 for more details.
 
 We can also create a constrained JuMP model.
+
 ```
 x0 = [-1.2; 1.0]
 jmp = Model()
@@ -269,6 +302,7 @@ hess(mpbnlp, mpbnlp.meta.x0, y=y)
 ```
 
 And again, the access in CUTEst problems is the same.
+
 ```
 clp = CUTEstModel("BT1")
 cons(clp, clp.meta.x0)
@@ -288,8 +322,8 @@ For clarification, we're gonna say function constraint to refer to constraints t
   constraints;
 - `unconstrained`: No function constraints nor bounds;
 - `linearly_constrained`: There are function constraints, and they are
-  linear; *obs: even though a `bound_constrained` problem is linearly
-  constrained, this will return false*.
+  linear; _obs: even though a `bound_constrained` problem is linearly
+  constrained, this will return false_.
 - `equality_constrained`: There are function constraints, and they are all equalities;
 - `inequality_constrained`: There are function constraints, and they are all inequalities;
 
@@ -297,6 +331,7 @@ For clarification, we're gonna say function constraint to refer to constraints t
 
 Let's implement a "simple" solver for constrained optimization.
 Our solver will loosely follow the Byrd-Omojokun implementation of
+
 > M. Lalee, J. Nocedal, and T. Plantenga. **On the implementation of an algorithm for large-scale equality constrained optimization**. SIAM J. Optim., Vol. 8, No. 3, pp. 682-706, 1998.
 
 ```

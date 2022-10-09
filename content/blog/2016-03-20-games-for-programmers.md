@@ -1,14 +1,13 @@
 ---
-title: "Games for Programmers"
-date: "2016-03-20"
+title: 'Games for Programmers'
+date: '2016-03-20'
 tags:
-- "games"
-- "teaching"
-- "programming"
+  - 'games'
+  - 'teaching'
+  - 'programming'
 ---
 
 # Games for Programmers
-
 
 Ever since I can remember I liked puzzles. My father had a book on puzzles, and
 there were also puzzle magazines. I liked it much
@@ -53,13 +52,13 @@ If you already are a programmer, you have to try it.
 
 Some other games I must mention:
 
- - [KOHCTPYKTOP](http://www.kongregate.com/games/krispykrem/kohctpyktop-engineer-of-the-people):
-   A game in which you design integrated circuits. It involves a little more
-   knowledge of circuits than I have, so it became quite hard to do anything.
- - [The Codex of Alchemical
-   Engineering](http://www.kongregate.com/games/krispykrem/the-codex-of-alchemical-engineering):
-   This is similar to lightbot, but a little more difficult. For some reason, I
-   didn't enjoyed this enough.
+- [KOHCTPYKTOP](http://www.kongregate.com/games/krispykrem/kohctpyktop-engineer-of-the-people):
+  A game in which you design integrated circuits. It involves a little more
+  knowledge of circuits than I have, so it became quite hard to do anything.
+- [The Codex of Alchemical
+  Engineering](http://www.kongregate.com/games/krispykrem/the-codex-of-alchemical-engineering):
+  This is similar to lightbot, but a little more difficult. For some reason, I
+  didn't enjoyed this enough.
 
 All these games were played on Kongregate because I spent a lot of time on that,
 but most can be played on other sites too.

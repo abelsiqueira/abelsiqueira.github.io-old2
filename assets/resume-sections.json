@@ -57,9 +57,7 @@
           "topics": [
             {
               "name": "Machine Learning A-Z, 2019",
-              "points": [
-                "https://ude.my/UC-BZ056X6A"
-              ]
+              "points": ["https://ude.my/UC-BZ056X6A"]
             }
           ]
         },
@@ -235,9 +233,7 @@
           "topics": [
             {
               "name": "24 a 30 de Abril de 2021, Online, Brazil",
-              "points": [
-                "Organização"
-              ]
+              "points": ["Organização"]
             }
           ]
         },
@@ -247,9 +243,7 @@
           "topics": [
             {
               "name": "3 a 7 de Fevereiro de 2020, Curitiba/PR, Brazil",
-              "points": [
-                "Organização"
-              ]
+              "points": ["Organização"]
             }
           ]
         },
@@ -259,9 +253,7 @@
           "topics": [
             {
               "name": "26 de Junho de 2019, Curitiba/PR, Brazil.",
-              "points": [
-                "Título: Otimização na Linguagem Julia"
-              ]
+              "points": ["Título: Otimização na Linguagem Julia"]
             }
           ]
         },
@@ -271,9 +263,7 @@
           "topics": [
             {
               "name": "May 31st, 2019, Curitiba/PR, Brazil.",
-              "points": [
-                "Title: JuliaSmoothOptimizers"
-              ]
+              "points": ["Title: JuliaSmoothOptimizers"]
             }
           ]
         },
@@ -295,9 +285,7 @@
           "topics": [
             {
               "name": "February 7th, 2019, Montreal, Canada.",
-              "points": [
-                "Title: JuliaSmoothOptimizers"
-              ]
+              "points": ["Title: JuliaSmoothOptimizers"]
             }
           ]
         },
@@ -330,9 +318,7 @@
           "topics": [
             {
               "name": "December 4th, 2017, ICPT-SAIFR/NCC-UNESP, São Paulo/SP, Brasil.",
-              "points": [
-                "Tutorial: The Unix Shell"
-              ]
+              "points": ["Tutorial: The Unix Shell"]
             }
           ]
         },
@@ -342,9 +328,7 @@
           "topics": [
             {
               "name": "December 1st, 2017, UFSC, Florianópolis/SC, Brazil.",
-              "points": [
-                "Title: Otimização Não-Linear na Linguagem Julia"
-              ]
+              "points": ["Title: Otimização Não-Linear na Linguagem Julia"]
             }
           ]
         },
@@ -366,9 +350,7 @@
           "topics": [
             {
               "name": "February 20th to 22nd, 2017, UFPR, Curitiba, Brazil.",
-              "points": [
-                "Tutorial: Introdução à linguagem Julia"
-              ]
+              "points": ["Tutorial: Introdução à linguagem Julia"]
             }
           ]
         },
@@ -378,9 +360,7 @@
           "topics": [
             {
               "name": "November 30th to December 1st, 2016, UFPR, Curitiba, Brazil.",
-              "points": [
-                "Tutorial: Introdução à linguagem Julia"
-              ]
+              "points": ["Tutorial: Introdução à linguagem Julia"]
             }
           ]
         },
@@ -413,9 +393,7 @@
           "topics": [
             {
               "name": "2016, UFPR, Curitiba, PR, Brazil, ",
-              "points": [
-                "Tutorial: Otimização Não-Linear na Linguagem Julia"
-              ]
+              "points": ["Tutorial: Otimização Não-Linear na Linguagem Julia"]
             }
           ]
         },
@@ -424,9 +402,7 @@
           "topics": [
             {
               "name": "Maio de 2015, UFPR, Curitiba, PR, Brazil",
-              "points": [
-                "Member of the organization"
-              ]
+              "points": ["Member of the organization"]
             }
           ]
         },
@@ -435,9 +411,7 @@
           "topics": [
             {
               "name": "2015, UFPR, Curitiba, PR, Brazil",
-              "points": [
-                "Title: Ferramentas computacionais para pesquisadores"
-              ]
+              "points": ["Title: Ferramentas computacionais para pesquisadores"]
             }
           ]
         },
@@ -468,9 +442,7 @@
           "topics": [
             {
               "name": "2013, Florence, Italy",
-              "points": [
-                "Participation"
-              ]
+              "points": ["Participation"]
             }
           ]
         }
@@ -496,10 +468,7 @@
           "topics": [
             {
               "name": "Aspectos Teóricos e Computacionais de um Método de Lagrangiano Aumentado com Subproblemas de Caixa Resolvidos por Região de Confiança",
-              "points": [
-                "Master's.",
-                "Universidade Federal do Paraná."
-              ]
+              "points": ["Master's.", "Universidade Federal do Paraná."]
             }
           ]
         },

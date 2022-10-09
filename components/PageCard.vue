@@ -3,19 +3,24 @@
     <v-responsive>
       <component
         :is="nuxtLinkInsteadOfA ? 'NuxtLink' : 'a'"
-        v-bind="{ 'href': url, 'to': url }"
+        v-bind="{ href: url, to: url }"
       >
         <v-img
-          :aspect-ratio="16/10"
+          :aspect-ratio="16 / 10"
           gradient="to bottom right, rgba(0,0,0,0.5), rgba(0,0,0,0.1)"
           :src="srcImg"
           class="pa-0 page-card"
           :alt="title + ' - ' + description"
         >
-          <v-card-title v-if="!hideText" class="white--text ma-0 pa-0 pl-1 page-card-text">
+          <v-card-title
+            v-if="!hideText"
+            class="white--text ma-0 pa-0 pl-1 page-card-text"
+          >
             {{ title }}
           </v-card-title>
-          <p v-if="!hideText" class="ma-0 pa-0 pl-1 page-card-text">{{ description }}</p>
+          <p v-if="!hideText" class="ma-0 pa-0 pl-1 page-card-text">
+            {{ description }}
+          </p>
         </v-img>
       </component>
     </v-responsive>
@@ -49,7 +54,7 @@ export default {
     hideText: {
       type: Boolean,
       default: false,
-    }
+    },
   },
   setup(props) {
     return {
@@ -72,7 +77,7 @@ export default {
   width: 100%;
   height: 100%;
   background-color: white;
-  opacity: 0.0;
+  opacity: 0;
   z-index: 1;
   transition: 200ms;
 }

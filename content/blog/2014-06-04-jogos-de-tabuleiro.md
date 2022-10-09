@@ -1,9 +1,9 @@
 ---
-title: "Jogos de Tabuleiro"
-date: "2014-06-04"
+title: 'Jogos de Tabuleiro'
+date: '2014-06-04'
 tags:
-- "boardgames"
-- "fun"
+  - 'boardgames'
+  - 'fun'
 ---
 
 # Jogos de Tabuleiro

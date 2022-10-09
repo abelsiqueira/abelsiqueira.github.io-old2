@@ -1,6 +1,6 @@
 ---
-title: "How to call Julia code from Python"
-date: "2022-01-19"
+title: 'How to call Julia code from Python'
+date: '2022-01-19'
 ---
 
 # How to call Julia code from Python

@@ -1,11 +1,11 @@
 ---
-title: "perprof-py&#58 A Performance Profile Package for Python"
-date: "2014-11-16"
+title: 'perprof-py&#58 A Performance Profile Package for Python'
+date: '2014-11-16'
 tags:
-- "perprof"
-- "python"
-- "performance"
-- "profile"
+  - 'perprof'
+  - 'python'
+  - 'performance'
+  - 'profile'
 ---
 
 # perprof-py&#58 A Performance Profile Package for Python

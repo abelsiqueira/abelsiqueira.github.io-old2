@@ -1,14 +1,13 @@
 ---
-title: "Advent of Code 2016 in Julia"
-date: "2016-12-18"
+title: 'Advent of Code 2016 in Julia'
+date: '2016-12-18'
 tags:
-- "julia"
-- "code"
-- "fun"
+  - 'julia'
+  - 'code'
+  - 'fun'
 ---
 
 # Advent of Code 2016 in Julia
-
 
 Last year I discovered by chance a code competition that happens in the month
 of December: The [Advent of Code](http://adventofcode.com).

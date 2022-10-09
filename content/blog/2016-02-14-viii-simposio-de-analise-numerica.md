@@ -1,15 +1,14 @@
 ---
-title: "VIII Simpósio de Análise Numérica e Otimização - Minicurso de Julia"
-date: "2016-02-14"
+title: 'VIII Simpósio de Análise Numérica e Otimização - Minicurso de Julia'
+date: '2016-02-14'
 tags:
-- "workshop"
-- "julia"
-- "work"
-- "presentation"
+  - 'workshop'
+  - 'julia'
+  - 'work'
+  - 'presentation'
 ---
 
 # VIII Simpósio de Análise Numérica e Otimização - Minicurso de Julia
-
 
 Nos dias 22 a 24 de Fevereiro de 2016 acontecerá o [VIII Simpósio de Análise
 Numérica e Otimização](http://www.mat.ufpr.br/verao/2016/m4_otimiza.html).

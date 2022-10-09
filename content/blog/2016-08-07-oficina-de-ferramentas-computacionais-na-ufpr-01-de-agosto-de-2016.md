@@ -1,11 +1,11 @@
 ---
-title: "Oficina de Ferramentas Computacionais na UFPR, 01 de Agosto de 2016"
-date: "2016-08-07"
+title: 'Oficina de Ferramentas Computacionais na UFPR, 01 de Agosto de 2016'
+date: '2016-08-07'
 tags:
-- "swc"
-- "ufpr"
-- "oficina"
-- "workshop"
+  - 'swc'
+  - 'ufpr'
+  - 'oficina'
+  - 'workshop'
 ---
 
 # Oficina de Ferramentas Computacionais na UFPR, 01 de Agosto de 2016

@@ -1,12 +1,12 @@
 ---
-title: "Mudando de HD"
-date: "2014-12-19"
+title: 'Mudando de HD'
+date: '2014-12-19'
 tags:
-- "tech"
-- "work"
-- "arch"
-- "linux"
-- "install"
+  - 'tech'
+  - 'work'
+  - 'arch'
+  - 'linux'
+  - 'install'
 ---
 
 # Mudando de HD
@@ -54,8 +54,8 @@ cp -a /mnt/velho/home/. /mnt/novo/home/
 cp -a /mnt/velho/boot/. /mnt/novo/boot/
 ```
 
-*Nota: (Imagino que seja possível montar tudo, e depois copiar tudo apenas com o
-primeiro comando)*.
+_Nota: (Imagino que seja possível montar tudo, e depois copiar tudo apenas com o
+primeiro comando)_.
 
 Nesse momento, o HD já tem os dados do sistema novo. Então, eu segui,
 seletivamente, os passos do [guia do

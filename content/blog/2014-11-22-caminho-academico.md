@@ -1,25 +1,29 @@
 ---
-title: "Caminho Acadêmico"
-date: "2014-11-22"
+title: 'Caminho Acadêmico'
+date: '2014-11-22'
 tags:
-- "work"
+  - 'work'
 ---
 
 # Caminho Acadêmico
 
 Versão curta:
 
-  - 11/2014-presente - Professor na UFPR;
-  - 12/2013-11/2014 - Pós-doutorado na UNICAMP, melhorando o trabalho do meu
+- 11/2014-presente - Professor na UFPR;
+- 12/2013-11/2014 - Pós-doutorado na UNICAMP, melhorando o trabalho do meu
+
 ```
 doutorado;
 ```
-  - 01/2009-11/2013 - Doutorado na UNICAMP na área de Matemática Aplicada,
+
+- 01/2009-11/2013 - Doutorado na UNICAMP na área de Matemática Aplicada,
+
 ```
 trabalhando com Otimização Não-Linear. Minha tese foi "Controle Dinâmico da
 Infactibilidade para Programação Não-Linear";
 ```
-  - 03/2005-12/2008 - Bacharel em Matemática Aplicada.
+
+- 03/2005-12/2008 - Bacharel em Matemática Aplicada.
 
 Versão Longa:
 

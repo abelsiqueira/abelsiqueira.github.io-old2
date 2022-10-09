@@ -22,11 +22,7 @@
 
     <v-app-bar class="primary" :clipped-left="true" fixed app dense>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-breadcrumbs
-        class="pa-0 ma-0"
-        divider="/"
-        :items="currentRouteName"
-      >
+      <v-breadcrumbs class="pa-0 ma-0" divider="/" :items="currentRouteName">
         <template #item="{ item }">
           <v-breadcrumbs-item>
             <v-hover v-slot="{ hover }">
@@ -61,7 +57,7 @@
         :href="socialIcon.link"
         target="_blank"
       >
-        <font-awesome-icon :icon="socialIcon.icon" style="font-size: 24px;" />
+        <font-awesome-icon :icon="socialIcon.icon" style="font-size: 24px" />
       </v-btn>
     </v-app-bar>
   </div>
@@ -138,7 +134,7 @@ export default {
             href: '/' + array.slice(0, index + 1).join('/'),
             disabled: index === array.length - 1,
           }
-        })
+        }),
       )
       if (output.length > 2 && output[1].text === 'blog') {
         output[2].text = 'post'

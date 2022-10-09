@@ -11,10 +11,7 @@
           :to="{ name: 'blog-slug', params: { slug: article.slug } }"
         >
           <v-list-item-content>
-            <v-list-item-title
-            class="secondary--text"
-              v-text="article.title"
-            />
+            <v-list-item-title class="secondary--text" v-text="article.title" />
             <v-list-item-subtitle>
               {{ formatDate(article.date) }}
             </v-list-item-subtitle>

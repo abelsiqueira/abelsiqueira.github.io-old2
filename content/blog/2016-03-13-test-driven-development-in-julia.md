@@ -1,9 +1,9 @@
 ---
-title: "Test Driven Development in Julia"
-date: "2016-03-13"
+title: 'Test Driven Development in Julia'
+date: '2016-03-13'
 tags:
-- "tdd"
-- "julia"
+  - 'tdd'
+  - 'julia'
 ---
 
 # Test Driven Development in Julia
@@ -24,12 +24,12 @@ This is good because:
 The steps of TDD can be described as [from
 Wikipedia](https://en.wikipedia.org/wiki/Test-driven_development)
 
-1. **Add tests**: These should be useful, *and should fail*.
+1. **Add tests**: These should be useful, _and should fail_.
 2. **Run tests**: Verify that the test fails. If not, go back to 1.
 3. **Write code**: Write enough code to pass the test.
 4. **Run tests**: Verify that **all** tests pass. If some of the tests fail, go back to 3.
 5. **Refactor**: Now that everything passes, make the code looks nicer. This is harder for non-seasoned programmers, because it's vague. Essentially, it means removing duplicate code, magic numbers, clarifying names, etc.
-6. **Run tests**: Again. Should be done during refactoring, to guarantee you're not breaking  anything. But just to be very clear: *your tests should pass at the end of refactoring*.
+6. **Run tests**: Again. Should be done during refactoring, to guarantee you're not breaking anything. But just to be very clear: _your tests should pass at the end of refactoring_.
 7. **Repeat**.
 
 This is one way of describing TDD, but there are other. Many others, by the way.
@@ -38,7 +38,7 @@ around.
 
 ## Julia
 
-First, we are gonna follow the *package* layout in Julia.
+First, we are gonna follow the _package_ layout in Julia.
 [This post]({{local_prefix}}/automated-testing/) mentions it at the end.
 Basically, we need
 
@@ -155,6 +155,7 @@ Out of 1 total fact:
 ```
 
 Expected 1, nothing ocurred. Well, that's easy.
+
 ```
 # File src/RomanNumerals.jl
 ...

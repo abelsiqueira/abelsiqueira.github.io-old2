@@ -1,18 +1,17 @@
 ---
-title: "NLPModels.jl, CUTEst.jl and other Nonlinear Optimization Packages on Julia"
-date: "2017-02-07"
+title: 'NLPModels.jl, CUTEst.jl and other Nonlinear Optimization Packages on Julia'
+date: '2017-02-07'
 tags:
-- "julia"
-- "optimization"
-- "nlpmodels"
-- "cutest"
-- "work"
-- "juliasmoothoptimizers"
-- "tutorial"
+  - 'julia'
+  - 'optimization'
+  - 'nlpmodels'
+  - 'cutest'
+  - 'work'
+  - 'juliasmoothoptimizers'
+  - 'tutorial'
 ---
 
 # NLPModels.jl, CUTEst.jl and other Nonlinear Optimization Packages on Julia
-
 
 A couple of weeks ago me and Professor [Dominique Orban](https://dpo.github.io) have finally made a release of
 CUTEst.jl, a wrapper for the CUTEst repository of problems for nonlinear
@@ -24,10 +23,10 @@ If you want to see the output of the commands, you can open
 [this ASCIInema](https://asciinema.org/a/102371)
 side by side.
 
-*Obs.: Tutorial using Julia 0.5.0*
+_Obs.: Tutorial using Julia 0.5.0_
 
-*Edit: Second part is
-[here](https://abelsiqueira.github.io{{local_prefix}}nlpmodelsjl-and-cutestjl-constrained-optimization/).*
+_Edit: Second part is
+[here](https://abelsiqueira.github.io{{local_prefix}}nlpmodelsjl-and-cutestjl-constrained-optimization/)._
 
 **JuliaSmoothOptimizers**
 [![JuliaSmoothOptimizers logo](https://juliasmoothoptimizers.github.io/assets/logo.png){: .img-view }](https://juliasmoothoptimizers.github.io)
@@ -58,26 +57,31 @@ Let's begin by installing NLPModels.jl, and a couple of optional requirements.
 Pkg.add("NLPModels.jl")
 Pkg.add("JuMP.jl") # Installs ForwardDiff also.
 ```
+
 This should install version 0.1.0. After that, just do
 
 ```
 using NLPModels
 ```
+
 Now, let's create a simple function: Rosenbrock's.
 
 ```
 f(x) = (x[1] - 1)^2 + 100*(x[2] - x[1]^2)^2
 ```
+
 The Rosenbrock problem traditionally starts from $(-1.2,1.0)$.
 
 ```
 x0 = [-1.2; 1.0]
 ```
+
 Now, we are ready to create the problem.
 
 ```
 adnlp = ADNLPModel(f, x0)
 ```
+
 Now, we can access the function and derivatives using the [NLPModels API](https://juliasmoothoptimizers.github.io/NLPModels.jl/stable/api.html)
 
 ```
@@ -106,6 +110,7 @@ opA = LinearOperator(A)
 opB = LinearOperator(B)
 v = rand(n)
 ```
+
 then `(A * B) * v` computes the matrix product, whereas `(opA * opB) * v` won't.
 Furthermore, the linear operator can be created from the functions
 `v->Mp(v)` and `v->Mtp(v)`, defining the product of the linear operator times a vector and its transpose times a vector.
@@ -118,9 +123,10 @@ v = rand(2)
 T * v
 T' * v
 ```
-*Obs: In the `ADNLPModel` case, `hess_op` returns a linear operator that is actually
+
+_Obs: In the `ADNLPModel` case, `hess_op` returns a linear operator that is actually
 computing the matrix, but this is a issue to be tackled on the future (PRs
-welcome). But we'll be back with uses for `hess_op` soon.*
+welcome). But we'll be back with uses for `hess_op` soon._
 
 The next model is the `MathProgNLPModel`. This model's main use is the `JuMP`
 modelling language. This is very useful for more elaborate writing, specially
@@ -134,6 +140,7 @@ jmp = Model()
 @NLobjective(jmp, Min, (x[1] - 1)^2 + 100*(x[2] - x[1]^2)^2)
 mpbnlp = MathProgNLPModel(jmp)
 ```
+
 Try the commands again.
 
 ```
@@ -145,6 +152,7 @@ hprod(mpbnlp, mpbnlp.meta.x0, ones(2))
 H = hess_op(mpbnlp, mpbnlp.meta.x0)
 H * ones(2)
 ```
+
 It should be pretty much the same, though there is a little difference in `hess`.
 JuMP creates the sparse Hessian, which is better, from a computational point of
 view.
@@ -185,6 +193,7 @@ function newton(nlp :: AbstractNLPModel)
   return x, fx, ngx
 end
 ```
+
 And we run in the problems with
 
 ```
@@ -192,7 +201,7 @@ newton(adnlp)
 newton(mpbnlp)
 ```
 
-*Write once, use on problems from different sources.*
+_Write once, use on problems from different sources._
 
 Now, to have more fun, let's get another package:
 [OptimizationProblems.jl](https://github.com/JuliaSmoothOptimizers/OptimizationProblems.jl).
@@ -201,6 +210,7 @@ This package doesn't have a release yet, so we have to clone it:
 ```
 Pkg.clone("https://github.com/JuliaSmoothOptimizers/OptimizationProblems.jl")
 ```
+
 What we have here is a collection of JuMP models implementing some of the
 CUTEst problems. Together with `NLPModels.jl`, we have a good opportunity to test our Newton implementation.
 
@@ -211,8 +221,9 @@ x, fx, ngx = newton(MathProgNLPModel( rosenbrock() ))
 x, fx, ngx = newton(MathProgNLPModel( dixmaanj() ))
 x, fx, ngx = newton(MathProgNLPModel( brownbs() ))
 ```
-*An issue with OptimizationProblems is that it still doesn't have a way to get
-all unconstrained problems, for instance. (PRs are welcome).*
+
+_An issue with OptimizationProblems is that it still doesn't have a way to get
+all unconstrained problems, for instance. (PRs are welcome)._
 
 So far we used 3 packages from JSO: `NLPModels.jl`, `LinearOperators.jl` and `OptimizationProblems.jl`. It's time to meet another important package.
 
@@ -225,10 +236,10 @@ by first-timers. Just installing it was already hard.
 CUTEst.jl provides an interface for CUTEst that is simple to install and use
 (comparing to the original).
 
-*Obs.: CUTEst.jl does not work on Windows for now. In fact, there is no plan to
+_Obs.: CUTEst.jl does not work on Windows for now. In fact, there is no plan to
 make it work on Windows because "people interested in doing it"∩"people capable
 of doing it" = ∅, as far as we've looked. If you are in this set, PRs are
-welcome.*
+welcome._
 
 To install CUTEst.jl you need to install something manually. Unfortunately,
 this is specific for each system. Except for OSX, actually, which is using
@@ -244,6 +255,7 @@ With that done, enter
 ```
 Pkg.add("CUTEst")
 ```
+
 which should install CUTEst.jl 0.1.0.
 
 Yes, it takes some time.
@@ -255,6 +267,7 @@ using CUTEst
 
 nlp = CUTEstModel("ROSENBR")
 ```
+
 `ROSENBR` is a CUTEst problem, in case you want the list, see
 [here](http://www.cuter.rl.ac.uk/Problems/mastsif.html). Keep reading for a way
 to select them, though.
@@ -279,6 +292,7 @@ finalize(nlp)
 ```
 
 This allows a simple workflow for writing optimization solvers.
+
 - Write some problems by hand (using `ADNLPModel` or `MathProgNLPModel`);
 - Test your solvers with these hand-written problems;
 - Repeat last two steps until you believe you're ready to competitive comparison;
@@ -297,6 +311,7 @@ Let's look at a huge problem to feel the difference.
 nlp = CUTEstModel("BOX")
 nlp.meta.nvar
 ```
+
 Let's make a simple comparison
 
 ```
@@ -316,6 +331,7 @@ end
 @time w2 = foo2();
 norm(w1 - w2)
 ```
+
 Yes, that's a huge difference.
 
 This is a very good reason to use `hess_op` and `hprod`. But let's take a step further.
@@ -333,6 +349,7 @@ This package is also unreleased, so we need to clone it.
 ```
 Pkg.clone("https://github.com/JuliaSmoothOptimizers/Krylov.jl")
 ```
+
 Consider a simple example
 
 ```
@@ -342,6 +359,7 @@ A = A*A'
 b = A*ones(3)
 cg(A, b)
 ```
+
 As expected, the system is solver, and the solution is $(1,1,1)$.
 But let's do something more.
 
@@ -349,6 +367,7 @@ But let's do something more.
 A = -A
 cg(A, b)
 ```
+
 Yes, Krylov does indeed solves the non-positive definite system using Conjugate Gradient.
 Well, actually, a variant.
 
@@ -395,11 +414,13 @@ function newton2(nlp :: AbstractNLPModel)
   return x, fx, ngx
 end
 ```
+
 Now, running `newton2` on our large problem, we obtain
 
 ```
 x, fx, ngx = newton2(nlp)
 ```
+
 Which is the method working very fast. Less that a second here.
 
 ---

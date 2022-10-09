@@ -1,16 +1,15 @@
 ---
-title: "Automated testing"
-date: "2016-02-21"
+title: 'Automated testing'
+date: '2016-02-21'
 tags:
-- "test"
-- "julia"
-- "travis"
-- "coveralls"
-- "github"
+  - 'test'
+  - 'julia'
+  - 'travis'
+  - 'coveralls'
+  - 'github'
 ---
 
 # Automated testing
-
 
 We're gonna learn how to make a test for your Julia code that runs whenever you
 publish it online. We're gonna use
@@ -69,7 +68,7 @@ If $r < n$, then $\alpha$ has undetermined values. However, when that's the
 case, the solution we'll use is the one with the smallest norm, that is, the one
 that minimizes $\Vert x\Vert$.
 Since $v_i$ are orthonormal, then
-$$ \Vert x\Vert^2 = \sum_{i=1}^n \alpha_i^2.$$
+$$ \Vert x\Vert^2 = \sum\_{i=1}^n \alpha_i^2.$$
 So, in order to minimize the norm of x, we use $\alpha_i = 0$ for $i > r$.
 
 ## The code
@@ -183,11 +182,11 @@ Notice that you can see the complete log of what is run.
 
 Using an online automated testing is useful for many reasons:
 
- - Everyone can see if the code is working;
- - Pull requests generate a travis build, so you can see if it's working;
- - You don't forget to test;
- - You test on a clean environment;
- - You can test with multiple versions of Julia (or other linguage).
+- Everyone can see if the code is working;
+- Pull requests generate a travis build, so you can see if it's working;
+- You don't forget to test;
+- You test on a clean environment;
+- You can test with multiple versions of Julia (or other linguage).
 
 ## Coverage
 
@@ -243,13 +242,13 @@ This allows easy installation of your code, and not much more work.
 Changing to a module is very simple, so I'll run through it.
 The folders `src` and `test` are required. But we also need
 
- - A file in src with the same name as the repository;
- - The keyword `module` on that file;
- - `export` the relevant functions;
- - A file `test/runtests.jl` that run the tests;
- - A `README.md` for people to know about your thing;
- - A `LICENSE.md` for people to know what they can do with your file;
- - Different `.travis.yml`.
+- A file in src with the same name as the repository;
+- The keyword `module` on that file;
+- `export` the relevant functions;
+- A file `test/runtests.jl` that run the tests;
+- A `README.md` for people to know about your thing;
+- A `LICENSE.md` for people to know what they can do with your file;
+- Different `.travis.yml`.
 
 I'm using the name `BlogAutomatedTesting.jl`, so a create the file
 
@@ -308,4 +307,3 @@ $ git push
 ```
 
 I hope this was helpful enough.
-

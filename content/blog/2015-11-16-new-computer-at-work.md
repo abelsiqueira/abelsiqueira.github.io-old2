@@ -1,15 +1,14 @@
 ---
-title: "New computer at work"
-date: "2015-11-16"
+title: 'New computer at work'
+date: '2015-11-16'
 tags:
-- "work"
-- "install"
-- "arch"
-- "linux"
+  - 'work'
+  - 'install'
+  - 'arch'
+  - 'linux'
 ---
 
 # New computer at work
-
 
 I just got a new notebook at work. This is a HP computer, with a AMD a10-4600M
 processor, 4GB of RAM and 320GB of HD space.

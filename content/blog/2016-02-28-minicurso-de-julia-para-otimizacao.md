@@ -1,14 +1,13 @@
 ---
-title: "Minicurso de Julia para Otimização"
-date: "2016-02-28"
+title: 'Minicurso de Julia para Otimização'
+date: '2016-02-28'
 tags:
-- "julia"
-- "work"
-- "optimization"
+  - 'julia'
+  - 'work'
+  - 'optimization'
 ---
 
 # Minicurso de Julia para Otimização
-
 
 Semana passada, nos dias 22 a 24 de Fevereiro aconteceu o VIII Simpósio de
 Análise Numérica e Otimização.

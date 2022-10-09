@@ -1,12 +1,12 @@
 ---
-title: "Optimizing the Dollar Game from Numberphile"
-date: "2018-09-04"
+title: 'Optimizing the Dollar Game from Numberphile'
+date: '2018-09-04'
 tags:
-- "julia"
-- "jump"
-- "numberphile"
-- "optimization"
-- "linearprogramming"
+  - 'julia'
+  - 'jump'
+  - 'numberphile'
+  - 'optimization'
+  - 'linearprogramming'
 ---
 
 # Optimizing the Dollar Game from Numberphile
@@ -38,8 +38,9 @@ took more time drawing graphs than modelling. Still fun though.
 
 Given the undirected graph $G = (V, E)$, and values $w_i, i \in V$, our
 model is based on the following observations:
+
 - The order of moves is irrelevant;
-- Whether the move is a *give* or a *take*, is just a question of **sign**;
+- Whether the move is a _give_ or a _take_, is just a question of **sign**;
 - The value of a node after the moves can be computed by accounting for the
   moves done by the done and by its neighbours.
 
@@ -53,8 +54,10 @@ $$\min \sum_i (g_i + t_i)$$
 
 - Constraint: after the moves, the values of the nodes should be non-negative
 
-$$w_i + \sum_i (t_i - g_i) |N_i| + \sum_{j \in N_i} (g_j - t_j) \geq 0,
-\qquad \forall i \in V.$$
+$$
+w_i + \sum_i (t_i - g_i) |N_i| + \sum_{j \in N_i} (g_j - t_j) \geq 0,
+\qquad \forall i \in V.
+$$
 
 As it turns out, it's a very simple model. The implementation is also very
 simple. We're using [Julia Language](https://julialang.org) with the
@@ -91,7 +94,7 @@ end
 
 The code should be pretty self-explanatory, but ping me on twitter if you need clarification.
 
-Using the results and ~~*mad plotting skillz*~~ the packages Plots and GR, we
+Using the results and ~~_mad plotting skillz_~~ the packages Plots and GR, we
 obtain a solution for the problem above. The moves are illustrated below, where
 blue means giving, and red means taking.
 

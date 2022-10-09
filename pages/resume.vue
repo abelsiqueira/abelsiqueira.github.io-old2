@@ -1,6 +1,10 @@
 <template>
   <div>
-    <TopBanner img="resume.jpg" title="Resume" description="Here you will the relevant information normally found in resume and Curriculum Vitae"/>
+    <TopBanner
+      img="resume.jpg"
+      title="Resume"
+      description="Here you will the relevant information normally found in resume and Curriculum Vitae"
+    />
 
     <v-container fluid>
       <v-row>
@@ -60,7 +64,7 @@ import sections from '@/assets/resume-sections.json'
 import Bibliography from '~/components/Bibliography.vue'
 import ResumeSection from '~/components/ResumeSection.vue'
 export default {
-  components: { Bibliography, ResumeSection, ResumeSection },
+  components: { Bibliography, ResumeSection },
   data() {
     // const showCard = new Array(sections.sections.length + 1).fill(ref(false))
     return {
@@ -72,7 +76,7 @@ export default {
     const bibtexScript = document.createElement('script')
     bibtexScript.setAttribute(
       'src',
-      'https://cdn.jsdelivr.net/gh/pcooksey/bibtex-js@1.0.0/src/bibtex_js.min.js'
+      'https://cdn.jsdelivr.net/gh/pcooksey/bibtex-js@1.0.0/src/bibtex_js.min.js',
     )
     document.head.appendChild(bibtexScript)
   },

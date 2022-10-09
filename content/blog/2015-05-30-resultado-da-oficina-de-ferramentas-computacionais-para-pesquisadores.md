@@ -1,9 +1,9 @@
 ---
-title: "Resultado da Oficina de Ferramentas Computacionais Para Pesquisadores"
-date: "2015-05-30"
+title: 'Resultado da Oficina de Ferramentas Computacionais Para Pesquisadores'
+date: '2015-05-30'
 tags:
-- "workshop"
-- "impression"
+  - 'workshop'
+  - 'impression'
 ---
 
 # Resultado da Oficina de Ferramentas Computacionais Para Pesquisadores
@@ -23,11 +23,14 @@ sobre a oficina.
 
 Eu utilizei os materiais
 
-  - [Slides de Julia](/blog/2015-05-30-slides-julia.pdf) -
+- [Slides de Julia](/blog/2015-05-30-slides-julia.pdf) -
+
 ```
 [Código](http://gitlab.com/abelsiqueira/pres-julia).
 ```
-  - [Slides de Git](/blog/2015-05-30-slides-git.pdf) -
+
+- [Slides de Git](/blog/2015-05-30-slides-git.pdf) -
+
 ```
 [Código](http://github.com/abelsiqueira/workshop).
 ```
@@ -49,8 +52,8 @@ Também não conseguimos apoio financeiro, então trouxemos nossa cafeteira e
 compramos dois pacotes de bolacha água e sal, daquelas redondas, tradicionais
 para evento.
 
-Também tivemos o problema de tempo, mas isso não pode ser resolvido *no tempo
-disponível*.
+Também tivemos o problema de tempo, mas isso não pode ser resolvido _no tempo
+disponível_.
 
 # Planos futuros
 

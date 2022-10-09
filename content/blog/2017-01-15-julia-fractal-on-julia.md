@@ -1,16 +1,15 @@
 ---
-title: "Julia Fractal on Julia"
-date: "2017-01-15"
+title: 'Julia Fractal on Julia'
+date: '2017-01-15'
 tags:
-- "julia"
-- "fractal"
-- "image"
-- "background"
-- "fun"
+  - 'julia'
+  - 'fractal'
+  - 'image'
+  - 'background'
+  - 'fun'
 ---
 
 # Julia Fractal on Julia
-
 
 I wanted a background that would update automatically in some
 interesting way, instead of just random images.

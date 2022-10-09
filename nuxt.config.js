@@ -41,7 +41,7 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
-    '@nuxtjs/fontawesome'
+    '@nuxtjs/fontawesome',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -63,11 +63,11 @@ export default {
       dark: true,
       themes: {
         dark: {
-          background: "#1f1f1f",
-          primary: "#154e72",
-          anchor: "#53ACC5",
-          accent: "#FCBA04",
-          secondary: "#53ACC5",
+          background: '#1f1f1f',
+          primary: '#154e72',
+          anchor: '#53ACC5',
+          accent: '#FCBA04',
+          secondary: '#53ACC5',
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,

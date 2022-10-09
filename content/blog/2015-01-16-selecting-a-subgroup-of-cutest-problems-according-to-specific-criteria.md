@@ -1,9 +1,9 @@
 ---
-title: "Selecting a Subgroup of CUTEst Problems According to Specific Criteria"
-date: "2015-01-16"
+title: 'Selecting a Subgroup of CUTEst Problems According to Specific Criteria'
+date: '2015-01-16'
 tags:
-- "cutest"
-- "classification"
+  - 'cutest'
+  - 'classification'
 ---
 
 # Selecting a Subgroup of CUTEst Problems According to Specific Criteria

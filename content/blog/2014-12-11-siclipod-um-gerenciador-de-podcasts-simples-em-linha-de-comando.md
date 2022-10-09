@@ -1,9 +1,9 @@
 ---
-title: "SiCLIPoD - Um Gerenciador de Podcasts Simples em Linha de Comando"
-date: "2014-12-11"
+title: 'SiCLIPoD - Um Gerenciador de Podcasts Simples em Linha de Comando'
+date: '2014-12-11'
 tags:
-- "siclipod"
-- "fun"
+  - 'siclipod'
+  - 'fun'
 ---
 
 # SiCLIPoD - Um Gerenciador de Podcasts Simples em Linha de Comando

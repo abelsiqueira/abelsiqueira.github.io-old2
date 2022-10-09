@@ -1,15 +1,14 @@
 ---
-title: "A quasi-solution to my bib problem"
-date: "2016-08-21"
+title: 'A quasi-solution to my bib problem'
+date: '2016-08-21'
 tags:
-- "bibtex"
-- "latex"
-- "work"
-- "bibliography"
+  - 'bibtex'
+  - 'latex'
+  - 'work'
+  - 'bibliography'
 ---
 
 # A quasi-solution to my bib problem
-
 
 For some time, one of my concerns is bibliography management.
 See my [projects page](http://abelsiqueira.github.io/en/projects/) if you have

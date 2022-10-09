@@ -1,15 +1,14 @@
 ---
-title: "Package Development in Julia 1.0 using the REPL"
-date: "2018-12-05"
+title: 'Package Development in Julia 1.0 using the REPL'
+date: '2018-12-05'
 tags:
-- "julia"
-- "pkg"
-- "test"
-- "dev"
+  - 'julia'
+  - 'pkg'
+  - 'test'
+  - 'dev'
 ---
 
 # Package Development in Julia 1.0 using the REPL
-
 
 This is a quick post on package development in Julia 1.0. Let me know if you're
 interested in more, and what.
@@ -43,6 +42,7 @@ with continuous integration by Travis. These are usual, but not require when you
 starting to develop your package.
 
 For instance, consider the following files
+
 ```
 # src/MyPackage.jl
 module MyPackage
@@ -71,17 +71,22 @@ tests()
 
 **Open the REPL and add your package under the development version**
 
-*I assume Linux, but this will work with minor modifications on OSX and Windows.*
+_I assume Linux, but this will work with minor modifications on OSX and Windows._
 
 On the terminal, enter julia to open the REPL
+
 ```
 julia>
 ```
+
 Enter `pkg` mode by pressing `]`.
+
 ```
 (v1.0) pkg>
 ```
+
 Inform `pkg` that your package folder exists and is under development with `dev`.
+
 ```
 (v1.0) pkg> dev SOME_PATH/MyPackage.jl
 
@@ -92,7 +97,9 @@ Inform `pkg` that your package folder exists and is under development with `dev`
   Updating `~/.julia/environments/v1.0/Manifest.toml`
   [XXX] + MyPackage v0.0.0 [`SOME_PATH/MyPackage.jl`]
 ```
+
 Check that you can see your package
+
 ```
 (v1.0) pkg> status
     Status `~/.julia/environments/v1.0/Project.toml`
@@ -100,7 +107,9 @@ Check that you can see your package
   [XXX] MyPackage v0.0.0 [`SOME_PATH/MyPackage.jl`]
   ...
 ```
+
 Check that everything passes according to your (evil) plan.
+
 ```
 (v1.0) pkg> test MyPackage
    Testing MyPackage
@@ -112,6 +121,7 @@ Test Summary:   | Pass  Total
 Subset of tests |    1      1
    Testing MyPackage tests passed
 ```
+
 When you're done with your package, you can `rm MyPackage` to remove your package from
 consideration without deleting the code.
 

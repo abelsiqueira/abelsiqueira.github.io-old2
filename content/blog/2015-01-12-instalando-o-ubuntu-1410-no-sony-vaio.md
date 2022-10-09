@@ -1,11 +1,11 @@
 ---
-title: "Instalando o Ubuntu 14.10 no Sony Vaio (Problemas com o SSD)"
-date: "2015-01-12"
+title: 'Instalando o Ubuntu 14.10 no Sony Vaio (Problemas com o SSD)'
+date: '2015-01-12'
 tags:
-- "tech"
-- "ubuntu"
-- "work"
-- "install"
+  - 'tech'
+  - 'ubuntu'
+  - 'work'
+  - 'install'
 ---
 
 # Instalando o Ubuntu 14.10 no Sony Vaio (Problemas com o SSD)

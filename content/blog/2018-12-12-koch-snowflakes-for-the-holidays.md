@@ -1,13 +1,12 @@
 ---
-title: "Koch snowflakes for the holidays"
-date: "2018-12-12"
+title: 'Koch snowflakes for the holidays'
+date: '2018-12-12'
 tags:
-- "julia"
-- "fractal"
+  - 'julia'
+  - 'fractal'
 ---
 
 # Koch snowflakes for the holidays
-
 
 [Code for these images](https://github.com/abelsiqueira/koch-holidays).
 

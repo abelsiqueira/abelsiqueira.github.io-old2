@@ -1,12 +1,11 @@
 ---
-title: "Long time away"
-date: "2016-07-06"
+title: 'Long time away'
+date: '2016-07-06'
 tags:
-- "life"
+  - 'life'
 ---
 
 # Long time away
-
 
 Hello, it's been a long time since my last post, and a lot has
 happened since.

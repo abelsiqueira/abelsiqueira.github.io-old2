@@ -1,15 +1,14 @@
 ---
-title: "My experience in the JuMP-dev annual workshop"
-date: "2018-07-04"
+title: 'My experience in the JuMP-dev annual workshop'
+date: '2018-07-04'
 tags:
-- "jump"
-- "julia"
-- "work"
-- "optimization"
+  - 'jump'
+  - 'julia'
+  - 'work'
+  - 'optimization'
 ---
 
 # My experience in the JuMP-dev annual workshop
-
 
 Last week I had the pleasure of being invited to the [Second annual JuMP-dev
 workshop](http://www.juliaopt.org/meetings/bordeaux2018/), which happened in June 27-29,

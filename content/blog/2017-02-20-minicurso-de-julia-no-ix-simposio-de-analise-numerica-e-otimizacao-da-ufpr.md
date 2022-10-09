@@ -1,16 +1,15 @@
 ---
-title: "Minicurso de Julia no IX Simpósio de Análise Numérica e Otimização da UFPR"
-date: "2017-02-20"
+title: 'Minicurso de Julia no IX Simpósio de Análise Numérica e Otimização da UFPR'
+date: '2017-02-20'
 tags:
-- "julia"
-- "work"
-- "simposio"
-- "ufpr"
-- "tutorial"
+  - 'julia'
+  - 'work'
+  - 'simposio'
+  - 'ufpr'
+  - 'tutorial'
 ---
 
 # Minicurso de Julia no IX Simpósio de Análise Numérica e Otimização da UFPR
-
 
 Hoje ministrarei mais um minicurso de Julia na UFPR.
 Desta vez será no IX Simpósio de Análise Numérica e Otimização da UFPR.

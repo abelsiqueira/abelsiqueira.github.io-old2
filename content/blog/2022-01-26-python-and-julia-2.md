@@ -1,6 +1,6 @@
 ---
-title: "Speed up your Python code using Julia"
-date: "2022-01-26"
+title: 'Speed up your Python code using Julia'
+date: '2022-01-26'
 ---
 
 # Speed up your Python code using Julia

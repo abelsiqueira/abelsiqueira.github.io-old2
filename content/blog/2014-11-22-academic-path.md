@@ -1,22 +1,24 @@
 ---
-title: "Academic Path"
-date: "2014-11-22"
+title: 'Academic Path'
+date: '2014-11-22'
 tags:
-- "work"
+  - 'work'
 ---
 
 # Academic Path
 
 TL;DR:
 
-  - 11/2014-present - Professor at UFPR;
-  - 12/2013-11/2014 - Postdoctorate at UNICAMP, improving the work of my doctorate;
-  - 01/2009-11/2013 - Doctorate at UNICAMP on the field of Applied Mathematics, working
+- 11/2014-present - Professor at UFPR;
+- 12/2013-11/2014 - Postdoctorate at UNICAMP, improving the work of my doctorate;
+- 01/2009-11/2013 - Doctorate at UNICAMP on the field of Applied Mathematics, working
+
 ```
 with Nonlinear Optimization. My thesis was "Dynamic Control of Infeasibility
 for Nonlinear Programming"
 ```
-  - 03/2005-12/2008 - Bachelor of Applied Mathematics;
+
+- 03/2005-12/2008 - Bachelor of Applied Mathematics;
 
 Long version:
 

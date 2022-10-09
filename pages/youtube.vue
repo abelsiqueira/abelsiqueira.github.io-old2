@@ -69,7 +69,7 @@ export default {
         url: 'https://www.youtube.com/watch?v=xp-tyHCreU8&list=PLOOY0eChA1uwcqU0Z69_XgXniczzqzsQT',
       },
     ]
-    for(const data of cardData) {
+    for (const data of cardData) {
       data.nuxtLinkInsteadOfA = false
       data.hideText = true
     }

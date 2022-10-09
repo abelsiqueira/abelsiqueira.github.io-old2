@@ -1,14 +1,13 @@
 ---
-title: "Professional site and blog for researchers, professors and students"
-date: "2016-02-13"
+title: 'Professional site and blog for researchers, professors and students'
+date: '2016-02-13'
 tags:
-- "jekyll"
-- "site"
-- "blog"
+  - 'jekyll'
+  - 'site'
+  - 'blog'
 ---
 
 # Professional site and blog for researchers, professors and students
-
 
 TL; DR: Make a professional web page, like [mine]({{local_prefix}}/../),
 and/or a blog, like [mine]({{local_prefix}}). Use
@@ -20,14 +19,14 @@ and/or a blog, like [mine]({{local_prefix}}). Use
 
 ## Summary:
 
- - [Introduction](#introduction)
- - [General Information](#general-information)
- - [Using my site as a starting point](#using-my-site-as-a-starting-point)
- - [Work page - Easy way](#work-page---easy-way)
- - [Work page - Hard way](#work-page---hard-way)
- - [Blog page - Easy way](#blog-page---easy-way)
- - [Blog page - Hard way](#blog-page---hard-way)
- - [Both - Hard way](#both---hard-way)
+- [Introduction](#introduction)
+- [General Information](#general-information)
+- [Using my site as a starting point](#using-my-site-as-a-starting-point)
+- [Work page - Easy way](#work-page---easy-way)
+- [Work page - Hard way](#work-page---hard-way)
+- [Blog page - Easy way](#blog-page---easy-way)
+- [Blog page - Hard way](#blog-page---hard-way)
+- [Both - Hard way](#both---hard-way)
 
 ---
 
@@ -138,19 +137,21 @@ Also, if you know git, and are familiar with GitHub, you can jump a few steps.
 
 #### Work page - Easy way
 
- - Create a [GitHub](http://github.com) account.
- - Go to [my github page](http://github.com/abelsiqueira/abelsiqueira.github.io).
- - Fork the page, finding the button that says fork and clicking on it.
- - In your page, with name http://github.com/youruser/abelsiqueira.github.io, go to
+- Create a [GitHub](http://github.com) account.
+- Go to [my github page](http://github.com/abelsiqueira/abelsiqueira.github.io).
+- Fork the page, finding the button that says fork and clicking on it.
+- In your page, with name http://github.com/youruser/abelsiqueira.github.io, go to
+
 ```
 settings, and rename the repository to `youruser.github.io`.
 ```
- - Edit the file `_config.yml` and change all pertinent information. Don't leave
-   anything with my user.
-   **You can edit and create files directly on GitHub, but you can't preview
-   your site before publishing. To edit, click on edit, make your modifications
-   and then on the bottom of the page click on commit. To create, click on the +
-   button, and do similar steps.**
+
+- Edit the file `_config.yml` and change all pertinent information. Don't leave
+  anything with my user.
+  **You can edit and create files directly on GitHub, but you can't preview
+  your site before publishing. To edit, click on edit, make your modifications
+  and then on the bottom of the page click on commit. To create, click on the +
+  button, and do similar steps.**
 
 This is sufficient for a site to appear on `http://youruser.github.io` in at
 most a few minutes. Now you only need to edit to your liking.
@@ -159,6 +160,7 @@ For a multilingual support (default), I suggest you create files with the format
 `lg` is a language prefix. There is no real need to follow this, but it's
 cleaner.
 Then inside this file, you need to fill
+
 ```
 ---
 layout: page
@@ -169,6 +171,7 @@ order:  Where you want the page in the navigation bar. Lower if leftmost.
 permalink: /lg/name/
 ---
 ```
+
 See the files `research.br.md` and `research.en.md` for the differences.
 
 It's very important that pages that are translations for each other to have the
@@ -201,18 +204,18 @@ a default site location.
 
 #### Blog page - Easy way
 
- - Create a [GitHub](http://github.com) account.
- - Go to [my github blog page](http://github.com/abelsiqueira/blog).
- - Fork the page, finding the button that says fork and clicking on it.
- - Edit the file `_config.yml` and change all pertinent information. Don't leave
-   anything with my user.
-   **You can edit and create files directly on GitHub, but you can't preview
-   your site before publishing. To edit, click on edit, make your modifications
-   and then on the bottom of the page click on commit. To create, click on the +
-   button, and do similar steps.**
- - Edit the `about.md` file to be about you.
- - Delete all posts in `_posts`, except maybe one to use as a beginning point.
- - Write your post.
+- Create a [GitHub](http://github.com) account.
+- Go to [my github blog page](http://github.com/abelsiqueira/blog).
+- Fork the page, finding the button that says fork and clicking on it.
+- Edit the file `_config.yml` and change all pertinent information. Don't leave
+  anything with my user.
+  **You can edit and create files directly on GitHub, but you can't preview
+  your site before publishing. To edit, click on edit, make your modifications
+  and then on the bottom of the page click on commit. To create, click on the +
+  button, and do similar steps.**
+- Edit the `about.md` file to be about you.
+- Delete all posts in `_posts`, except maybe one to use as a beginning point.
+- Write your post.
 
 If you access `http://youruser.github.io{{local_prefix}}`, you'll see your blog. Notice
 that, if you haven't created the work page, `http://youruser.github.io` won't

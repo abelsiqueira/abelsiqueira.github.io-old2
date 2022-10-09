@@ -1,15 +1,14 @@
 ---
-title: "LaTeX tools for revision"
-date: "2016-03-06"
+title: 'LaTeX tools for revision'
+date: '2016-03-06'
 tags:
-- "latex"
-- "diff"
-- "revision"
-- "xournal"
+  - 'latex'
+  - 'diff'
+  - 'revision'
+  - 'xournal'
 ---
 
 # LaTeX tools for revision
-
 
 This post is just to introduce two new tools I found.
 

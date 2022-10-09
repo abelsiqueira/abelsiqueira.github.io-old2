@@ -1,16 +1,15 @@
 ---
-title: "Workshop de Ferramentas Computacionais - Maio de 2015"
-date: "2015-04-13"
+title: 'Workshop de Ferramentas Computacionais - Maio de 2015'
+date: '2015-04-13'
 tags:
-- "workshop"
-- "swc"
-- "bash"
-- "git"
-- "julia"
+  - 'workshop'
+  - 'swc'
+  - 'bash'
+  - 'git'
+  - 'julia'
 ---
 
 # Workshop de Ferramentas Computacionais - Maio de 2015
-
 
 # Sobre
 
@@ -19,9 +18,9 @@ para Pesquisadores.
 Essa oficina será focada em três ferramentas básicas para desenvolvimento de
 software:
 
-  - Bash
-  - Git
-  - Julia
+- Bash
+- Git
+- Julia
 
 O Bash é o terminal tradicinal dos sistemas GNU/Linux (a tela preta).
 As possibilidades de uso são ilimitadas, mas vamos focar no básico,
@@ -52,13 +51,16 @@ expansão por nova.
 
 # Ministrantes
 
-  - [Eu]({{local_prefix}}/) - Trabalho com GNU/Linux desde minha graduação,
+- [Eu]({{local_prefix}}/) - Trabalho com GNU/Linux desde minha graduação,
+
 ```
 e trabalho com software livre. Meus trabalhos individuais são de código
 aberto, e acredito que esse é o caminho mais correto para o desenvolvimento
 acadêmico.
 ```
-  - [Raniere Gaia](http://rgaiacs.com/) - Estuda matemática aplicada na
+
+- [Raniere Gaia](http://rgaiacs.com/) - Estuda matemática aplicada na
+
 ```
 Universidade Estadual de Campinas, e trabalha em alguns projetos de nível
 internacional. Faz contribuições para Mozilla, e é um membro mantenedor do
@@ -81,7 +83,8 @@ essencial).
 
 Softwares que você precisa
 
-  - Bash
+- Bash
+
 ```
 - No GNU/Linux, o Bash já deve estar instalado.
 Procure pelo `terminal` ou `console` no seu sistema. Quando ele abrir,
@@ -107,7 +110,8 @@ uma delas é o [Git Bash](http://msysgit.github.io/), que você já usa para o
 Git também.
 ```
 
-  - Git
+- Git
+
 ```
 - No Windows, instale o [Git Bash](http://msysgit.github.io/), que falei
 acima.
@@ -133,13 +137,15 @@ git --version
 no seu terminal.
 ```
 
-  - Julia: Siga as [instruções](http://julialang.org/downloads/).
+- Julia: Siga as [instruções](http://julialang.org/downloads/).
+
 ```
 Para testar, verifique que o Julia foi instalado abrindo o terminal de
 Julia, e verificando que o texto introdutório contém `Version 0.x.x`.
 ```
 
-  - Um editor de texto, preferencialmente com suporte a UTF-8, código colorido
+- Um editor de texto, preferencialmente com suporte a UTF-8, código colorido
+
 ```
 automaticamente, indentação automática e inclusão de espaços no lugar de
 TAB. Existem algumas opções, e se você não tem preferência nenhuma, o
@@ -158,16 +164,16 @@ e-mail para confirmar se ainda temos vagas.
 # Cronograma
 
 O evento acontecerá no dia 30 de Maio de 2015, seguindo o cronograma abaixo:
-(*Nota: Mudamos o horário de Julia para melhor acomodar o cronograma*).
+(_Nota: Mudamos o horário de Julia para melhor acomodar o cronograma_).
 
-  - **08:00** : Abertura
-  - **08:30** : Bash (com Raniere)
-  - **09:30** : _Coffee Break_
-  - **10:00** : Julia (com Abel)
-  - **11:30** : Almoço
-  - **13:30** : Git Local (com Abel)
-  - **15:00** : _Coffee Break_
-  - **15:30** : Git Remoto (com Raniere)
+- **08:00** : Abertura
+- **08:30** : Bash (com Raniere)
+- **09:30** : _Coffee Break_
+- **10:00** : Julia (com Abel)
+- **11:30** : Almoço
+- **13:30** : Git Local (com Abel)
+- **15:00** : _Coffee Break_
+- **15:30** : Git Remoto (com Raniere)
 
 # Local
 

@@ -1,9 +1,9 @@
 ---
-title: "ShareLaTeX e o básico do cabeçalho"
-date: "2015-01-06"
+title: 'ShareLaTeX e o básico do cabeçalho'
+date: '2015-01-06'
 tags:
-- "sharelatex"
-- "latex"
+  - 'sharelatex'
+  - 'latex'
 ---
 
 # ShareLaTeX e o básico do cabeçalho

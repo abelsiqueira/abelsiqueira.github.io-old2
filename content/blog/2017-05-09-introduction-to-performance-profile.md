@@ -1,11 +1,11 @@
 ---
-title: "Introduction to Performance Profile"
-date: "2017-05-09"
+title: 'Introduction to Performance Profile'
+date: '2017-05-09'
 tags:
-- "work"
-- "performance"
-- "profile"
-- "optimization"
+  - 'work'
+  - 'performance'
+  - 'profile'
+  - 'optimization'
 ---
 
 # Introduction to Performance Profile
@@ -49,17 +49,17 @@ $c _ {s,p} = +\infty$. We assume that at least one algorithm solves problem $p$.
 The best algorithm for a given problem is the one that solves it with the least
 cost, i.e., we define
 
-$$ c _ {\min,p} = \min _ {s\in S} c _ {s,p}. $$
+$$ c _ {\min,p} = \min _ {s\in S} c \_ {s,p}. $$
 
 Now we define the relative cost of the algorithm on a problem:
 
-$$ r _ {s,p} = \frac{ c _ {s,p} }{ c _ {\min,p} }. $$
+$$ r _ {s,p} = \frac{ c _ {s,p} }{ c \_ {\min,p} }. $$
 
 Notice that $r _ {s,p} \geq 1$, with $r _ {s,p} = 1$ meaning that algorithm
 $s$ is (one of) the best for problem $p$.
 Finally, the performance function of algorithm $s$ is given by
 
-$$ P_s(t) = \frac{ |\\{p \in P \mid\ r _ {s,p} \leq t\\}| }{ |P| }. $$
+$$ P*s(t) = \frac{ |\\{p \in P \mid\ r * {s,p} \leq t\\}| }{ |P| }. $$
 
 See that $P_s(1)$ is the number of problems such that $r _ {s,p} = 1$, that is
 the number of problems for which algorithm $s$ is one of the best.
@@ -126,16 +126,16 @@ The direct link is
 
 [1] Elizabeth D. Dolan and Jorge J. Moré. Benchmarking optimization software
 with performance profiles.
-*Mathematical Programming*, 91(2):201-213, 2002.
+_Mathematical Programming_, 91(2):201-213, 2002.
 DOI: 10.1007/s101070100263.
 
 [2] A. S. Siqueira, R. G. Costa da Silva, and L.-R. Santos.
 Perprof-py: A Python Package for Performance Profile of Mathematical
 Optimization Software.
-*Journal of Open Research Software*, 4(1), p.e12, 2016.
+_Journal of Open Research Software_, 4(1), p.e12, 2016.
 DOI: 10.5334/jors.81.
 
 [3] A.L. Tits and Y. Yang.
 Globally convergent algorithms for robust pole placement by state feedback.
-*IEEE Transactions on Automatic Control*, 41(10):1432-1452, 1996.
+_IEEE Transactions on Automatic Control_, 41(10):1432-1452, 1996.
 DOI: 10.1109/9.539425.

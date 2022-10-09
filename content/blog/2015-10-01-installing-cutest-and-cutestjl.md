@@ -1,26 +1,25 @@
 ---
-title: "Installing CUTEst and CUTEst.jl"
-date: "2015-10-01"
+title: 'Installing CUTEst and CUTEst.jl'
+date: '2015-10-01'
 tags:
-- "cutest"
-- "julia"
+  - 'cutest'
+  - 'julia'
 ---
 
 # Installing CUTEst and CUTEst.jl
 
-
 This post will tell you how to install CUTEst using a different tool that makes
 it much easier. Also, I'll install CUTEst.jl, the CUTEst interface for Julia.
 
-**Edit:** *Now, CUTEst.jl install CUTEst by itself. Check [this
+**Edit:** _Now, CUTEst.jl install CUTEst by itself. Check [this
 post](https://abelsiqueira.github.io{{local_prefix}}nlpmodelsjl-cutestjl-and-other-nonlinear-optimization-packages-on-julia/).
 Also, for Linux, I've created [this CUTEst
 installer](https://github.com/abelsiqueira/linux-cutest), which should be
-easier to use. February, 11, 2017*.
+easier to use. February, 11, 2017_.
 
-**Edit:** *Some corrections were made on February, 15, 2016*.
+**Edit:** _Some corrections were made on February, 15, 2016_.
 
-**Edit:** *Some corrections were made on November, 11, 2015*.
+**Edit:** _Some corrections were made on November, 11, 2015_.
 
 By now you probably know
 [CUTEst](http://ccpforge.cse.rl.ac.uk/gf/project/cutest/wiki),
@@ -34,8 +33,9 @@ much easier to use CUTEst on Julia than on MatLab.
 So, if you are starting on it, I suggest you take a look.
 
 We will use Homebrew to install CUTEst, for two reasons:
-  - It's much easier (when you learn it)
-  - Julia requires shared libraries, that the original installation did not
+
+- It's much easier (when you learn it)
+- Julia requires shared libraries, that the original installation did not
   provide.
 
 Homebrew is a kind of package manager (such as apt-get, pip, etc.).
@@ -46,9 +46,9 @@ The linux version is [Linuxbrew](https://github.com/Homebrew/linuxbrew).
 
 The installation is quite simple:
 
-  - Install brew
-  - Install CUTEst
-  - Install CUTEst.jl
+- Install brew
+- Install CUTEst
+- Install CUTEst.jl
 
 I just made these steps and record my terminal, so you can check
 [Asciinema](https://asciinema.org/a/27127), or the embedded version on the

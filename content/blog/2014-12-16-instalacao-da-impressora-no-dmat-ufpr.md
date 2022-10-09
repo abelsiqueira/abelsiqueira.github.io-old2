@@ -1,11 +1,11 @@
 ---
-title: "Instalação da Impressora no DMAT-UFPR"
-date: "2014-12-16"
+title: 'Instalação da Impressora no DMAT-UFPR'
+date: '2014-12-16'
 tags:
-- "printer"
-- "ufpr"
-- "work"
-- "tech"
+  - 'printer'
+  - 'ufpr'
+  - 'work'
+  - 'tech'
 ---
 
 # Instalação da Impressora no DMAT-UFPR
@@ -24,7 +24,7 @@ que fez diferença.
 
 Inicialmente, instale o [CUPS](https://wiki.archlinux.org/index.php/CUPS) e o
 [SAMBA](https://wiki.archlinux.org/index.php/Samba) e suba-os com o `systemctl`.
-__Talvez seja preciso apenas as partes dos clientes do CUPS e do SAMBA__.
+**Talvez seja preciso apenas as partes dos clientes do CUPS e do SAMBA**.
 
 Depois disso, entre na [administração do CUPS](http://localhost:631).
 O meu estava em inglês, então vou usar uma tradução livre.
@@ -54,8 +54,7 @@ e colocando nossa senha. Vai ser uma lista, então você pode usar `less` pra le
 Obtive o nome da impressora que eu queria usar e coloquei no lugar:
 `DEPTO.MATEMATICA_SALA.PROFESSORES_EXATAS_POLITECNICO`.
 
-Deposi disso, você precisa passar o ppd. Uma busca na web por `linux MARCA
-MODELO` retornará um link da [Open Printing](http://www.openprinting.org).
+Deposi disso, você precisa passar o ppd. Uma busca na web por `linux MARCA MODELO` retornará um link da [Open Printing](http://www.openprinting.org).
 Eu utilizei o modelo C790, mesmo a impressora sendo modelo C792, porque, como
 disse, fui costurando um monte de coisas. Baixe o ppd (`directly download PPD`),
 e passe-o para o CUPS. Depois disso a impressora deve estar instalado, peça a

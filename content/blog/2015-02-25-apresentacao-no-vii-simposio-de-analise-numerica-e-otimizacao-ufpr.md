@@ -1,11 +1,11 @@
 ---
-title: "Apresentação no VII Simpósio de Análise Numérica e Otimização - UFPR"
-date: "2015-02-25"
+title: 'Apresentação no VII Simpósio de Análise Numérica e Otimização - UFPR'
+date: '2015-02-25'
 tags:
-- "work"
-- "presentation"
-- "tools"
-- "julia"
+  - 'work'
+  - 'presentation'
+  - 'tools'
+  - 'julia'
 ---
 
 # Apresentação no VII Simpósio de Análise Numérica e Otimização - UFPR
@@ -22,13 +22,16 @@ importantes para pesquisadores, principalmente da área de matemática
 computacional.
 Um resumo do que apresento é
 
-  - Aprenda outras linguagens. Recomendo, por exemplo, conhecer Python ou Ruby,
+- Aprenda outras linguagens. Recomendo, por exemplo, conhecer Python ou Ruby,
+
 ```
 Shell e Makefile. Com essas ferramentas já é possível automatizar testes e
 fazer scripts com uso variado. Makefile, por exemplo, é uma das maneiras
 mais usadas de se instalar programas (no Unix).
 ```
-  - Conheça a linguagem [Julia](http://www.julialang.org).
+
+- Conheça a linguagem [Julia](http://www.julialang.org).
+
 ```
 É uma linguagem com foco na matemática computacional, considerando ainda que
 você irá querer utilizar código em C e Fortran, e com sintaxe parecido com a
@@ -43,18 +46,24 @@ puramente em Julia, quanto utilizando códigos de baixo nível.
 [CUTEst.jl](http://github.com/optimizers/CUTEst.jl), uma interface para o
 [CUTEst](http://ccpforge.cse.rl.ac.uk/gf/project/cutest/wiki).
 ```
-  - Escolha um editor e um ambiente de desenvolvimento.
+
+- Escolha um editor e um ambiente de desenvolvimento.
+
 ```
 Sugiro ver algumas opções (Vim, Emacs, Atom, Sublime Text, Eclipse), testar,
 e ver qual combina mais com você. Em adição, conheça o Sharelatex e/ou o
 Writelatex.
 ```
-  - Conheça o [perprof-py](http://github.com/abelsiqueira/perprof-py),
+
+- Conheça o [perprof-py](http://github.com/abelsiqueira/perprof-py),
+
 ```
 que é uma ferramenta para gerar perfis de desempenho, com gráficos de alta
 qualidade.
 ```
-  - Conheça o [git](http://git-scm.com), que é uma ferramenta para controle de
+
+- Conheça o [git](http://git-scm.com), que é uma ferramenta para controle de
+
 ```
 versão, que você pode usar sozinho; ou em grupo; fazer ramificações;
 verificar versões anteriores; misturar versões; trabalhar online; dentro
@@ -68,7 +77,9 @@ você subir o seu código.
 verifica seus testes e diz que parte do seu código foi verificado, e qual
 não foi.
 ```
-  - TikZ e PgfPlots do Latex: Comentei um pouco sobre gráficos usando esses
+
+- TikZ e PgfPlots do Latex: Comentei um pouco sobre gráficos usando esses
+
 ```
 pacotes, e mostrei alguns exemplos.
 ```
@@ -83,7 +94,8 @@ propondo](http://catarse.me/pt/programacaocientifica) para os próximos meses.
 Algumas boas perguntas foram feitas, e gostaria de parafraseá-las e
 atualizar minha resposta para algumas delas.
 
-  - **Por que sair do MatLab para o Julia?**
+- **Por que sair do MatLab para o Julia?**
+
 ```
 Recomendo sair do MatLab porque ele é um software proprietário, pra começar.
 Mas desconsiderando isso, e também considerando o Octave, dou a seguinte
@@ -97,7 +109,9 @@ Gostaria de acrescentar a ressalva que Julia é uma linguagem nova, e
 obviamente não tem tudo que gostaríamos implementado. Seu código pode
 quebrar. Mas vale a pena conhecer para saber se vale investir.
 ```
-  - **Por que sair do Python para o Julia?**
+
+- **Por que sair do Python para o Julia?**
+
 ```
 Não sei se você deve. O Python básico não é suficiente para um matemático
 computacional, mas eu sei que existem vários pacotes que conseguem deixar o
@@ -107,7 +121,9 @@ Atualmente, provavelmente, o Python parece ser mais eficiente.
 E já que estamos aqui, se você conseguir tirar alguém do MatLab para o
 Python, já é uma vitória.
 ```
-  - **Por que usar o TikZ/PgfPlots no lugar desta outra ferramenta de
+
+- \*\*Por que usar o TikZ/PgfPlots no lugar desta outra ferramenta de
+
 ```
 gráficos?**
 Se for o MatLab, vide meu _rant_ anterior sobre MatLab ser proprietário.
@@ -120,7 +136,9 @@ Então, alguns comandos podem ser misturados para fazer uma sequência de
 figuras que o Beamer vai descobrindo (por exemplo o caminho de um
 algoritmo).
 ```
-  - **Se fosse para você escolher apenas uma dessas ferramentas para
+
+- \*\*Se fosse para você escolher apenas uma dessas ferramentas para
+
 ```
 recomendar, qual seria?**
 Sem dúvida o git, que é útil para qualquer área onde você escreve código, ou

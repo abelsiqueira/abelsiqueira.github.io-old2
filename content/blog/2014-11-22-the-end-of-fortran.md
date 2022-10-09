@@ -1,11 +1,11 @@
 ---
-title: "The End of Fortran"
-date: "2014-11-22"
+title: 'The End of Fortran'
+date: '2014-11-22'
 tags:
-- "rant"
-- "programming"
-- "fortran"
-- "julia"
+  - 'rant'
+  - 'programming'
+  - 'fortran'
+  - 'julia'
 ---
 
 # The End of Fortran
