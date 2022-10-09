@@ -1,7 +1,7 @@
 <template>
   <v-hover v-slot="{ hover }">
     <v-card tile>
-      <v-responsive :aspect-ratio="16 / 9">
+      <v-responsive>
         <NuxtLink v-if="nuxtLinkInsteadOfA" :to="url">
           <PageCardImage
             :hover="hover"

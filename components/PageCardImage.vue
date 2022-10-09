@@ -1,10 +1,8 @@
 <template>
   <v-img
-    :aspect-ratio="16 / 9"
+    :aspect-ratio="16/10"
     :gradient="
-      'to top right, rgba(0,0,0,0.6), rgba(0,0,0,' +
-      (hover ? '0.3' : '0.6') +
-      ')'
+      'to bottom right, ' + (hover ? 'rgba(0,0,0,0.8), ' : '') + 'rgba(0,0,0,0.3), rgba(0,0,0,0.1)'
     "
     :src="srcImg"
     class="pa-1"
