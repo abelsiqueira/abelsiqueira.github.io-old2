@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TopBanner img="resume.jpg" title="Resume / Curriculum" />
+    <TopBanner img="resume.jpg" title="Resume" description="Here you will the relevant information normally found in resume and Curriculum Vitae"/>
 
     <v-container fluid>
       <v-row>

@@ -1,6 +1,7 @@
 ---
 title: Jill
 description: 'Julia language command line installer'
+img: jill.jpg
 ---
 
 [Jill](https://github.com/abelsiqueira/jill) is a command line installer for Julia.

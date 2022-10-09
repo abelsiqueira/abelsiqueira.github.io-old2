@@ -1,7 +1,7 @@
 <template>
   <div>
     <TopBanner
-      img="code.jpg"
+      :img="page.img ? page.img : 'code.jpg'"
       :title="page.title"
       :description="page.description"
     />

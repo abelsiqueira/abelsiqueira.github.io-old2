@@ -52,7 +52,7 @@ export default {
 
 <style scoped>
 .tint {
-  background-color: rgba(0, 0, 0, 0.8) !important;
+  background-color: rgba(30, 30, 30, 0.8) !important;
   border-radius: 10px;
 }
 </style>

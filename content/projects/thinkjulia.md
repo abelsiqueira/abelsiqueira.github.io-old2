@@ -1,6 +1,7 @@
 ---
 title: ThinkJulia
 description: 'Translation to Portuguese'
+img: 'book.jpg'
 ---
 
 I helped with the translation of the ThinkJulia book to Portuguese.

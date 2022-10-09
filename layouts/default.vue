@@ -6,8 +6,8 @@
       <Nuxt />
     </v-main>
 
-    <v-footer :absolute="false" app class="secondary">
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+    <v-footer :absolute="false" app class="dark accent--text justify-center">
+      <span>Abel Soares Siqueira &copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
 </template>

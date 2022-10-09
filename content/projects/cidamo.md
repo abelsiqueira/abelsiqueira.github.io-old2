@@ -1,6 +1,7 @@
 ---
 title: CiDAMO
 description: 'Data Science group in Brazil'
+img: 'cidamo.jpg'
 ---
 
 At the Federal University of Paraná, while I was a professor, I helped create [CiDAMO](https://cidamo.com.br), a data science, machine learning, and optimization group.

@@ -1,7 +1,7 @@
 <template>
   <WrapperBannerCard
     img="code.jpg"
-    description="I have worked on a variety of projects..."
+    description="I have worked on a variety of projects. Here is a short list. For a complete software list, check my GitHub."
     title="Projects"
     :card-data="cardData"
   />

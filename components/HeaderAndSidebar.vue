@@ -22,7 +22,12 @@
 
     <v-app-bar class="primary" :clipped-left="true" fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-breadcrumbs class="pa-0 ma-0" divider="/" :items="currentRouteName" large>
+      <v-breadcrumbs
+        class="pa-0 ma-0"
+        divider="/"
+        :items="currentRouteName"
+        large
+      >
         <template #item="{ item }">
           <v-breadcrumbs-item>
             <v-hover v-slot="{ hover }">
@@ -84,7 +89,7 @@ export default {
         },
         {
           icon: 'mdi-tie',
-          title: 'Resume/Curriculum',
+          title: 'Resume',
           to: '/resume',
         },
       ],
@@ -94,17 +99,21 @@ export default {
   computed: {
     currentRouteName() {
       const slicedPath = this.$route.path.slice(1)
-      const output = [{
-        text: 'Home',
-        href: '/',
-        disabled: slicedPath.length === 0,
-      }].concat(slicedPath.split('/').map((step, index, array) => {
-        return {
-          text: step,
-          href: '/' + array.slice(0, index + 1).join('/'),
-          disabled: index === array.length - 1,
-        }
-      }))
+      const output = [
+        {
+          text: 'Home',
+          href: '/',
+          disabled: slicedPath.length === 0,
+        },
+      ].concat(
+        slicedPath.split('/').map((step, index, array) => {
+          return {
+            text: step,
+            href: '/' + array.slice(0, index + 1).join('/'),
+            disabled: index === array.length - 1,
+          }
+        })
+      )
       if (output.length > 2 && output[1].text === 'blog') {
         output[2].text = 'post'
       }

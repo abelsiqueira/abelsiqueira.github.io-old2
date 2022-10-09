@@ -1,6 +1,7 @@
 ---
 title: JuliaSmoothOptimizers
 description: 'Optimization in Julia'
+img: 'jso.jpg'
 ---
 
 [JuliaSmoothOptimizers](https://juliasmoothoptimizers.github.io) (JSO) is an organization that I co-created with Dominique Orban around 2015 (or 14?) to store our optimization packages.

@@ -26,7 +26,7 @@ export default {
       },
       {
         img: 'resume.jpg',
-        title: 'Resume/Curriculum',
+        title: 'Resume',
         description: '',
         url: '/resume',
       },
