@@ -1,21 +1,22 @@
 import colors from 'vuetify/es5/util/colors'
 import blogTags from './blogtags.json'
 
-function createTagFeed (tag) {
+function createTagFeed(tag) {
   return async (feed) => {
     feed.options = {
       title: 'Abel Soares Siqueira',
-      link: 'https://abelsiqueira.github.io' + (tag === '' ? '' : `/tag/${tag}`) + '/feed.xml',
+      link:
+        'https://abelsiqueira.github.io' +
+        (tag === '' ? '' : `/tag/${tag}`) +
+        '/feed.xml',
       description: 'RSS feed for abelsiqueira.github.io',
     }
     const { $content } = require('@nuxt/content')
     const articles = await $content('blog', { deep: true, text: true })
       .where(
         tag === ''
-        ?
-        { draft: { $ne: true }}
-        :
-        { draft: { $ne: true }, tags: { $containsAny: [tag]}},
+          ? { draft: { $ne: true } }
+          : { draft: { $ne: true }, tags: { $containsAny: [tag] } },
       )
       .sortBy('date', 'desc')
       .fetch()
@@ -132,7 +133,7 @@ export default {
   hooks: {
     'content:file:beforeInsert': (document) => {
       if (document.extension === '.md') {
-        document.bodyPlainText = document.text;
+        document.bodyPlainText = document.text
         // const { text } = require('reading-time')(document.text)
         // document.readingTime = text
       }
