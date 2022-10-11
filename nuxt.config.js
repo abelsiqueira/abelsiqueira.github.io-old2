@@ -1,6 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
-
-const blogTags = ['', 'julia']
+import blogTags from './blogtags.json'
 
 function createTagFeed (tag) {
   return async (feed) => {

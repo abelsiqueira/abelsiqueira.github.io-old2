@@ -49,7 +49,7 @@ A solução, simples, é de só manter os arquivos de CSS, layout, javascript, e
 Além disso, adiciono essas pastas no `.gitignore`, e localmente é só copiá-las para os repositórios que precisam dela.
 Aqui a adição ao GitHub actions:
 
-```
+```yaml
 - name: Clone abelsiqueira.github.io
   run: |
     wget https://github.com/abelsiqueira/abelsiqueira.github.io/archive/refs/heads/main.zip
