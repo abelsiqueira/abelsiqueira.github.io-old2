@@ -1,5 +1,47 @@
 import colors from 'vuetify/es5/util/colors'
 
+const blogTags = ['', 'julia']
+
+function createTagFeed (tag) {
+  return async (feed) => {
+    feed.options = {
+      title: 'Abel Soares Siqueira',
+      link: 'https://abelsiqueira.github.io' + (tag === '' ? '' : `/tag/${tag}`) + '/feed.xml',
+      description: 'RSS feed for abelsiqueira.github.io',
+    }
+    const { $content } = require('@nuxt/content')
+    const articles = await $content('blog', { deep: true, text: true })
+      .where(
+        tag === ''
+        ?
+        { draft: { $ne: true }}
+        :
+        { draft: { $ne: true }, tags: { $containsAny: [tag]}},
+      )
+      .sortBy('date', 'desc')
+      .fetch()
+    articles.forEach((article) => {
+      feed.addItem({
+        title: article.title,
+        date: new Date(article.date),
+        id: article.url,
+        link: `https://abelsiqueira.github.io${article.path}`,
+        description: article.description ? article.description : '',
+        content: article.bodyPlainText,
+        tags: article.tags ? article.tags : [],
+      })
+    })
+
+    feed.addCategory('Nuxt.js')
+
+    feed.addContributor({
+      name: 'Abel Soares Siqueira',
+      email: 'abelsiqueira@gmail.com',
+      link: 'https://abelsiqueira.github.io',
+    })
+  }
+}
+
 export default {
   // server: {
   //   host: '0'
@@ -48,6 +90,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    '@nuxtjs/feed',
   ],
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
@@ -86,4 +129,24 @@ export default {
       brands: true,
     },
   },
+
+  hooks: {
+    'content:file:beforeInsert': (document) => {
+      if (document.extension === '.md') {
+        document.bodyPlainText = document.text;
+        // const { text } = require('reading-time')(document.text)
+        // document.readingTime = text
+      }
+    },
+  },
+
+  feed: blogTags.map((tag) => {
+    return {
+      path: tag === '' ? '/feed.xml' : `/tag/${tag}/feed.xml`,
+      create: createTagFeed(tag),
+      cacheTime: 1, // 1000 * 60 * 15,
+      type: 'rss2',
+      data: [''],
+    }
+  }),
 }

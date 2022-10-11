@@ -1,6 +1,7 @@
 ---
 title: 'Migração do site para Franklin.jl'
 date: '2021-06-28'
+tags: ['julia', 'franklin', 'site']
 ---
 
 # Migração do site para Franklin.jl

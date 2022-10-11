@@ -1,6 +1,10 @@
 ---
 title: 'Speed up your Python code using Julia'
 date: '2022-01-26'
+tags:
+  - 'julia'
+  - 'python'
+  - 'nlesc'
 ---
 
 # Speed up your Python code using Julia
