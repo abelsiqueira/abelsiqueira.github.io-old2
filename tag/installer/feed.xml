@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Abel Soares Siqueira</title>
+        <link>https://abelsiqueira.github.io/tag/installer/feed.xml</link>
+        <description>RSS feed for abelsiqueira.github.io</description>
+        <lastBuildDate>Tue, 11 Oct 2022 22:59:04 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/nuxt-community/feed-module</generator>
+        <category>Nuxt.js</category>
+    </channel>
+</rss>

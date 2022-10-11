@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Abel Soares Siqueira</title>
+        <link>https://abelsiqueira.github.io/tag/smne/feed.xml</link>
+        <description>RSS feed for abelsiqueira.github.io</description>
+        <lastBuildDate>Tue, 11 Oct 2022 22:59:04 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/nuxt-community/feed-module</generator>
+        <category>Nuxt.js</category>
+        <item>
+            <title><![CDATA[Apresentação de Julia no SMNE]]></title>
+            <link>https://abelsiqueira.github.io/blog/2016-11-29-smne-2016-julia</link>
+            <guid>https://abelsiqueira.github.io/blog/2016-11-29-smne-2016-julia</guid>
+            <pubDate>Tue, 29 Nov 2016 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# Apresentação de Julia no SMNE
+
+Nos dias 30 de Novembro à 2 de Dezembro de 2016 acontece o [primeiro Simpósio
+de Métodos Numéricos em Engenharia](http://eventos.ufpr.br/smne/SMNE1).
+Neste simpósio darei um minicurso sobre Julia.
+
+Deixo aqui o material preliminar para os alunos do minicurso, ou interessados.
+
+- [Notebook (necessário)](/blog/smne-julia.ipynb)
+- [exemplo.jl (necessário)](/blog/exemplo.jl)
+- [HTML estático do notebook - para quem não conseguiu
+  instalar](/blog/smne-julia.html)
+
+Também deixo [aqui](https://pad.riseup.net/p/aCXYqUjz3cCS) o link do Etherpad
+para usarmos na aula.
+
+Quem não conseguiu instalar até agora, pode tentar usar o
+[JuliaBox](https://juliabox.com/), que roda Julia online. **Não sei se teremos
+internet boa o suficiente no evento**.
+]]></content:encoded>
+        </item>
+    </channel>
+</rss>

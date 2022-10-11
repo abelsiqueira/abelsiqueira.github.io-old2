@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Abel Soares Siqueira</title>
+        <link>https://abelsiqueira.github.io/tag/fun/feed.xml</link>
+        <description>RSS feed for abelsiqueira.github.io</description>
+        <lastBuildDate>Tue, 11 Oct 2022 22:59:04 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/nuxt-community/feed-module</generator>
+        <category>Nuxt.js</category>
+        <item>
+            <title><![CDATA[Julia Fractal on Julia]]></title>
+            <link>https://abelsiqueira.github.io/blog/2017-01-15-julia-fractal-on-julia</link>
+            <guid>https://abelsiqueira.github.io/blog/2017-01-15-julia-fractal-on-julia</guid>
+            <pubDate>Sun, 15 Jan 2017 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# Julia Fractal on Julia
+
+I wanted a background that would update automatically in some
+interesting way, instead of just random images.
+After some thought, I decided to use some [Julia
+fractals](https://en.wikipedia.org/wiki/Julia_set).
+
+I made a code to create the Julia fractals in the [Julia
+language](https://julialang.org), and then some code to run it for a random
+point.
+
+The code is [here](https://github.com/abelsiqueira/juliabg), including some
+explaining on how to use and install it.
+
+Here are some examples:
+
+![](https://raw.githubusercontent.com/abelsiqueira/juliabg/master/ex1.png)
+![](https://raw.githubusercontent.com/abelsiqueira/juliabg/master/ex2.png)
+![](https://raw.githubusercontent.com/abelsiqueira/juliabg/master/ex3.png)
+![](https://raw.githubusercontent.com/abelsiqueira/juliabg/master/ex4.png)
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Advent of Code 2016 in Julia]]></title>
+            <link>https://abelsiqueira.github.io/blog/2016-12-18-advent-of-code-2016-in-julia</link>
+            <guid>https://abelsiqueira.github.io/blog/2016-12-18-advent-of-code-2016-in-julia</guid>
+            <pubDate>Sun, 18 Dec 2016 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# Advent of Code 2016 in Julia
+
+Last year I discovered by chance a code competition that happens in the month
+of December: The [Advent of Code](http://adventofcode.com).
+This event consists of small puzzles release every day of December, up to the
+25th. Which amounts to 25 problems! (I can do math).
+
+Last year I tried doing some on Bash, and latter switched to Julia, but never
+got to finish them.
+This year I decided to use [Julia](https://julialang.org), because I want to
+test it for these general problems. Some problems are very hard, and I want
+to have the packages at my disposal.
+
+**There is a leaderboard**, which revolves around the first 100 solvers for
+each day. Most problems are solved in the first 5 minutes of its release, and
+the 100th place is usually less than 15 minutes. The best I got was 30 minutes,
+getting the 135th position and zero points. However, I'm usually not trying to
+get there because the problems are release at 3am for me (Brazil), and by that
+time I'm usually sleeping.
+
+This year I'm trying to follow more closely the dates, managed to solve one by
+day until a gigantic workload halted my progress for a week. Yesterday I
+returned to these problems and solved the missing ones up until now.
+
+If you like coding, you should give it a try. My code for this year is
+available at [GitHub](https://github.com/abelsiqueira/AoC2016), but only open
+it if you decided not to play. Be warned that most of my answers were poorly
+written because I still want to do it fast, and am not worried about cleaning
+of efficiency.
+
+Happy new year, holidays, and coding.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[SiCLIPoD - Um Gerenciador de Podcasts Simples em Linha de Comando]]></title>
+            <link>https://abelsiqueira.github.io/blog/2014-12-11-siclipod-um-gerenciador-de-podcasts-simples-em-linha-de-comando</link>
+            <guid>https://abelsiqueira.github.io/blog/2014-12-11-siclipod-um-gerenciador-de-podcasts-simples-em-linha-de-comando</guid>
+            <pubDate>Thu, 11 Dec 2014 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# SiCLIPoD - Um Gerenciador de Podcasts Simples em Linha de Comando
+
+Há algum tempo eu, esporadicamente, eu escuto o podcast do [Jovem
+Nerd](http://jovemnerd.com.br/categoria/nerdcast/).
+Mas acessar o site é chato, então eu fui procurar um gerenciador de podcasts.
+Não gostei de nenhum (o [gpodder](http://gpodder.org/) quase foi escolhido).
+Daí, resolvi cria um no estilo que eu gosto.
+Falta MUITO pra ficar bom mas pode ser de alguma utilidade para alguém.
+O código está no [GitHub](https://github.com/abelsiqueira/siclipod).
+O básico pra funcionar é
+
+```
+siclipod add URL
+siclipod list
+siclipod list NAME
+siclipod search NAME STUFF
+siclipod download NAME STUFF
+siclipod play NAME STUFF
+```
+
+O normal é tocar com o `smplayer`,
+mas você pode editar `$HOME/.siclipod/.config` para colocar o que quiser.
+Nem o README eu completei ainda.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Jogos de Tabuleiro]]></title>
+            <link>https://abelsiqueira.github.io/blog/2014-06-04-jogos-de-tabuleiro</link>
+            <guid>https://abelsiqueira.github.io/blog/2014-06-04-jogos-de-tabuleiro</guid>
+            <pubDate>Wed, 04 Jun 2014 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# Jogos de Tabuleiro
+
+Eu (não tão) recementemente me interessei em jogos de tabuleiro. Para
+clarificar, não estou me referindo aos jogos de tabuleiro "clássicos", como War,
+Banco Imobiliário, etc.. Estou me referindo aos jogos de tabuleiro com mecânica
+avançada. Isso não significa que todos eles são complexos, mas que eles são (em
+sua maioria) bem pensados e balanceados.
+Esse jogos de tabuleiro juntaram uma legião de seguidores, a maioria geeks e
+nerds, que está interessada em algum hobby legal. Note que RPG e jogos digitais
+normalmente são parte desses hobbies.
+Mais informações podem ser obtidas no ótimo site [board game
+geek](http://www.boardgamegeek.com).
+
+Uma das melhoras coisas de jogos de tabuleiros é a grande variedade de
+complexidade e seriedade que eles cobrem. Você pode jogar um jogo de 10-15
+minutos com regras extremamente simples (como Fluxx), ou um jogo intenso, sem
+sorte envolvida, de várias horas (como Diplomacia). Um dos meus jogos favoritos
+do momento é Battlestar Galactica, um jogo baseado na série homônima.
+]]></content:encoded>
+        </item>
+    </channel>
+</rss>

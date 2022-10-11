@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Abel Soares Siqueira</title>
+        <link>https://abelsiqueira.github.io/tag/simposio/feed.xml</link>
+        <description>RSS feed for abelsiqueira.github.io</description>
+        <lastBuildDate>Tue, 11 Oct 2022 22:59:04 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/nuxt-community/feed-module</generator>
+        <category>Nuxt.js</category>
+        <item>
+            <title><![CDATA[Minicurso de Julia no IX Simpósio de Análise Numérica e Otimização da UFPR]]></title>
+            <link>https://abelsiqueira.github.io/blog/2017-02-20-minicurso-de-julia-no-ix-simposio-de-analise-numerica-e-otimizacao-da-ufpr</link>
+            <guid>https://abelsiqueira.github.io/blog/2017-02-20-minicurso-de-julia-no-ix-simposio-de-analise-numerica-e-otimizacao-da-ufpr</guid>
+            <pubDate>Mon, 20 Feb 2017 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# Minicurso de Julia no IX Simpósio de Análise Numérica e Otimização da UFPR
+
+Hoje ministrarei mais um minicurso de Julia na UFPR.
+Desta vez será no IX Simpósio de Análise Numérica e Otimização da UFPR.
+
+Por enquanto, deixo esta página apenas com o link para o notebook que utilizarei:
+[aqui](https://github.com/abelsiqueira/julia-simposio2017).
+]]></content:encoded>
+        </item>
+    </channel>
+</rss>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Abel Soares Siqueira</title>
+        <link>https://abelsiqueira.github.io/tag/software-citation/feed.xml</link>
+        <description>RSS feed for abelsiqueira.github.io</description>
+        <lastBuildDate>Tue, 11 Oct 2022 22:59:04 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/nuxt-community/feed-module</generator>
+        <category>Nuxt.js</category>
+        <item>
+            <title><![CDATA[cffinit: NOW is the time to get more recognition for your software!]]></title>
+            <link>https://abelsiqueira.github.io/blog/2021-12-03-cffinit</link>
+            <guid>https://abelsiqueira.github.io/blog/2021-12-03-cffinit</guid>
+            <pubDate>Fri, 03 Dec 2021 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# cffinit: NOW is the time to get more recognition for your software!
+
+I worked on this blog post working for eScience Center.
+Co-authored by Faruk Diblen.
+
+Check the blog post [here](https://blog.esciencecenter.nl/cffinit-now-is-the-time-to-get-more-recognition-for-your-software-e2e6ef617f8e).
+]]></content:encoded>
+        </item>
+    </channel>
+</rss>

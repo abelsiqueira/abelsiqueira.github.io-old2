@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Abel Soares Siqueira</title>
+        <link>https://abelsiqueira.github.io/tag/image/feed.xml</link>
+        <description>RSS feed for abelsiqueira.github.io</description>
+        <lastBuildDate>Tue, 11 Oct 2022 22:59:04 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/nuxt-community/feed-module</generator>
+        <category>Nuxt.js</category>
+        <item>
+            <title><![CDATA[Julia Fractal on Julia]]></title>
+            <link>https://abelsiqueira.github.io/blog/2017-01-15-julia-fractal-on-julia</link>
+            <guid>https://abelsiqueira.github.io/blog/2017-01-15-julia-fractal-on-julia</guid>
+            <pubDate>Sun, 15 Jan 2017 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# Julia Fractal on Julia
+
+I wanted a background that would update automatically in some
+interesting way, instead of just random images.
+After some thought, I decided to use some [Julia
+fractals](https://en.wikipedia.org/wiki/Julia_set).
+
+I made a code to create the Julia fractals in the [Julia
+language](https://julialang.org), and then some code to run it for a random
+point.
+
+The code is [here](https://github.com/abelsiqueira/juliabg), including some
+explaining on how to use and install it.
+
+Here are some examples:
+
+![](https://raw.githubusercontent.com/abelsiqueira/juliabg/master/ex1.png)
+![](https://raw.githubusercontent.com/abelsiqueira/juliabg/master/ex2.png)
+![](https://raw.githubusercontent.com/abelsiqueira/juliabg/master/ex3.png)
+![](https://raw.githubusercontent.com/abelsiqueira/juliabg/master/ex4.png)
+]]></content:encoded>
+        </item>
+    </channel>
+</rss>

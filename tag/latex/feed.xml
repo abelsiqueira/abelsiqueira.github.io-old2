@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Abel Soares Siqueira</title>
+        <link>https://abelsiqueira.github.io/tag/latex/feed.xml</link>
+        <description>RSS feed for abelsiqueira.github.io</description>
+        <lastBuildDate>Tue, 11 Oct 2022 22:59:04 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/nuxt-community/feed-module</generator>
+        <category>Nuxt.js</category>
+        <item>
+            <title><![CDATA[A quasi-solution to my bib problem]]></title>
+            <link>https://abelsiqueira.github.io/blog/2016-08-21-a-quasi-solution-to-my-bib-problem</link>
+            <guid>https://abelsiqueira.github.io/blog/2016-08-21-a-quasi-solution-to-my-bib-problem</guid>
+            <pubDate>Sun, 21 Aug 2016 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# A quasi-solution to my bib problem
+
+For some time, one of my concerns is bibliography management.
+See my [projects page](http://abelsiqueira.github.io/en/projects/) if you have
+interest on working with something like that.
+
+In the past, what we had was simply writing all your bibliographies directly on
+a .tex file. Then, if you needed to write again, you would copy-paste it
+somewhere. If you made a mistake, you would have to fix it by hand. If the
+journal changed styles, you would have to change everything by hand.
+**If you're still doing this. STOP.**
+
+Then, we got BibTeX and all it's reimplementations. BibTeX allows you to define
+key-value pairs and process to the specific style desired.
+So, this
+
+```
+\bibitem{key} Author, S.: Some Title. Journal of Something, 10, 200-230, (2016)
+```
+
+which was written directly in the .tex, changed to this
+
+```
+@journal{key,
+author = "Some Author",
+title = "Some title",
+journal = "Journal of something",
+volume = "10",
+pages = "200-230",
+year = "2016"
+}
+```
+
+in a different .bib file, and the .tex had 4-5 lines adding a package, options,
+style, the .bib file, and where to put the bib.
+
+This is useful. Really, it is. Perhaps you don't think so, because you have to
+learn something new, and it looks strange (?), and nobody uses it (??), but
+really, it is useful. Keep reading.
+
+Now, we need something new. BibTeX was created 31 years ago, and it really
+needed something new. Well, it has. You wanna you **BibLaTeX** now, instead of
+BibTeX, but it works in the same way. But what we really need is something new,
+and smarter.
+
+Computers are very fast and smart now, we can have something more useful.
+Something in the cloud (#thereisnocloud), some server-like thing using HTML5.
+Use JSON.
+
+Anyway, the BibTeX problem is a part of the LaTeX problem, which is also too
+old, but there is nothing fully working as good right now.
+
+For now, I found some middle ground, specially if you're trying to leave writing
+directly on the .tex, and wants to create a .bib file.
+
+Use JabRef + JabFox. Search each entry of your bibliography and use JabFox to
+save it. There is an option to update the entries that have DOI, so do that too.
+Then you can generate your .bib as needed.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[LaTeX tools for revision]]></title>
+            <link>https://abelsiqueira.github.io/blog/2016-03-06-latex-tools-for-revision</link>
+            <guid>https://abelsiqueira.github.io/blog/2016-03-06-latex-tools-for-revision</guid>
+            <pubDate>Sun, 06 Mar 2016 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# LaTeX tools for revision
+
+This post is just to introduce two new tools I found.
+
+[LatexDiff](https://github.com/ftilmann/latexdiff) is a tool that compares two
+tex files and generates a third marking the differences between them.
+It is great, for instance, when you update a thesis or article, and want to show
+the differences to your advisor or colleague.
+
+Beware that this tool is not without mistakes. Sometimes it fails to mark a
+difference, specially in equations.
+
+The other tools is [Latexpand](https://gitlab.com/latexpand/latexpand), which
+reads a .tex file and replace `input` and `include` commands with the content of
+the tex.
+This tools isn't really necessary in a normal context because latexdiff can do
+this expansion (or flattening) if you use the argument `--flatten`. I haven't
+tried it, though.
+
+What I did was use them with git. If you want to compare two files under git,
+one simple option is
+
+```
+git checkout old-commit
+latexpand main.tex > oldmain.tex
+git checkout new-commit
+latexpend main.tex > newmain.tex
+latexdiff oldmain.tex newmain.tex > diffmain.tex
+```
+
+I'm still going to try it under git difftool.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[ShareLaTeX e o básico do cabeçalho]]></title>
+            <link>https://abelsiqueira.github.io/blog/2015-01-06-sharelatex-e-o-basico-do-cabecalho</link>
+            <guid>https://abelsiqueira.github.io/blog/2015-01-06-sharelatex-e-o-basico-do-cabecalho</guid>
+            <pubDate>Tue, 06 Jan 2015 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# ShareLaTeX e o básico do cabeçalho
+
+Este post serve principalmente para meus alunos e outros interessados em começar
+a usar o LaTeX. A primeira coisa a se notar é que instalar o compilador é bem
+chato e complicado, então sugiro usarem o
+[ShareLaTeX](https://www.sharelatex.com?r=09a71589&rm=d&rs=b)
+que é um editor e compilador de LaTeX online.
+O ShareLaTeX possui
+[uma boa documentação para quem está começando](https://pt.sharelatex.com/learn)
+que infelizmente não está traduzida para português.
+Uma outra recomendação para quem está querendo ler sobre antes de começar a
+utilizar é
+http://en.wikibooks.org/wiki/LaTeX.
+
+Além disso, para não começar do nada, copie o seguinte código
+
+```
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[portuguese]{babel}
+\usepackage[top=2cm,bottom=2cm,left=1cm,right=1cm]{geometry}
+\usepackage{amsmath, amsfonts}
+
+\title{Título}
+\author{Abel Soares Siqueira}
+\date{6 de Janeiro de 2015}
+
+\begin{document}
+
+\maketitle
+
+Algo
+
+\end{document}
+```
+
+no ShareLaTeX e comece a descobrir as coisas.
+
+E não mais importante, se você tiver uma pergunta relacionada ao LaTeX tente
+[Stack Exchange do Tex](http://tex.stackexchange.com/).
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[BibCLI - Command Line Interface to Manage Bibliography]]></title>
+            <link>https://abelsiqueira.github.io/blog/2014-06-04-bibcli</link>
+            <guid>https://abelsiqueira.github.io/blog/2014-06-04-bibcli</guid>
+            <pubDate>Wed, 04 Jun 2014 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# BibCLI - Command Line Interface to Manage Bibliography
+
+<p> After working with references and citations in latex for a while, with
+multiple files, I noticed that some things need improvement.  First of all, you
+need to use some way to store your bibliography <strong>outside</strong> of the
+tex file. For instance, using bibtex.  Second, you probably want some
+bibliography package, such as biblatex or natbib.  Third, you need some way to
+manage your bibliography entries and verify if they are correct.</p>
+
+<p>For the third option, I didn't found a good enough option, <strong>for my
+needs</strong> (light, easy, command line). Thinking about this problem, I
+decided to create a tool exactly for that. Some things I want(ed) are to read
+from tex file to discover the keys; add the entries reading a bib file; and
+obtaining from the internet the correct bibliography entry.</p>
+
+<p>The tool is still in very early development, but is already available for
+checking on <a href="https://github.com/abelsiqueira/bibcli">github</a>.</p>
+]]></content:encoded>
+        </item>
+    </channel>
+</rss>

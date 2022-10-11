@@ -1,0 +1,2162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Abel Soares Siqueira</title>
+        <link>https://abelsiqueira.github.io/tag/work/feed.xml</link>
+        <description>RSS feed for abelsiqueira.github.io</description>
+        <lastBuildDate>Tue, 11 Oct 2022 22:59:04 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/nuxt-community/feed-module</generator>
+        <category>Nuxt.js</category>
+        <item>
+            <title><![CDATA[My experience in the JuMP-dev annual workshop]]></title>
+            <link>https://abelsiqueira.github.io/blog/2018-07-04-my-experience-in-the-jump-dev-annual-workshop</link>
+            <guid>https://abelsiqueira.github.io/blog/2018-07-04-my-experience-in-the-jump-dev-annual-workshop</guid>
+            <pubDate>Wed, 04 Jul 2018 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# My experience in the JuMP-dev annual workshop
+
+Last week I had the pleasure of being invited to the [Second annual JuMP-dev
+workshop](http://www.juliaopt.org/meetings/bordeaux2018/), which happened in June 27-29,
+2018 at Bordeaux, France.
+I've presented the packages from the [Julia Smooth
+Optimizers](https://JuliaSmoothOptimizers.github.io) organization, and had a very good
+time meeting with the JuMP developers.
+
+For those still unaware, [JuMP](https://github.com/JuliaOpt/JuMP.jl) is a modelling
+language for Mathematical Programming written in Julia. It provides access to a few
+different solvers for many kinds of problems, and it works inside of Julia, so one can
+enjoy the advantages of having a robust language if there is a need for advanced usage.
+
+I've used Julia in classes since 2016 for teaching numerical calculus, and the packages
+of Julia Smooth Optimizers for nonlinear optimization this last semester.
+I've taught a quick tutorial on JuMP in that class to solve a few nonlinear problems,
+and discuss the starting point dependency of nonlinear solvers.
+The notebook can be found [here](https://abelsiqueira.github.io/cm106-2018s1/) in
+portuguese.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Introduction to Performance Profile]]></title>
+            <link>https://abelsiqueira.github.io/blog/2017-05-09-introduction-to-performance-profile</link>
+            <guid>https://abelsiqueira.github.io/blog/2017-05-09-introduction-to-performance-profile</guid>
+            <pubDate>Tue, 09 May 2017 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# Introduction to Performance Profile
+
+The comparison of algorithms is an active area of work.
+When we start learning algorithms, or more advanced programming,
+we learn of different ways of doing the same complex task.
+The most usual first example is sorting, which introduces a series of
+different ways to sort a single array, such as selection sort, insertion sort,
+quick sort, merge sort, etc.
+When comparing these algorithms, we take into account a few things:
+how fast it is, how much memory it needs, what are the best/worst/average-case
+complexities, and so on.
+
+However, in some areas, specially applied mathematics, we have an added
+complication: does the algorithm work? (Or does it work with a given budget?)
+That happens because some types of problems don't have an algorithm that can
+solve every problem. In particular, consider the problem of finding the minimum
+value of a function $f:\mathbb{R}^n\rightarrow\mathbb{R}$ on a set
+$\Omega \subset \mathbb{R}^n$. There are no algorithms that solve this problem
+for any given $f$ and $\Omega$, and even for specific, easier, cases, such as
+when $f$ is twice-continuously differentiable and $\Omega = \mathbb{R}^n$, it could
+happen that the algorithm steps would take more time than allowed (or some other
+budget contraint).
+In these cases, we need another type of comparison between algorithms that take into
+account the number of problems that are solved.
+
+### Performance Profile
+
+Described by Dolan and Moré [1] --
+
+> (Edit: 08/08/2022) Professor André L. Tits brought to my attention the 1996 paper by Tits and Yang [3] that was already doing a profile comparison using a cumulative distribution of relative time.
+
+-- the performance profile takes into account the
+number of problems solved as well as the cost it took to solve it. It scaled the
+cost of solving the problem according to the best solver for that problem.
+Given a set of problems $P$ and a set of algorithms $S$, we define
+$c _ {s,p}$ as the cost of solving problem $p \in P$ by algorithm $s \in S$.
+If algorithm can't solve the problem $p$, we define
+$c _ {s,p} = +\infty$. We assume that at least one algorithm solves problem $p$.
+The best algorithm for a given problem is the one that solves it with the least
+cost, i.e., we define
+
+$$ c _ {\min,p} = \min _ {s\in S} c \_ {s,p}. $$
+
+Now we define the relative cost of the algorithm on a problem:
+
+$$ r _ {s,p} = \frac{ c _ {s,p} }{ c \_ {\min,p} }. $$
+
+Notice that $r _ {s,p} \geq 1$, with $r _ {s,p} = 1$ meaning that algorithm
+$s$ is (one of) the best for problem $p$.
+Finally, the performance function of algorithm $s$ is given by
+
+$$ P*s(t) = \frac{ |\\{p \in P \mid\ r * {s,p} \leq t\\}| }{ |P| }. $$
+
+See that $P_s(1)$ is the number of problems such that $r _ {s,p} = 1$, that is
+the number of problems for which algorithm $s$ is one of the best.
+Furthermore, $P_s(r _ {\max})$ is the number of problems solved by algorithm
+$s$, where
+
+$$r _ {\max} = \max _ {s \in S,\ p \in P} r _ {s,p}. $$
+
+The value $P_s(1)$ is called the efficiency of algorithm $s$ and $P_s(r _
+{\max})$ is the robustness.
+
+The following image shows an example of performance profile:
+
+![](/blog/perprof-example.png).
+
+### Example
+
+I'm gonna create a simple example. Suppose there are 30 problems and 3 solvers
+and the the following matrix stores the values of $c _ {s,p}$:
+
+```
+c = rand(30, 3)
+c[rand(1:90, 10)] = Inf # To simulate failure
+```
+
+The following code computes the minimum, the ratios and the performance
+function plots:
+
+```
+cmin = minimum(c, 2)
+R = c ./ cmin
+t = sort(unique(R))
+if t[end] == Inf
+  pop!(t)
+end
+plot(xaxis=:log)
+for i = 1:size(c, 2)
+  plot!(t, [sum(R[:,i] .<= ti)/size(c,1) for ti in t], label="Alg $i", t=:steppre, lw=2)
+end
+ylims!(0, 1)
+```
+
+The resulting image is
+
+![](/blog/perprof-julia.png).
+
+### Implementations
+
+The traditional implementation of the performance profile was in MatLab, but I
+can't find it now. Let me know if you have a link to it, so I'll add here.
+
+Another implementation was made by me, Raniere Gaia, and Luiz-Rafael Santos [2],
+in Python, but works as an external program too.
+We haven't updated it in a while. Contact me if you're interested in helping.
+Here's the [link](https://github.com/ufpr-opt/perprof-py).
+
+Last, but not least, there is an implementation in Julia made by Dominique Orban,
+which is part of the
+[JuliaSmoothOptimizers](https://github.com/JuliaSmoothOptimizers) organization.
+The direct link is
+[here](https://github.com/JuliaSmoothOptimizers/BenchmarkProfiles.jl).
+
+### References
+
+[1] Elizabeth D. Dolan and Jorge J. Moré. Benchmarking optimization software
+with performance profiles.
+_Mathematical Programming_, 91(2):201-213, 2002.
+DOI: 10.1007/s101070100263.
+
+[2] A. S. Siqueira, R. G. Costa da Silva, and L.-R. Santos.
+Perprof-py: A Python Package for Performance Profile of Mathematical
+Optimization Software.
+_Journal of Open Research Software_, 4(1), p.e12, 2016.
+DOI: 10.5334/jors.81.
+
+[3] A.L. Tits and Y. Yang.
+Globally convergent algorithms for robust pole placement by state feedback.
+_IEEE Transactions on Automatic Control_, 41(10):1432-1452, 1996.
+DOI: 10.1109/9.539425.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Installing Gurobi 7 on Linux]]></title>
+            <link>https://abelsiqueira.github.io/blog/2017-03-13-installing-gurobi-7-on-linux</link>
+            <guid>https://abelsiqueira.github.io/blog/2017-03-13-installing-gurobi-7-on-linux</guid>
+            <pubDate>Mon, 13 Mar 2017 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# Installing Gurobi 7 on Linux
+
+_Disclaimer:_ What I did here might work on Windows or OSX, but I give no
+guarantee.
+
+_Request by Clóvis Gonzaga._
+
+First, create an account [here](http://www.gurobi.com/) and login.
+
+Secondly, download the appropriate Gurobi version clicking on [_Gurobi
+Optimizer_](http://www.gurobi.com/downloads/user/gurobi-optimizer).
+In my case, it is Linux 64 bits. Where to download this is optional, but you
+have to remember, as we'll use later. I use a folder `packages` on my home
+folder.
+
+Third, unpack the file. For linux, you might have a _file-roller_ that allows
+clicking and unpacking trivially, but I'll use the command line.
+Open a terminal and navigate to the folder where you downloaded the file.
+
+```
+tar -zxf gurobi7.0.2_linux64.tar.gz
+```
+
+This creates folder `gurobi702`. Inside is folder `linux64`.
+Inside are many folders, one being `docs` which include the quick start guide
+you might want to read (or not).
+
+Fourth, your system needs to see this installation. On `bash` (the usual
+terminal on Ubuntu), you have to open file `.bashrc` on your home folder, to
+input some variables.
+
+```
+gedit $HOME/.bashrc
+```
+
+input the following at the end of the file:
+
+```
+export GUROBI_HOME="/FULL/PATH/gurobi702/linux64"
+export PATH="${PATH}:${GUROBI_HOME}/bin"
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
+export GRB_LICENSE_FILE="$HOME/gurobi.lic"
+```
+
+Notice the `/FULL/PATH` part. This is where you downloaded the package, but it
+has to be the full path there. You can use `$HOME` to reference your home
+folder. For instance, your `Desktop` is in `$HOME/Desktop`. My packages folder
+is `$HOME/packages`.
+Also notice the `GRB_LICENSE_FILE` variable. If you intend to put your license
+somewhere else, you'll need to change that part.
+
+After that is done you need to either (a) close and reopen the terminal or (b)
+input `source $HOME/.bashrc`.
+
+**To know that it's working** enter `grbgetkey` on the terminal. If it's working,
+a message like
+
+```
+Gurobi license key client (version 7.0.2)
+Copyright (c) 2017, Gurobi Optimization, Inc.
+
+Enter the Key Code for the license you are activating
+(format is xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx):
+```
+
+will appear. Press "CTRL+C" or close the terminal, because you need to get the
+license.
+
+## Getting the LICENSE
+
+If you already applied for a license before installing Gurobi, you can go to
+[this page](https://user.gurobi.com/download/licenses/current) to see your
+available licenses. Otherwise, you need to (a) buy a license; (b) apply for
+an academic license or (c) ask for a trial license.
+I'm gonna focus on the academic license.
+
+Get your academic license clicking on ["Academic
+Licenses"](http://www.gurobi.com/downloads/user/licenses/free-academic).
+Accept the conditions and agreements and click "Request License".
+Notice that you need to fulfill some requirement to ask for an academic
+license, like being a student or professor.
+
+After requesting your license, you will get to a page showing your license
+information and a line saying
+
+```
+grbgetkey xxxxxxxxxxxxxx
+```
+
+Copy all that line and paste on your terminal.
+
+The software will connect to Gurobi and check that it's a valid serial number,
+and then will download a file `gurobi.lic`. (Press ENTER or choose a different
+folder). If you choose a different folder, remember to change `.bashrc`
+accordingly.
+
+To check that it's working, enter
+
+```
+gurobi.sh
+```
+
+on a terminal. It will a "Gurobi Interactive Shell" message and a prompt
+"gurobi> ". It if gives any error, check the Quick User Guide.
+
+## Gurobi with JuMP in Julia
+
+For the advanced students, if you know the [Julia
+Language](https://julialang.org), and the [JuMP Modelling
+Language](https://github.com/JuliaOpt/JuMP.jl), you should be able to install
+Gurobi with the julia command `Pkg.add("Gurobi")` now. Make sure you're in a
+terminal with all variables set.
+
+The following examples solves a simple problem with JuMP and Gurobi:
+
+```
+using JuMP, Gurobi
+
+m = Model(solver=GurobiSolver(Presolve=0)) # Presolve=0 otherwise it will be trivial
+@variable(m, x[1:2] >= 0, Int)
+@objective(m, Max, x[1] + 2*x[2])
+@constraint(m, x[1] + 10*x[2] <= 30)
+@constraint(m, 10*x[1] + x[2] <= 29)
+solve(m)
+getvalue(x)
+```
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Minicurso de Julia no IX Simpósio de Análise Numérica e Otimização da UFPR]]></title>
+            <link>https://abelsiqueira.github.io/blog/2017-02-20-minicurso-de-julia-no-ix-simposio-de-analise-numerica-e-otimizacao-da-ufpr</link>
+            <guid>https://abelsiqueira.github.io/blog/2017-02-20-minicurso-de-julia-no-ix-simposio-de-analise-numerica-e-otimizacao-da-ufpr</guid>
+            <pubDate>Mon, 20 Feb 2017 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# Minicurso de Julia no IX Simpósio de Análise Numérica e Otimização da UFPR
+
+Hoje ministrarei mais um minicurso de Julia na UFPR.
+Desta vez será no IX Simpósio de Análise Numérica e Otimização da UFPR.
+
+Por enquanto, deixo esta página apenas com o link para o notebook que utilizarei:
+[aqui](https://github.com/abelsiqueira/julia-simposio2017).
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[NLPModels.jl and CUTEst.jl: Constrained optimization]]></title>
+            <link>https://abelsiqueira.github.io/blog/2017-02-17-nlpmodelsjl-and-cutestjl-constrained-optimization</link>
+            <guid>https://abelsiqueira.github.io/blog/2017-02-17-nlpmodelsjl-and-cutestjl-constrained-optimization</guid>
+            <pubDate>Fri, 17 Feb 2017 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# NLPModels.jl and CUTEst.jl&#58; Constrained optimization
+
+This is a continuation of [this
+post](https://abelsiqueira.github.io{{local_prefix}}nlpmodelsjl-cutestjl-and-other-nonlinear-optimization-packages-on-julia/).
+And again, you can follow the commands of this post in the
+[asciinema](https://asciinema.org/a/103654).
+
+If you followed along last post, you should know the basics of our
+NLPModels API, including CUTEst access.
+
+One thing I didn't explore, though, was constrained problems.
+It'd complicate too much.
+
+However, now that we know how to handle the basics, we can move to the
+advanced.
+
+**Nonlinear Programming format**
+
+The NLPModels internal structure is based on the CUTEst way of storing a
+problem.
+We use the following form for the optimization problem:
+
+$$
+\begin{align}
+\min \quad & f(x) \\
+s.t. \quad & c_L \leq c(x) \leq c_U \\
+& \ell \leq x \leq u\end{align}
+$$
+
+Given an `AbstractNLPModel` named `nlp`, the values for $\ell$, $u$, $c_L$ and
+$c_U$ are stored in an `NLPModelMeta` structure, and can be accessed by
+through `nlp.meta`.
+
+Let's look back at the simple Rosenbrock problem of before.
+
+```
+using NLPModels
+
+f(x) = (x[1] - 1)^2 + 100*(x[2] - x[1]^2)^2
+x0 = [-1.2; 1.0]
+nlp = ADNLPModel(f, x0)
+print(nlp.meta)
+```
+
+You should be seeing this:
+
+```
+Minimization problem Generic
+nvar = 2, ncon = 0 (0 linear)
+lvar = -Inf  -Inf
+uvar = Inf  Inf
+lcon = ∅
+ucon = ∅
+x0 = -1.2  1.0
+y0 = ∅
+nnzh = 4
+nnzj = 0
+```
+
+Although the meaning of these values is reasonably straigthforward, I'll explain a bit.
+
+- `nvar` is the number of variables in a problem;
+- `ncon` is the number of constraints, without counting the bounds;
+- `lvar` is the vector $\ell$, the lower bounds on the variables;
+- `uvar` is the vector $u$, the upper bounds on the variables;
+- `lcon` is the vector $c_L$, the lower bounds of the constraints function;
+- `ucon` is the vector $c_U$, the upper bounds of the constraints function;
+- `x0` is the initial approximation to the solution, aka the starting point;
+- `y0` is the initial approximation to the Lagrange multipliers;
+- `nnzh` is the number of nonzeros on the Hessian¹;
+- `nnzj` is the number of nonzeros on the Jacobian¹;
+
+_¹ `nnzh` and `nnzj` are not consistent between models, because some consider the dense matrix, and for the Hessian, some consider only the triangle. However, if you're possibly considering using `nnzh`, you're probably looking for `hess_coord` too, and `hess_coord` returns with the correct size._
+
+These values can be accessed directly as fields in `meta` with the same name above.
+
+```
+nlp.meta.ncon
+nlp.meta.x0
+nlp.meta.lvar
+```
+
+**Bounds**
+
+Now, let's create a bounded problem.
+
+```
+nlp = ADNLPModel(f, x0, lvar=zeros(2), uvar=[0.4; 0.6])
+print(nlp.meta)
+```
+
+Now the bounds are set, and you can access them with
+
+```
+nlp.meta.lvar
+nlp.meta.uvar
+```
+
+That's pretty much it. For `SimpleNLPModel`, it's the same thing.
+`MathProgNLPModel` inherits the bounds, as expected:
+
+```
+using JuMP
+
+jmp = Model()
+u = [0.4; 0.6]
+@variable(jmp, 0 <= x[i=1:2] <= u[i], start=(x0[i]))
+@NLobjective(jmp, Min, (x[1] - 1)^2 + 100*(x[2] - x[1]^2)^2)
+mpbnlp = MathProgNLPModel(jmp)
+print(mpbnlp.meta)
+```
+
+For CUTEst, there is no differentiation on creating a problem with bounds or
+not, since it uses the internal description of the problem.
+For instance, `HS4` is a bounded problem.
+
+```
+using CUTEst
+
+clp = CUTEstModel("HS4")
+print(clp.meta)
+finalize(clp)
+```
+
+Notice that it can happen that one or more of the variables is unlimited
+(lower, upper or both). This is represented by the value `Inf` in Julia.
+This should be expected since the unconstrained problem already used these
+`Inf` values.
+
+On the other hand, it could happen that $\ell_i = u_i$, in which case the
+variable is fixed, or that $\ell_i > u_i$, in which case the variable (and the
+problem) is infeasible.
+Note that `NLPModels` only creates the model, it doesn't check whether it is
+feasible or not, even in this simple example. That said, CUTEst shouldn't have
+any infeasible variable.
+
+Furthermore, all these types of bounds can be accessed from `meta`. Notice that
+there are 6 possible situations:
+
+- Free variables, stored in `meta.ifree`;
+- Fixed variables, stored in `meta.ifix`;
+- Variables bounded below, stored in `meta.ilow`;
+- Variables bounded above, stored in `meta.iupp`;
+- Variables bounded above and below, stored in `meta.irng`;
+- Infeasible variables, stored in `meta.iinf`.
+
+Here is one example with one of each of them
+
+```
+nlp = ADNLPModel(x->dot(x,x), zeros(6),
+  lvar = [-Inf, -Inf, 0.0, 0.0, 0.0,  0.0],
+  uvar = [ Inf,  1.0, Inf, 1.0, 0.0, -1.0])
+nlp.meta.ifree
+nlp.meta.ifix
+nlp.meta.ilow
+nlp.meta.iupp
+nlp.meta.irng
+nlp.meta.iinf
+```
+
+**Constraints**
+
+Constraints are stored in NLPModels following in the format $c_L \leq c(x) \leq c_U$.
+That means that an equality constraint happens when $c_{L_j} = c_{U_j}$.
+Let's look at how to create a problem with constraints.
+
+For `ADNLPModel`, you need to pass three keywords arguments: `c`, `lcon` and `ucon`,
+which represent $c(x)$, $c_L$ and $c_U$, respectively.
+For instance, the problem
+
+$$
+\begin{align}
+\min \quad & x_1^2 + x_2^2 \\
+s.t. \quad & x_1 + x_2 = 1
+\end{align}
+$$
+
+is created by doing
+
+```
+c(x) = [x[1] + x[2] - 1]
+lcon = [0.0]
+ucon = [0.0]
+nlp = ADNLPModel(x->dot(x,x), zeros(2), c=c, lcon=lcon, ucon=ucon)
+```
+
+or alternatively, if you don't want the intermediary functions
+
+```
+nlp = ADNLPModel(x->dot(x,x), zeros(2), c=x->[x[1]+x[2]-1], lcon=[0.0], ucon=[0.0])
+```
+
+Another possibility is to do
+
+```
+nlp = ADNLPModel(x->dot(x,x), zeros(2), c=x->[x[1]+x[2]], lcon=[1.0], ucon=[1.0])
+```
+
+Personally, I prefer the former.
+
+For inequalities, you can have only lower, only upper, and both.
+The commands
+
+```
+nlp = ADNLPModel(x->dot(x,x), zeros(2),
+  c=x->[x[1] + x[2]; 3x[1] + 2x[2]; x[1]*x[2]],
+  lcon = [-1.0; -Inf; 1.0],
+  ucon = [Inf;   3.0; 2.0])
+```
+
+implement the problem
+
+$$
+\begin{align}
+\min \quad & x_1^2 + x_2^2 \\
+s.t. \quad & x_1 + x_2 \geq -1 \\
+& 3x_1 + 2x_2 \leq 3 \\
+& 1 \leq x_1x_2 \leq 2.
+\end{align}
+$$
+
+Again, the types of constraints can be accessed in `meta`, through
+`nlp.meta.jfix`, `jfree`, `jinf`, `jlow`, `jrng` and `jupp`.
+Notice if you forget to set `lcon` and `ucon`, there will be no
+constraints, even though `c` is set. This is because the number of
+constraints is taken from the lenght of these vectors.
+
+Now, to access these constraints, let's consider this simple problem.
+
+```
+nlp = ADNLPModel(f, x0, c=x->[x[1]*x[2] - 0.5], lcon=[0.0], ucon=[0.0])
+```
+
+The function `cons` return $c(x)$.
+
+```
+cons(nlp, nlp.meta.x0)
+```
+
+The function `jac` returns the Jacobian of $c$. `jprod` and `jtprod` the
+Jacobian product times a vector, and `jac_op` the LinearOperator.
+
+```
+jac(nlp, nlp.meta.x0)
+jprod(nlp, nlp.meta.x0, ones(2))
+jtprod(nlp, nlp.meta.x0, ones(1))
+J = jac_op(nlp, nlp.meta.x0)
+J * ones(2)
+J' * ones(1)
+```
+
+To get the Hessian we'll use the same functions as the unconstrained case,
+with the addition of a keyword parameter `y`.
+
+```
+y = [1e4]
+hess(nlp, nlp.meta.x0, y=y)
+hprod(nlp, nlp.meat.x0, ones(2))
+H = hess_op(nlp, nlp.meta.x0, y=y)
+H * ones(2)
+```
+
+If you want to ignore the objective function, or scale it by some value,
+you can use the keyword parameter `obj_weight`.
+
+```
+s = 0.0
+hess(nlp, nlp.meta.x0, y=y, obj_weight=s)
+hprod(nlp, nlp.meat.x0, ones(2), obj_weight=s)
+H = hess_op(nlp, nlp.meta.x0, y=y, obj_weight=s)
+H * ones(2)
+```
+
+Check the
+[API](http://juliasmoothoptimizers.github.io/NLPModels.jl/stable/api.html)
+for more details.
+
+We can also create a constrained JuMP model.
+
+```
+x0 = [-1.2; 1.0]
+jmp = Model()
+@variable(jmp, x[i=1:2], start=(x0[i]))
+@NLobjective(jmp, Min, (x[1] - 1)^2 + 100*(x[2] - x[1]^2)^2)
+@NLcontraint(jmp, x[1]*x[2] == 0.5)
+mpbnlp = MathProgNLPModel(jmp)
+cons(mpbnlp, mpbnlp.meta.x0)
+jac(mpbnlp, mpbnlp.meta.x0)
+hess(mpbnlp, mpbnlp.meta.x0, y=y)
+```
+
+And again, the access in CUTEst problems is the same.
+
+```
+clp = CUTEstModel("BT1")
+cons(clp, clp.meta.x0)
+jac(clp, clp.meta.x0)
+hess(clp, clp.meta.x0, y=clp.meta.y0)
+finalize(clp)
+```
+
+**Convenience functions**
+
+There are some convenience functions to check whether a problem has only
+equalities, only bounds, etc.
+For clarification, we're gonna say function constraint to refer to constraints that are not bounds.
+
+- `has_bounds`: Returns `true` is variable has bounds.
+- `bound_constrained`: Returns `true` if `has_bounds` and no function
+  constraints;
+- `unconstrained`: No function constraints nor bounds;
+- `linearly_constrained`: There are function constraints, and they are
+  linear; _obs: even though a `bound_constrained` problem is linearly
+  constrained, this will return false_.
+- `equality_constrained`: There are function constraints, and they are all equalities;
+- `inequality_constrained`: There are function constraints, and they are all inequalities;
+
+**Example solver**
+
+Let's implement a "simple" solver for constrained optimization.
+Our solver will loosely follow the Byrd-Omojokun implementation of
+
+> M. Lalee, J. Nocedal, and T. Plantenga. **On the implementation of an algorithm for large-scale equality constrained optimization**. SIAM J. Optim., Vol. 8, No. 3, pp. 682-706, 1998.
+
+```
+function solver(nlp :: AbstractNLPModel)
+  if !equality_constrained(nlp)
+    error("This solver is for equality constrained problems")
+  elseif has_bounds(nlp)
+    error("Can't handle bounds")
+  end
+
+  x = nlp.meta.x0
+
+  fx = obj(nlp, x)
+  cx = cons(nlp, x)
+
+  ∇fx = grad(nlp, x)
+  Jx = jac_op(nlp, x)
+
+  λ = cgls(Jx', -∇fx)[1]
+  ∇ℓx = ∇fx + Jx'*λ
+  norm∇ℓx = norm(∇ℓx)
+
+  Δ = max(0.1, min(100.0, 10norm∇ℓx))
+  μ = 1
+  v = zeros(nlp.meta.nvar)
+
+  iter = 0
+  while (norm∇ℓx > 1e-4 || norm(cx) > 1e-4) && (iter < 10000)
+    # Vertical step
+    if norm(cx) > 1e-4
+      v = cg(Jx'*Jx, -Jx'*cx, radius=0.8Δ)[1]
+      Δp = sqrt(Δ^2 - dot(v,v))
+    else
+      fill!(v, 0)
+      Δp = Δ
+    end
+
+    # Horizontal step
+    # Simplified to consider only ∇ℓx = proj(∇f, Nu(A))
+    B = hess_op(nlp, x, y=λ)
+    B∇ℓx = B * ∇ℓx
+    gtBg = dot(∇ℓx, B∇ℓx)
+    gtγ = dot(∇ℓx, ∇fx + B * v)
+    t = if gtBg <= 0
+      norm∇ℓx > 0 ? Δp/norm∇ℓx : 0.0
+    else
+      t = min(gtγ/gtBg, Δp/norm∇ℓx)
+    end
+
+    d = v - t * ∇ℓx
+
+    # Trial step acceptance
+    xt = x + d
+    ft = obj(nlp, xt)
+    ct = cons(nlp, xt)
+    γ = dot(d, ∇fx) + 0.5*dot(d, B * d)
+    θ = norm(cx) - norm(Jx * d + cx)
+    normλ = norm(λ, Inf)
+    if θ <= 0
+      μ = normλ
+    elseif normλ > γ/θ
+      μ = min(normλ, 0.1 + γ/θ)
+    else
+      μ = 0.1 + γ/θ
+    end
+    Pred = -γ + μ * θ
+    Ared = fx - ft + μ * (norm(cx) - norm(ct))
+
+    ρ = Ared/Pred
+    if ρ > 1e-2
+      x .= xt
+      fx = ft
+      cx .= ct
+      ∇fx = grad(nlp, x)
+      Jx = jac_op(nlp, x)
+      λ = cgls(Jx', -∇fx)[1]
+      ∇ℓx = ∇fx + Jx'*λ
+      norm∇ℓx = norm(∇ℓx)
+      if ρ > 0.75 && norm(d) > 0.99Δ
+        Δ *= 2.0
+      end
+    else
+      Δ *= 0.5
+    end
+
+    iter += 1
+  end
+
+  return x, fx, norm∇ℓx, norm(cx)
+end
+```
+
+Too loosely, in fact.
+
+- The horizontal step computes only the Cauchy step;
+- No special updates;
+- No second-order correction;
+- No efficient implementation beyond the easy-to-do.
+
+To test how good it is, let's run on the Hock-Schittkowski constrained problems.
+
+```
+function runcutest()
+  problems = filter(x->contains(x, "HS") && length(x) <= 5, CUTEst.select(only_free_var=true, only_equ_con=true))
+  sort!(problems)
+  @printf("%-7s  %15s  %15s  %15s\n",
+          "Problem", "f(x)", "‖∇ℓ(x,λ)‖", "‖c(x)‖")
+  for p in problems
+    nlp = CUTEstModel(p)
+    try
+      x, fx, nlx, ncx = solver(nlp)
+      @printf("%-7s  %15.8e  %15.8e  %15.8e\n", p, fx, nlx, ncx)
+    catch
+      @printf("%-7s  %s\n", p, "failure")
+    finally
+      finalize(nlp)
+    end
+  end
+end
+```
+
+I'm gonna print the output of this one, so you can compare it with yours.
+
+```
+Problem             f(x)        ‖∇ℓ(x,λ)‖           ‖c(x)‖
+HS26      5.15931251e-07   9.88009545e-05   5.24359322e-05
+HS27      4.00000164e-02   5.13264248e-05   2.26312672e-09
+HS28      7.00144545e-09   9.46563681e-05   2.44249065e-15
+HS39     -1.00000010e+00   1.99856691e-08   1.61607518e-07
+HS40     -2.50011760e-01   4.52797064e-05   2.53246505e-05
+HS42      1.38577292e+01   5.06661945e-05   5.33092868e-05
+HS46      3.56533430e-06   9.98827045e-05   8.00086215e-05
+HS47      3.53637757e-07   9.71339790e-05   7.70496596e-05
+HS48      4.65110036e-10   4.85457139e-05   2.27798719e-15
+HS49      3.14248189e-06   9.94899395e-05   2.27488138e-13
+HS50      1.36244906e-12   2.16913725e-06   2.90632554e-14
+HS51      1.58249170e-09   8.52213221e-05   6.52675179e-15
+HS52      5.32664756e+00   3.35626559e-05   3.21155766e-14
+HS56     -3.45604528e+00   9.91076239e-05   3.14471179e-05
+HS6       5.93063756e-13   6.88804464e-07   9.61311292e-06
+HS61     -1.43646176e+02   1.06116455e-05   1.80421875e-05
+HS7      -1.73205088e+00   1.23808109e-11   2.60442422e-07
+HS77      2.41501014e-01   8.31210333e-05   7.75367223e-05
+HS78     -2.91972281e+00   2.27102179e-05   2.88776440e-05
+HS79      7.87776482e-02   4.77319205e-05   7.55827729e-05
+HS8      -1.00000000e+00   0.00000000e+00   2.39989802e-06
+HS9      -5.00000000e-01   1.23438228e-06   3.55271368e-15
+```
+
+If you compare against the Hock-Schitkowski paper, you'll see that
+the method converged for all 22 problems.
+Considering our simplifications, this is a very exciting.
+
+That's all for now. Use our RSS feed to keep updated.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[NLPModels.jl, CUTEst.jl and other Nonlinear Optimization Packages on Julia]]></title>
+            <link>https://abelsiqueira.github.io/blog/2017-02-07-nlpmodelsjl-cutestjl-and-other-nonlinear-optimization-packages-on-julia</link>
+            <guid>https://abelsiqueira.github.io/blog/2017-02-07-nlpmodelsjl-cutestjl-and-other-nonlinear-optimization-packages-on-julia</guid>
+            <pubDate>Tue, 07 Feb 2017 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# NLPModels.jl, CUTEst.jl and other Nonlinear Optimization Packages on Julia
+
+A couple of weeks ago me and Professor [Dominique Orban](https://dpo.github.io) have finally made a release of
+CUTEst.jl, a wrapper for the CUTEst repository of problems for nonlinear
+optimization (which I've mentioned before).
+Along with this release, we've done a release of NLPModels.jl, the underlying
+package. I think it's time I explain a little about these packages, others,
+and how to use them together.
+If you want to see the output of the commands, you can open
+[this ASCIInema](https://asciinema.org/a/102371)
+side by side.
+
+_Obs.: Tutorial using Julia 0.5.0_
+
+_Edit: Second part is
+[here](https://abelsiqueira.github.io{{local_prefix}}nlpmodelsjl-and-cutestjl-constrained-optimization/)._
+
+**JuliaSmoothOptimizers**
+[![JuliaSmoothOptimizers logo](https://juliasmoothoptimizers.github.io/assets/logo.png){: .img-view }](https://juliasmoothoptimizers.github.io)
+
+Most packages mentioned here will be a part of the JuliaSmoothOptimizers (JSO)
+organization. There are more packages in the organization that I won't mention here, but you should check it out.
+
+**NLPModels.jl**
+
+NLPModels is a package for creating Nonlinear Optimization Models. It is
+focused on the needs of the solver writer, such as the ability to write one
+solver that works on many models.
+The package defines a few models, and there are others on the horizon.
+The ones already done are:
+
+- **ADNLPModel**: A model with automatic differentiation;
+- **MathProgNLPModel**: A model for [MathProgBase](https://github.com/JuliaOpt/MathProgBase.jl)/[JuMP](http://github.com/JuliaOpt/JuMP.jl) conversion, whose utility will be shown below (obs: MPB and JuMP are packages from the JuliaOpt organization);
+- **SimpleNLPModel**: A model in which nothing is automatic, i.e., all functions have to be provided by the user.
+- **SlackModel**: A model that changes all inequalities to equalities adding extra variables;
+- **LBFGSModel** and **LSR1Model**: Models that create quasi-Newton models from another model.
+
+The first two models are designed to be easy to use; the third is useful for
+efficient model creation in specific cases; the last ones are utility models.
+
+Let's begin by installing NLPModels.jl, and a couple of optional requirements.
+
+```
+Pkg.add("NLPModels.jl")
+Pkg.add("JuMP.jl") # Installs ForwardDiff also.
+```
+
+This should install version 0.1.0. After that, just do
+
+```
+using NLPModels
+```
+
+Now, let's create a simple function: Rosenbrock's.
+
+```
+f(x) = (x[1] - 1)^2 + 100*(x[2] - x[1]^2)^2
+```
+
+The Rosenbrock problem traditionally starts from $(-1.2,1.0)$.
+
+```
+x0 = [-1.2; 1.0]
+```
+
+Now, we are ready to create the problem.
+
+```
+adnlp = ADNLPModel(f, x0)
+```
+
+Now, we can access the function and derivatives using the [NLPModels API](https://juliasmoothoptimizers.github.io/NLPModels.jl/stable/api.html)
+
+```
+obj(adnlp, adnlp.meta.x0)
+grad(adnlp, adnlp.meta.x0)
+hess(adnlp, adnlp.meta.x0)
+objgrad(adnlp, adnlp.meta.x0)
+hprod(adnlp, adnlp.meta.x0, ones(2))
+H = hess_op(adnlp, adnlp.meta.x0)
+H * ones(2)
+```
+
+At this point, we can't differentiate many things from simply using
+`ForwardDiff` interface directly, but two things stand out: `objgrad` returns
+both functions at once, and `hess_op` returns a
+[LinearOperator](https://github.com/JuliaSmoothOptimizers/LinearOperators.jl),
+another structure created in JuliaSmoothOptimizers.
+This one defines a linear operator, extending Julia matrices in the sense that if
+
+```
+using LinearOperators
+n = 100
+A = rand(n, n)
+B = rand(n, n)
+opA = LinearOperator(A)
+opB = LinearOperator(B)
+v = rand(n)
+```
+
+then `(A * B) * v` computes the matrix product, whereas `(opA * opB) * v` won't.
+Furthermore, the linear operator can be created from the functions
+`v->Mp(v)` and `v->Mtp(v)`, defining the product of the linear operator times a vector and its transpose times a vector.
+
+```
+T = LinearOperator(2, 2, # sizes
+                   false, false,
+                   v->[-v[2]; v[1]], v->[v[2]; -v[1]])
+v = rand(2)
+T * v
+T' * v
+```
+
+_Obs: In the `ADNLPModel` case, `hess_op` returns a linear operator that is actually
+computing the matrix, but this is a issue to be tackled on the future (PRs
+welcome). But we'll be back with uses for `hess_op` soon._
+
+The next model is the `MathProgNLPModel`. This model's main use is the `JuMP`
+modelling language. This is very useful for more elaborate writing, specially
+with constraints. It does create a little more overhead though, so keep that
+in mind.
+
+```
+using JuMP
+jmp = Model()
+@variable(jmp, x[i=1:2], start=(x0[i])) # x0 from before
+@NLobjective(jmp, Min, (x[1] - 1)^2 + 100*(x[2] - x[1]^2)^2)
+mpbnlp = MathProgNLPModel(jmp)
+```
+
+Try the commands again.
+
+```
+obj(mpbnlp, mpbnlp.meta.x0)
+grad(mpbnlp, mpbnlp.meta.x0)
+hess(mpbnlp, mpbnlp.meta.x0)
+objgrad(mpbnlp, mpbnlp.meta.x0)
+hprod(mpbnlp, mpbnlp.meta.x0, ones(2))
+H = hess_op(mpbnlp, mpbnlp.meta.x0)
+H * ones(2)
+```
+
+It should be pretty much the same, though there is a little difference in `hess`.
+JuMP creates the sparse Hessian, which is better, from a computational point of
+view.
+
+Notice how the commands are the same. I've actually copy-pasted the commands
+from above.
+This allows the write of a solver in just a couple of commands.
+For instance, a simple **Newton method**.
+
+```
+function newton(nlp :: AbstractNLPModel)
+  x = nlp.meta.x0
+  fx = obj(nlp, x)
+  gx = grad(nlp, x)
+  ngx = norm(gx)
+  while ngx > 1e-6
+    Hx = hess(nlp, x)
+    d = -gx
+    try
+      G = chol(Hermitian(Hx, :L)) # Make Cholesky work on lower-only matrix.
+      d = -G\(G'\gx)
+    catch e
+      if !isa(e, Base.LinAlg.PosDefException); rethrow(e); end
+    end
+    t = 1.0
+    xt = x + t * d
+    ft = obj(nlp, xt)
+    while ft > fx + 0.5 * t * dot(gx, d)
+      t *= 0.5
+      xt = x + t * d
+      ft = obj(nlp, xt)
+    end
+    x = xt
+    fx = ft
+    gx = grad(nlp, x)
+    ngx = norm(gx)
+  end
+  return x, fx, ngx
+end
+```
+
+And we run in the problems with
+
+```
+newton(adnlp)
+newton(mpbnlp)
+```
+
+_Write once, use on problems from different sources._
+
+Now, to have more fun, let's get another package:
+[OptimizationProblems.jl](https://github.com/JuliaSmoothOptimizers/OptimizationProblems.jl).
+This package doesn't have a release yet, so we have to clone it:
+
+```
+Pkg.clone("https://github.com/JuliaSmoothOptimizers/OptimizationProblems.jl")
+```
+
+What we have here is a collection of JuMP models implementing some of the
+CUTEst problems. Together with `NLPModels.jl`, we have a good opportunity to test our Newton implementation.
+
+```
+using OptimizationProblems
+
+x, fx, ngx = newton(MathProgNLPModel( rosenbrock() ))
+x, fx, ngx = newton(MathProgNLPModel( dixmaanj() ))
+x, fx, ngx = newton(MathProgNLPModel( brownbs() ))
+```
+
+_An issue with OptimizationProblems is that it still doesn't have a way to get
+all unconstrained problems, for instance. (PRs are welcome)._
+
+So far we used 3 packages from JSO: `NLPModels.jl`, `LinearOperators.jl` and `OptimizationProblems.jl`. It's time to meet another important package.
+
+**CUTEst.jl**
+
+CUTEst, the Constrained and Unconstrained Testing Environment with safe
+threads, is a package written in Fortran providing over a thousand problems to
+allow testing of Nonlinear Programming solvers. However, CUTEst is hard to use
+by first-timers. Just installing it was already hard.
+CUTEst.jl provides an interface for CUTEst that is simple to install and use
+(comparing to the original).
+
+_Obs.: CUTEst.jl does not work on Windows for now. In fact, there is no plan to
+make it work on Windows because "people interested in doing it"∩"people capable
+of doing it" = ∅, as far as we've looked. If you are in this set, PRs are
+welcome._
+
+To install CUTEst.jl you need to install something manually. Unfortunately,
+this is specific for each system. Except for OSX, actually, which is using
+[homebrew-cutest](https://github.com/optimizers/homebrew-cutest).
+
+For Linux users, check out [this
+page](http://juliasmoothoptimizers.github.io/CUTEst.jl/latest/#Installing-1).
+Essentially, we need `libgfortran.so` in a visible place. And it's especially
+annoying that some distritions don't put it in a visible place.
+
+With that done, enter
+
+```
+Pkg.add("CUTEst")
+```
+
+which should install CUTEst.jl 0.1.0.
+
+Yes, it takes some time.
+
+Finally, we start using CUTEst with
+
+```
+using CUTEst
+
+nlp = CUTEstModel("ROSENBR")
+```
+
+`ROSENBR` is a CUTEst problem, in case you want the list, see
+[here](http://www.cuter.rl.ac.uk/Problems/mastsif.html). Keep reading for a way
+to select them, though.
+
+Now, let's solve this CUTEst problem with our Newton method.
+
+```
+x, fx, ngx = newton(nlp)
+```
+
+**Yes, exactly like before!**.
+
+CUTEst is a little more annoying in other aspect also. Like, you can't have two
+or more problems open at the same time, and you have to close this problem
+before opening a new one. (Again, PRs are welcome).
+
+```
+finalize(nlp)
+nlp = CUTEstModel("HIMMELBB")
+x, fx, ngx = newton(nlp)
+finalize(nlp)
+```
+
+This allows a simple workflow for writing optimization solvers.
+
+- Write some problems by hand (using `ADNLPModel` or `MathProgNLPModel`);
+- Test your solvers with these hand-written problems;
+- Repeat last two steps until you believe you're ready to competitive comparison;
+- Test with CUTEst problems seamlessly.
+
+Now, let's get back to `hess_op`. Remember that it used Matrix vector products?
+Well, CUTEst has separate functions for the product of the Hessian at a point
+and a vector. Which means that `hprod` actually computes this product without
+having to create the matrix. Which means it is, at least, memory-efficient.
+Furthermore, `hess_op` will be created with the `hprod` function, which means
+it is also memory-efficient.
+
+Let's look at a huge problem to feel the difference.
+
+```
+nlp = CUTEstModel("BOX")
+nlp.meta.nvar
+```
+
+Let's make a simple comparison
+
+```
+function foo1()
+  H = hess(nlp, nlp.meta.x0)
+  v = ones(nlp.meta.nvar)
+  return Hermitian(H, :L) * v
+end
+
+function foo2()
+  H = hess_op(nlp, nlp.meta.x0)
+  v = ones(nlp.meta.nvar)
+  return H * v
+end
+
+@time w1 = foo1();
+@time w2 = foo2();
+norm(w1 - w2)
+```
+
+Yes, that's a huge difference.
+
+This is a very good reason to use `hess_op` and `hprod`. But let's take a step further.
+
+We can't implement Cholesky using only `hprod`s, so our Newton method would
+actually take a long time to reach a solution for the problem above.
+To circunvent that, we could try using the Conjugate Gradients Method instead
+of Cholesky. This would only use Hessian-vector products.
+
+We arrive on a new package,
+[Krylov.jl](https://github.com/JuliaSmoothOptimizers/Krylov.jl), which
+implements Krylov methods. In particular, Conjugate Gradients.
+This package is also unreleased, so we need to clone it.
+
+```
+Pkg.clone("https://github.com/JuliaSmoothOptimizers/Krylov.jl")
+```
+
+Consider a simple example
+
+```
+using Krylov
+A = rand(3,3)
+A = A*A'
+b = A*ones(3)
+cg(A, b)
+```
+
+As expected, the system is solver, and the solution is $(1,1,1)$.
+But let's do something more.
+
+```
+A = -A
+cg(A, b)
+```
+
+Yes, Krylov does indeed solves the non-positive definite system using Conjugate Gradient.
+Well, actually, a variant.
+
+That's not enough tough. Krylov.jl also accepts an additional argument `radius`
+to set a trust-region radius.
+
+```
+cg(A, b, radius=0.1)
+```
+
+Well, as an exercise I suggest you implement a trust-region version of Newton
+method, but for now, let's continue with our line-search version.
+
+We know now how `cg` behaves for non-positive definite systems, we can't make
+the changes for a new method.
+
+```
+function newton2(nlp :: AbstractNLPModel)
+  x = nlp.meta.x0
+  fx = obj(nlp, x)
+  gx = grad(nlp, x)
+  ngx = norm(gx)
+  while norm(gx) > 1e-6
+    Hx = hess_op(nlp, x)
+    d, _ = cg(Hx, -gx)
+    slope = dot(gx, d)
+    if slope >= 0 # Not a descent direction
+      d = -gx
+      slope = -dot(d,d)
+    end
+    t = 1.0
+    xt = x + t * d
+    ft = obj(nlp, xt)
+    while ft > fx + 0.5 * t * slope
+      t *= 0.5
+      xt = x + t * d
+      ft = obj(nlp, xt)
+    end
+    x = xt
+    fx = ft
+    gx = grad(nlp, x)
+    ngx = norm(gx)
+  end
+  return x, fx, ngx
+end
+```
+
+Now, running `newton2` on our large problem, we obtain
+
+```
+x, fx, ngx = newton2(nlp)
+```
+
+Which is the method working very fast. Less that a second here.
+
+---
+
+There is actually another package I'd like to talk about, but it needs some
+more work for it to be ready for a release:
+
+**Optimize.jl**
+
+Optimize.jl is a package with solvers. We intend to implement some high quality
+solvers in there, but there is actually more to it. We have in there tools to
+benchmark packages. These tools should allow the testing of a set of solvers in
+a set of problems without much fuss, while creating the comparison information,
+including the performance profile.
+It also includes, or will include, "parts" of solvers to create your own
+solver. Like trust-region and line-search algorithms and auxiliary functions
+and types.
+Unfortunately, it's not done enough for me to extend on it, and this is already
+getting too long.
+
+**End**
+
+I hope you enjoyed this overview of packages.
+Subscribe to the RSS feed to keep updated in future tutorials. I intend to talk
+about the constrained part of NLPModels soon.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Apresentação de Julia no SMNE]]></title>
+            <link>https://abelsiqueira.github.io/blog/2016-11-29-smne-2016-julia</link>
+            <guid>https://abelsiqueira.github.io/blog/2016-11-29-smne-2016-julia</guid>
+            <pubDate>Tue, 29 Nov 2016 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# Apresentação de Julia no SMNE
+
+Nos dias 30 de Novembro à 2 de Dezembro de 2016 acontece o [primeiro Simpósio
+de Métodos Numéricos em Engenharia](http://eventos.ufpr.br/smne/SMNE1).
+Neste simpósio darei um minicurso sobre Julia.
+
+Deixo aqui o material preliminar para os alunos do minicurso, ou interessados.
+
+- [Notebook (necessário)](/blog/smne-julia.ipynb)
+- [exemplo.jl (necessário)](/blog/exemplo.jl)
+- [HTML estático do notebook - para quem não conseguiu
+  instalar](/blog/smne-julia.html)
+
+Também deixo [aqui](https://pad.riseup.net/p/aCXYqUjz3cCS) o link do Etherpad
+para usarmos na aula.
+
+Quem não conseguiu instalar até agora, pode tentar usar o
+[JuliaBox](https://juliabox.com/), que roda Julia online. **Não sei se teremos
+internet boa o suficiente no evento**.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[A quasi-solution to my bib problem]]></title>
+            <link>https://abelsiqueira.github.io/blog/2016-08-21-a-quasi-solution-to-my-bib-problem</link>
+            <guid>https://abelsiqueira.github.io/blog/2016-08-21-a-quasi-solution-to-my-bib-problem</guid>
+            <pubDate>Sun, 21 Aug 2016 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# A quasi-solution to my bib problem
+
+For some time, one of my concerns is bibliography management.
+See my [projects page](http://abelsiqueira.github.io/en/projects/) if you have
+interest on working with something like that.
+
+In the past, what we had was simply writing all your bibliographies directly on
+a .tex file. Then, if you needed to write again, you would copy-paste it
+somewhere. If you made a mistake, you would have to fix it by hand. If the
+journal changed styles, you would have to change everything by hand.
+**If you're still doing this. STOP.**
+
+Then, we got BibTeX and all it's reimplementations. BibTeX allows you to define
+key-value pairs and process to the specific style desired.
+So, this
+
+```
+\bibitem{key} Author, S.: Some Title. Journal of Something, 10, 200-230, (2016)
+```
+
+which was written directly in the .tex, changed to this
+
+```
+@journal{key,
+author = "Some Author",
+title = "Some title",
+journal = "Journal of something",
+volume = "10",
+pages = "200-230",
+year = "2016"
+}
+```
+
+in a different .bib file, and the .tex had 4-5 lines adding a package, options,
+style, the .bib file, and where to put the bib.
+
+This is useful. Really, it is. Perhaps you don't think so, because you have to
+learn something new, and it looks strange (?), and nobody uses it (??), but
+really, it is useful. Keep reading.
+
+Now, we need something new. BibTeX was created 31 years ago, and it really
+needed something new. Well, it has. You wanna you **BibLaTeX** now, instead of
+BibTeX, but it works in the same way. But what we really need is something new,
+and smarter.
+
+Computers are very fast and smart now, we can have something more useful.
+Something in the cloud (#thereisnocloud), some server-like thing using HTML5.
+Use JSON.
+
+Anyway, the BibTeX problem is a part of the LaTeX problem, which is also too
+old, but there is nothing fully working as good right now.
+
+For now, I found some middle ground, specially if you're trying to leave writing
+directly on the .tex, and wants to create a .bib file.
+
+Use JabRef + JabFox. Search each entry of your bibliography and use JabFox to
+save it. There is an option to update the entries that have DOI, so do that too.
+Then you can generate your .bib as needed.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Minicurso de Julia para Otimização]]></title>
+            <link>https://abelsiqueira.github.io/blog/2016-02-28-minicurso-de-julia-para-otimizacao</link>
+            <guid>https://abelsiqueira.github.io/blog/2016-02-28-minicurso-de-julia-para-otimizacao</guid>
+            <pubDate>Sun, 28 Feb 2016 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# Minicurso de Julia para Otimização
+
+Semana passada, nos dias 22 a 24 de Fevereiro aconteceu o VIII Simpósio de
+Análise Numérica e Otimização.
+Nesse evento, eu apresentei um minicurso de Julia com foco em Otimização não
+Linear.
+Entre 10 e 15 pessoas participaram no total, entre alunos de graduação, de
+pós-graduação, e professores.
+O objetivo principal era apresentar a linguagem e alguns detalhes importante
+para otimização não linear, o que foi obtido.
+Por outro lado, as aulas foram mais longas do que deveriam, e o conteúdo ficou
+muito esparso, pois tive que variar entre o básico e uma aplicação mais
+avançada.
+Para o próximo workshop, provavelmente focarei na introdução, que foi a primeira
+aula.
+
+O conteúdo pode ser obtido
+[aqui](https://github.com/abelsiqueira/julia-workshop), e consiste de três
+[notebooks em Jupyter](http://jupyter.org/), uma introdução e outros arquivos.
+
+Para rodar os notebooks, você precisa instalar o
+[Jupyter](http://jupyter.org/), o [Julia](http://julialang.org/) e o
+[IJulia](https://github.com/JuliaLang/IJulia.jl).
+Alternativamente, use o [JuliaBox](https://juliabox.org/) para rodá-los online.
+
+Além disso, para a segunda aula em diante você precisa do CUTEst, que pode ser
+instalado seguindo
+[este post]({{local_prefix}}/installing-cutest-and-cutest.jl/).
+
+Minha recomendação de editor é o [Atom](http://atom.io), com os plugins
+`language-julia` e `latex-completions`.
+
+Para uma experiência com testes automatizados, veja também
+[este post]({{local_prefix}}/automated-testing/).
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Ubuntu graphic interface stopped working]]></title>
+            <link>https://abelsiqueira.github.io/blog/2016-02-23-ubuntu-graphic-interface-stopped-working</link>
+            <guid>https://abelsiqueira.github.io/blog/2016-02-23-ubuntu-graphic-interface-stopped-working</guid>
+            <pubDate>Tue, 23 Feb 2016 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# Ubuntu graphic interface stopped working
+
+Some time ago, I helped a colleague [install Ubuntu in a Sony Vaio, which ended
+up having SSD
+problems]({{local_prefix}}/instalando-o-ubuntu-14.10-no-sony-vaio/).
+Today, his computer started without the bar and menu from Unity.
+Only the desktop and icons were appearing, and the keyboards shortcuts were also
+not working.
+
+To fix, I found [this askubuntu
+question](http://askubuntu.com/questions/17381/unity-doesnt-load-no-launcher-no-dash-appears),
+that worked like a charm.
+
+The steps were simply:
+
+1. Enter the terminal mode with Ctrl+Shift+F2 (or other number);
+2. Login;
+3. Enter the commands
+
+```
+export DISPLAY=:0
+sudo dconf reset -f /org/compiz/
+setsid unity
+```
+
+4. Reboot with
+
+```
+sudo reboot
+```
+
+5. Verify everything is working now.
+
+This was enough to fix it.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[VIII Simpósio de Análise Numérica e Otimização - Minicurso de Julia]]></title>
+            <link>https://abelsiqueira.github.io/blog/2016-02-14-viii-simposio-de-analise-numerica</link>
+            <guid>https://abelsiqueira.github.io/blog/2016-02-14-viii-simposio-de-analise-numerica</guid>
+            <pubDate>Sun, 14 Feb 2016 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# VIII Simpósio de Análise Numérica e Otimização - Minicurso de Julia
+
+Nos dias 22 a 24 de Fevereiro de 2016 acontecerá o [VIII Simpósio de Análise
+Numérica e Otimização](http://www.mat.ufpr.br/verao/2016/m4_otimiza.html).
+É uma ótima oportunidade para interagir com colegas e conhecer alguns assuntos
+novos de pesquisa.
+
+Em particular, nesse simpósio apresentarei um minicurso sobre Julia com foco em
+Otimização. O minicurso é voltado para pessoas que conhecem um pouco de MatLab
+ou alguma outra linguagem. Serão três dias, com uma introdução à linguagem,
+alguns exemplos, o [CUTEst.jl](http://github.com/JuliaOptimizers/CUTEst.jl),
+e um workflow para criar um pacote de otimização com transição para C e Fortran.
+
+O material para o minicurso está disponível
+[aqui](https://github.com/abelsiqueira/julia-workshop)
+(neste momento ainda incompleto).
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Apresentação no Poincaré - 2015]]></title>
+            <link>https://abelsiqueira.github.io/blog/2015-11-20-apresentacao-no-poincare---2015</link>
+            <guid>https://abelsiqueira.github.io/blog/2015-11-20-apresentacao-no-poincare---2015</guid>
+            <pubDate>Fri, 20 Nov 2015 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# Apresentação no Poincaré - 2015
+
+Fui convidado a fazer alguma apresentação para os seminários Poincaré do PET
+Matemática da UFPR.
+Irei falar sobre o Método de Newton para zeros de funções, sistemas não
+lineares, e para otimização.
+
+A apresentação será hoje, dia 20 de Novembro, às 17h40. Os slides você pode
+pegar [aqui](/blog/pres-poincare-2015.pdf) ou ver o código no
+[GitHub](https://github.com/abelsiqueira/pres-poincare-2015).
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[New computer at work]]></title>
+            <link>https://abelsiqueira.github.io/blog/2015-11-16-new-computer-at-work</link>
+            <guid>https://abelsiqueira.github.io/blog/2015-11-16-new-computer-at-work</guid>
+            <pubDate>Mon, 16 Nov 2015 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# New computer at work
+
+I just got a new notebook at work. This is a HP computer, with a AMD a10-4600M
+processor, 4GB of RAM and 320GB of HD space.
+I have a personal notebook with a similar configuration and my work desktop also
+has a similar configuration, so this isn't a great improvement.
+However, we're gonna have an additional monitor, so this is good enough.
+Also, I'll leave the other one as the always-on screen+irssi computer.
+Let's try to use it. Talk to me again in a week.
+
+I'll leave a list of commands I used to install Archlinux on it for future
+reference. Maybe someday I'll comment it, but most things here can be found on
+[the beginners' guide](https://wiki.archlinux.org/index.php/beginners'_guide).
+
+```
+ls /sys/firmware/efi/efivars
+ip link set enp1s0 down
+netctl start MYCONFIGURATION
+mkparted /dev/sda
+mklabel gpt
+parted /dev/sda
+(parted) mkpart primary ext4 1MiB 100MiB
+(parted) set 1 boot on
+(parted) mkpart primary ext4 100MiB 30GiB
+(parted) mkpart primary linux-swap 30GiB 38GiB
+(parted) mkpart primary ext4 38GiB 100%
+(parted) quit
+mkfs.ext4 /dev/sda1
+mkfs.ext4 /dev/sda2
+mkfs.ext4 /dev/sda4
+mkswap /dev/sda3
+swapon /dev/sda3
+mount /dev/sda2 /mnt
+mkdir -p /mnt/{boot,home}
+mount /dev/sda1 /mnt/boot
+mount /dev/sda4 /mnt/home
+cd /etc/pacman.d
+cp mirrorlist{,.bk}
+#grep Brazil -A 1 mirrorlist.bk | sed '/--/d' > mirrorlist
+grep c3sl -B 1 mirrorlist.bk > mirrorlist
+pacstrap -i /mnt base base-devel vim screen git
+genfstab -U /mnt > /mnt/etc/fstab
+arch-chroot /mnt /bin/bash
+vim /etc/locale.gen # Uncomment en_US.UTF-8 and others
+locate-gen
+echo LANG=en_US.UTF-8 > /etc/locale.conf
+ln -s /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
+hwclock --systohc --utc
+mkinitcpio -p linux
+pacman -S syslinux gptfdisk
+syslinux-install_update -i -a -m
+vim /boot/syslinux/syslinux.cfg
+echo myhostname > /etc/hostname
+pacman -S iw wpa_supplicant dialog
+passwd
+exit # From the chroot
+cp /etc/netctl/ufpr-static /mnt/etc/netctl/ufpr-static
+umount -R /mnt
+reboot
+```
+
+```
+netctl start ufpr-static
+pacman -S xorg-server i3-wm i3lock i3status xorg-xinit xorg-twm xterm dmenu
+pacman -S xf86-input-synaptics
+useradd abel -g users -G wheel -m -s /bin/bash
+passwd abel
+visudo
+# Log as abel
+startx # possibly pkill X
+# Download b43-firmware and install it
+# Rejoice
+```
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Apresentação no VII Simpósio de Análise Numérica e Otimização - UFPR]]></title>
+            <link>https://abelsiqueira.github.io/blog/2015-02-25-apresentacao-no-vii-simposio-de-analise-numerica-e-otimizacao-ufpr</link>
+            <guid>https://abelsiqueira.github.io/blog/2015-02-25-apresentacao-no-vii-simposio-de-analise-numerica-e-otimizacao-ufpr</guid>
+            <pubDate>Wed, 25 Feb 2015 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# Apresentação no VII Simpósio de Análise Numérica e Otimização - UFPR
+
+No dia 24 de Fevereiro de 2015 aconteceu o (primeiro dia do) VII Simpósio de
+Análise Numérica e Otimização.
+Participei deste congresso fazendo uma apresentação sobre
+[Ferramentas Computacionais para
+Pesquisadores](/blog/2015-02-25-vii-simposio.pdf)
+(ver [código](http://github.com/abelsiqueira/pres-ferramentas-computacionais)).
+
+Nesta apresentação, introduzo algumas ferramentas que considero bastante
+importantes para pesquisadores, principalmente da área de matemática
+computacional.
+Um resumo do que apresento é
+
+- Aprenda outras linguagens. Recomendo, por exemplo, conhecer Python ou Ruby,
+
+```
+Shell e Makefile. Com essas ferramentas já é possível automatizar testes e
+fazer scripts com uso variado. Makefile, por exemplo, é uma das maneiras
+mais usadas de se instalar programas (no Unix).
+```
+
+- Conheça a linguagem [Julia](http://www.julialang.org).
+
+```
+É uma linguagem com foco na matemática computacional, considerando ainda que
+você irá querer utilizar código em C e Fortran, e com sintaxe parecido com a
+de MatLab/Octave. É uma linguagem nova, mas tem potencial para ser o próximo
+concorrente do MatLab/Octave, e é livre.
+- Dentro do Julia, conheça o [JuliaOpt](http://www.juliaopt.org), que é
+um grupo que está desenvolvendo ferramentas de otimização em Julia.
+Desde interfaces para softwares conhecidos, até linguagens de modelagem,
+passando por implementações de métodos de otimização não-linear, tanto
+puramente em Julia, quanto utilizando códigos de baixo nível.
+- Também anunciei que estamos trabalhando no
+[CUTEst.jl](http://github.com/optimizers/CUTEst.jl), uma interface para o
+[CUTEst](http://ccpforge.cse.rl.ac.uk/gf/project/cutest/wiki).
+```
+
+- Escolha um editor e um ambiente de desenvolvimento.
+
+```
+Sugiro ver algumas opções (Vim, Emacs, Atom, Sublime Text, Eclipse), testar,
+e ver qual combina mais com você. Em adição, conheça o Sharelatex e/ou o
+Writelatex.
+```
+
+- Conheça o [perprof-py](http://github.com/abelsiqueira/perprof-py),
+
+```
+que é uma ferramenta para gerar perfis de desempenho, com gráficos de alta
+qualidade.
+```
+
+- Conheça o [git](http://git-scm.com), que é uma ferramenta para controle de
+
+```
+versão, que você pode usar sozinho; ou em grupo; fazer ramificações;
+verificar versões anteriores; misturar versões; trabalhar online; dentro
+outras.
+- Conheça o [GitHub](http://github.com), que é um site onde você pode
+colocar o código que foi feito com git.
+- Conheça o [Travis CI](http://travis-ci.org), que é um serviço que baixa
+seu código do GitHub e roda testes (definidos por você) nele, sempre que
+você subir o seu código.
+- Conheça o [Coveralls.io](http://coveralls.io), que é um serviço que
+verifica seus testes e diz que parte do seu código foi verificado, e qual
+não foi.
+```
+
+- TikZ e PgfPlots do Latex: Comentei um pouco sobre gráficos usando esses
+
+```
+pacotes, e mostrei alguns exemplos.
+```
+
+Também falei sobre o [Software Carpentry](http://www.software-carpentry.org),
+que é uma organização sem fins lucrativos que realiza workshops e promove
+conhecimento mundialmente. Comentei também sobre o trabalho do
+[Raniere Silva](http://rgaiacs.com) no Software Carpentry, e do
+[trabalho que ele está
+propondo](http://catarse.me/pt/programacaocientifica) para os próximos meses.
+
+Algumas boas perguntas foram feitas, e gostaria de parafraseá-las e
+atualizar minha resposta para algumas delas.
+
+- **Por que sair do MatLab para o Julia?**
+
+```
+Recomendo sair do MatLab porque ele é um software proprietário, pra começar.
+Mas desconsiderando isso, e também considerando o Octave, dou a seguinte
+resposta: O Julia está sendo desenvolvido com o intuito de substituir o
+MatLab, sabendo que o matemático computacional costuma fazer código que
+precisa de velocidade em C ou Fortran.
+A interface para C e Fortran em Julia é consideravelmente fácil,
+e isso facilita o processo de criar um código que você vê que funciona, e
+posteriormente otimizá-lo.
+Gostaria de acrescentar a ressalva que Julia é uma linguagem nova, e
+obviamente não tem tudo que gostaríamos implementado. Seu código pode
+quebrar. Mas vale a pena conhecer para saber se vale investir.
+```
+
+- **Por que sair do Python para o Julia?**
+
+```
+Não sei se você deve. O Python básico não é suficiente para um matemático
+computacional, mas eu sei que existem vários pacotes que conseguem deixar o
+Python muito eficiente para Análise Numérica e Otimização. Também é possível
+fazer uma transição C com Python, mas não conheço, logo não posso julgar.
+Atualmente, provavelmente, o Python parece ser mais eficiente.
+E já que estamos aqui, se você conseguir tirar alguém do MatLab para o
+Python, já é uma vitória.
+```
+
+- \*\*Por que usar o TikZ/PgfPlots no lugar desta outra ferramenta de
+
+```
+gráficos?**
+Se for o MatLab, vide meu _rant_ anterior sobre MatLab ser proprietário.
+Para outras ferramentas, não sei. Muitas ferramentas fazem um trabalho, no
+mínimo, tão bom quanto o TikZ/PgfPlots, e.g., o MatplotLib (que
+usamos no perprof, junto com o PgfPlots).
+Uma coisa que eu gosto é misturar com o Beamer, gerando figuras iterativas
+(não interativas).
+Então, alguns comandos podem ser misturados para fazer uma sequência de
+figuras que o Beamer vai descobrindo (por exemplo o caminho de um
+algoritmo).
+```
+
+- \*\*Se fosse para você escolher apenas uma dessas ferramentas para
+
+```
+recomendar, qual seria?**
+Sem dúvida o git, que é útil para qualquer área onde você escreve código, ou
+até mesmo um artigo em .tex (ou outros formatos binários de texto).
+Você nunca sabe quando vai precisar voltar numa versão anterior do código.
+Por exemplo, você faz atualizações no seu código, e alguém diz que estava
+usando o seu código antes, mas depois que essa pessoa atualizou, o código
+parou de funcionar.
+Bem, como fazer pra saber o que quebrou o código? Se você está fazendo o
+controle corretamente, você terá vários _commits_ indicando o trabalho
+feito. Você pode navegar nesses commits e descubrir a última versão que
+funcionava. Assim você reduz consideravelmente a quantidade de código que
+pode ter estragado o seu pacote.
+Além disso, você pode trabalhar com versões paralelas, colaborativamente, e
+ainda aproveitar de serviços fantásticos para quem usa git (GitHub, Travis,
+Coveralls).
+```
+
+É importante ficar claro que eu não estou apresentado as melhores ferramentas
+para seus respectivos objetivos, apenas aquelas que eu conheço e que podem
+resolver o problema. Talvez alguma ferramenta seja melhor do que a que eu
+apresentei, mas o ponto é você conhecer alguma ferramenta, e às vezes conhecer
+alguma nova.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[A Study in Julia]]></title>
+            <link>https://abelsiqueira.github.io/blog/2015-01-22-a-study-in-julia</link>
+            <guid>https://abelsiqueira.github.io/blog/2015-01-22-a-study-in-julia</guid>
+            <pubDate>Thu, 22 Jan 2015 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# A Study in Julia
+
+Today I begin a study in [Julia](http://julialang.org/).
+This fantastic tool has syntax similar to that of Octave/Matlab,
+but is much faster. Furthermore, the interface with functions
+made in C and Fortran is much easier to accomplish, and since
+most things in computational mathematics are on these languages,
+this feature is wonderful.
+
+My intented work is
+
+- make a simple julia and C interface, with auto-compiling
+
+```
+and test on GitHub and Travis CI;
+```
+
+- develop a nonlinear optimization tool completely in Julia,
+
+```
+then improve the slow bits by using C and/or Fortran;
+```
+
+- implement/improve the CUTEst interface
+
+```
+[[1]](https://github.com/abelsiqueira/ugly),
+[[2]](https://github.com/abelsiqueira/CUTEst.jl),
+possibly creating a SIF converter.
+```
+
+- if things work out, submit to [JuliaOpt](http://www.juliaopt.org/).
+
+My work starts with the [Julia-C
+Samples](https://github.com/abelsiqueira/julia-c-sample.git).
+If you need me, I might be on `#julia` on IRC/freenode.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Instalando o Ubuntu 14.10 no Sony Vaio (Problemas com o SSD)]]></title>
+            <link>https://abelsiqueira.github.io/blog/2015-01-12-instalando-o-ubuntu-1410-no-sony-vaio</link>
+            <guid>https://abelsiqueira.github.io/blog/2015-01-12-instalando-o-ubuntu-1410-no-sony-vaio</guid>
+            <pubDate>Mon, 12 Jan 2015 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# Instalando o Ubuntu 14.10 no Sony Vaio (Problemas com o SSD)
+
+Hoje instalei em dual-boot o Ubuntu 14.10 e o windows 8.
+Não tive problemas com o UEFI, nem secure boot.
+Não tenho certeza, mas talvez o windows não seja o que veio
+de fábrica.
+
+Eu já tinha um USB com o Ubuntu 14.10, então pluguei-o
+e bootei o computador.
+F12-F12-F12-F12... A tela de seleção de boot não apareceu,
+mas o usb foi escolhido automaticamente.
+
+O ubuntu bootou e selecionei instalar.
+Escolhi o particionamento manual,
+que é minha escolha usual.
+Normalmente faço o particionamento manual,
+porque não gosto quando eles criam (criavam, não sei
+se continuam) apenas o `/` e o `swap`.
+O windows estava instalado em duas partições num SSD.
+Selecionei a correspondente, redimensionei, criei 3 partições lógicas
+(`/`, `swap`, e `/home`), e mandei instalar.
+A instalação não teve problemas. Aí eu bootei e deu erro.
+
+O primeiro erro que apareceu foi
+
+```
+tpm_tis: A TPM error (6) occurred attempting to read a pcr value
+```
+
+Que depois descobri que era proveniente do
+[Trusted Platform Module](https://wiki.archlinux.org/index.php/TPM).
+Depois de pouca busca, descobri que bastava entrar na BIOS e habilitar o
+TPM. A saber, para entrar na BIOS no Sony Vaio, desligue o computador e
+aperte o botão ASSIST.
+Habilitei o TPM, mas não sei o que ele faz na prática. No entanto,
+aparentemente, o computador continuou funcionando normalmente.
+
+O segundo erro que apareceu, que já aparecia junto com o primeiro, mas
+que só olhei depois, foi algo na linha de
+
+```
+[ 9.115544] ata9: exception Emask 0x0 SAct 0xf SErr 0x0 action 0x10 frozen
+[ 9.115550] ata9.00: failed command: READ FPDMA QUEUED
+[ 9.115556] ata9.00: cmd 60/04:00:d4:82:85/00:00:1f:00:00/40 tag 0 ncq 2048 in
+[ 9.115557] res 40/00:18:d3:82:85/00:00:1f:00:00/40 Emask 0x4 (timeout)
+```
+
+Após alguma busca descobri ser um erro de Native Command Queueing com SSDs.
+A solução
+[[1]](http://steffankarger.nl/2013/12/10/ubuntu-13-10-on-the-sony-vaio-pro-13/)
+[[2]](http://www.howtoeverything.net/linux/hardware/ubuntu-freeze-issue-after-ssd-upgrade)
+[[3]](https://wiki.archlinux.org/index.php/Solid_State_Drives#Resolving_NCQ_Errors)
+foi adicionar `libata.force=noncq` na configuração do grub.
+Para isso, resumindo a referência, boot no live,
+monte o `/` com bind pro `/dev`, `/sys` e `/proc`, e se tiver separado, o `/boot`
+também. Os comandos a seguir fazem isso, supondo `/` instalado no `/dev/sda5`.
+
+```
+$ sudo mount /dev/sda5 /mnt
+$ sudo mount --bind /dev /mnt/dev
+$ sudo mount --bind /sys /mnt/sys
+$ sudo mount --bind /proc /mnt/proc
+```
+
+Daí, entre nesse sistema com
+
+```
+$ sudo chroot /mnt
+```
+
+No sistema novo, edite o arquivo `/etc/default/grub`, modificando a linha
+
+```
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+```
+
+para
+
+```
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash libata.force=noncq"
+```
+
+e atualize o grub com
+
+```
+$ sudo update-grub
+```
+
+Saia e desmonte as partições
+
+```
+$ exit
+$ sudo umount -R /mnt
+```
+
+Por fim é só reiniciar e ver se funcionou.
+
+Agora, a parte divertida dessa instalação, que durou quase 3 horas (!) foi em
+algum lugar eu li, ou achei ter lido `libdata` no lugar de `libata`, e pareceu
+que essa solução não resolveu. E isso não é o pior, eu cheguei a buscar
+`libdata.force=noncq`, o google me corrigiu pra `libata.force=noncq`, e eu
+cheguei a ler depois o `libata` e achei que era outra opção.
+
+Mas tirando isso, instalações sem problema.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Mudando de HD]]></title>
+            <link>https://abelsiqueira.github.io/blog/2014-12-19-mudando-de-hd</link>
+            <guid>https://abelsiqueira.github.io/blog/2014-12-19-mudando-de-hd</guid>
+            <pubDate>Fri, 19 Dec 2014 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# Mudando de HD
+
+Ontem eu acabei de montar um computador novo.
+Esse computador é um upgrade do meu, e o meu passaria para a Kally.
+No entanto, eu não gostaria de perder a minha instalação dor Arch,
+nem de ficar com o HD antigo, então decidi tentar copiar as partições.
+
+**Nota: Não sei a aplicabilidade destes comandos para outras distribuições.**
+
+**Nota: Você também poderia fazer o que fiz, usando o `dd`, mas eu preferi
+evitar.**
+
+Inicialmente, prepare um pendrive (ou sua mídia favorita)
+com o iso do Archlinux.
+Talvez esses passos possam ser feitos direto da instalação do HD velho,
+mas eu preferi não testar.
+
+Faça o boot pelo pendrive.
+Verifique que os dois HDs foram identificados e
+**atente-se com a numeração sdx do HD**. No meu, o principal era sda, mas quando
+eu instalei o outro HD, o novo ficou como sda e o antigo mudou para sdb.
+Primeiro particione o HD novo. Eu separei as mesmas partições que o HD antigo,
+mas a numeração não foi a mesma, nem o tamanho.
+Eu costumo usar 3 partições `/`, `/boot` e `/home`.
+Então, depois de particionar o HD novo com a quantidade de partições necessárias
+para essas partições, com espaço suficiente para os dados que haviam nas
+partições antigas, eu formatei cada partição com o tipo de dado necessário
+(usando o `mkfs.ext4`).
+Além disso, eu também tinha um swap e queria uma partição compartilhada entre
+Windows e Linux, então também "formatei" o swap (`mkswap`) e essa partição
+(`mkfs.ntfs`).
+Depois disso, eu montei o `/` de cada partição e copiei os dados de uma partição
+para outra, com o comando
+
+```
+cp -a /mnt/velho/. /mnt/novo/
+```
+
+Depois montei o `/home` e `/boot` e copiei o counteúdo de cada um.
+
+```
+cp -a /mnt/velho/home/. /mnt/novo/home/
+cp -a /mnt/velho/boot/. /mnt/novo/boot/
+```
+
+_Nota: (Imagino que seja possível montar tudo, e depois copiar tudo apenas com o
+primeiro comando)_.
+
+Nesse momento, o HD já tem os dados do sistema novo. Então, eu segui,
+seletivamente, os passos do [guia do
+iniciante](https://wiki.archlinux.org/index.php/beginners%27_guide#Generate_an_fstab)
+do Archlinux, a partir do "Generate an fstab". Lembre-se de ligar o swap e
+montar a partição ntfs, se quiser que eles sejam preparados no boot.
+O comando é
+
+```
+# genfstab -U -p /mnt/novo > /mnt/novo/etc/fstab
+```
+
+Daí, entrei no sistema novo, com
+
+```
+# arch-chroot /mnt/novo /bin/bash
+```
+
+e pulei para "Create an initial ramdisk environment".
+Não sei se era necessário fazer isso,
+mas me parecia uma boa coisa a se fazer.
+
+```
+# mkinitcpio -p linux
+```
+
+Enfim, atualizei o `/boot/syslinux/syslinux.cfg` para refletir a nova posição do
+`/`, e rodei
+
+```
+# syslinux-install_update -i -a -m
+```
+
+Depois, só sair, desmontar e rebootar
+
+```
+# exit
+# umount -R /mnt/novo /mnt/velho
+# reboot
+```
+
+Já escrevi isso do computador novo.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Instalação da Impressora no DMAT-UFPR]]></title>
+            <link>https://abelsiqueira.github.io/blog/2014-12-16-instalacao-da-impressora-no-dmat-ufpr</link>
+            <guid>https://abelsiqueira.github.io/blog/2014-12-16-instalacao-da-impressora-no-dmat-ufpr</guid>
+            <pubDate>Tue, 16 Dec 2014 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# Instalação da Impressora no DMAT-UFPR
+
+Hoje tive que instalar a impressora do DMAT da UFPR no meu
+[archlinux](https://www.archlinux.org/). Infelizmente o suporte técnico da
+universidade não dá suporte para essa distribuição (só Ubuntu).
+Existe o suporte ao Windows
+([aqui](http://www.cce.ufpr.br/portal/suporte-a-impressao/)),
+que foi necessário para eu obter algumas informações sobre a impressora.
+Tive algum trabalho para achar as configurações corretas, mas acho que consegui,
+e vou deixar explicado aqui caso alguém precise.
+Infelizmente não refiz os passos a seguir, porque fui costurando até chegar ao
+ponto em que a impressora funcionou. No entanto, vou explicar o que me parece
+que fez diferença.
+
+Inicialmente, instale o [CUPS](https://wiki.archlinux.org/index.php/CUPS) e o
+[SAMBA](https://wiki.archlinux.org/index.php/Samba) e suba-os com o `systemctl`.
+**Talvez seja preciso apenas as partes dos clientes do CUPS e do SAMBA**.
+
+Depois disso, entre na [administração do CUPS](http://localhost:631).
+O meu estava em inglês, então vou usar uma tradução livre.
+Entre em "adicionar impressora". Entre com `root` e a senha do root nessa
+administração (ou configure o usuário com o grupo correto).
+Agora selecione "Impressora Windows via SAMBA".
+
+A grande dificuldade de instalar a impressora foi descobrir a porcaria da
+conexão. Aparentemente, deve ter o formato
+
+```
+smb://[USUARIO]:[SENHA]@[HOST]/[IMPRESSORA]
+```
+
+O `[HOST]` eu já tinha porque me foi passado anteriormente, mas a gente também
+podia pegar no suporte ao Windows da impressora: `impressao01.ufpr.br`.
+O `[USUARIO]` e `[SENHA]` são os seus valores locais (por quê?).
+Para obter a `[IMPRESSORA]` tive que entrar no Windows pra pegar, seguindo os
+passos do suporte ao Windows. **MAS**, parece que podemos obter a lista usando o
+comando
+
+```
+smbclient -L impressao01.ufpr.br
+```
+
+e colocando nossa senha. Vai ser uma lista, então você pode usar `less` pra ler.
+Obtive o nome da impressora que eu queria usar e coloquei no lugar:
+`DEPTO.MATEMATICA_SALA.PROFESSORES_EXATAS_POLITECNICO`.
+
+Deposi disso, você precisa passar o ppd. Uma busca na web por `linux MARCA MODELO` retornará um link da [Open Printing](http://www.openprinting.org).
+Eu utilizei o modelo C790, mesmo a impressora sendo modelo C792, porque, como
+disse, fui costurando um monte de coisas. Baixe o ppd (`directly download PPD`),
+e passe-o para o CUPS. Depois disso a impressora deve estar instalado, peça a
+impresão de uma página teste e verifique.
+
+Infelizmente as informações são meio dispersas e não cobrem todos os problemas,
+principalmente porque eu não sei diferenciar o que é problema e o que deveria de
+fato acontecer.
+
+Note que eu não usei o IP da impressora, que **deve** ser uma possibilidade.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Caminho Acadêmico]]></title>
+            <link>https://abelsiqueira.github.io/blog/2014-11-22-caminho-academico</link>
+            <guid>https://abelsiqueira.github.io/blog/2014-11-22-caminho-academico</guid>
+            <pubDate>Sat, 22 Nov 2014 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# Caminho Acadêmico
+
+Versão curta:
+
+- 11/2014-presente - Professor na UFPR;
+- 12/2013-11/2014 - Pós-doutorado na UNICAMP, melhorando o trabalho do meu
+
+```
+doutorado;
+```
+
+- 01/2009-11/2013 - Doutorado na UNICAMP na área de Matemática Aplicada,
+
+```
+trabalhando com Otimização Não-Linear. Minha tese foi "Controle Dinâmico da
+Infactibilidade para Programação Não-Linear";
+```
+
+- 03/2005-12/2008 - Bacharel em Matemática Aplicada.
+
+Versão Longa:
+
+Eu comecei a trabalhar com matemática em 2005, entrando no curso 51 da
+[UNICAMP](http://www.unicamp.br), onde se estuda por um ano e meio as classes
+comuns aos cursos de Matemática, Matemática Aplicada, Física, e outros cursos.
+Inicialmente eu planejava seguir matemática pura, mas depois da primeira
+disciplina de programação, eu considerava mudar para alguma área da computação.
+No semestre seguinte eu estudei Cálculo Numérico, que me levou a escolher
+matemática aplicada. Esse sentimento foi reforçado por Análise Numérica e
+Progração Não-Linear, e logo eu decidi seguir a carreira acadêmica.
+
+Em 2007 eu comecei uma Iniciação Científica com meu orientador e bom amigo
+[Francisco de Assis Magalhães Gomes Neto](http://www.ime.unicamp.br/~chico),
+com o título "Métodos de Pontos Interiores para Programação Quadrática".
+Meu motivo para escolher o Chico, como ele é conhecido, foi que ele era da
+área de Otimização Não-Linear e tinha conhecimento prévio com C++, que eu tinha
+interesse em aprender. O trabalho foi completado em 2008.
+
+Em 2008, tendo interesse na carreira acadêmica, decidi adiantar algumas
+disciplinas do nível de pós-graduação. Eu adiantei duas disciplinas no primeiro
+semestre, e uma no segundo. As disciplinas adiantas foram "Matrizes", que é uma
+disciplina sobre as propriedades teóricas de matrizees, normas, autovalores,
+sistemas lineares e decomposições, com algumas considerações algorítmicas, mas
+sem programação.
+A outra era "Métodos Computacionais da Álgebra Linear", que é basicamente a
+parte de programação de "Matrizes". Esse foi meu primeiro contato com FORTRAN,
+que foi horrível. A última disciplina foi "Tópicos em Análise Numérica" que,
+nesse caso, foi sobre diferenças finitas. Eu acabei minha graduação em dezembro
+desse ano.
+
+Em 2009, comecei meu Doutorado em Matemática Aplicada, também na UNICAMP, no
+trabalho "Controle Dinâmico da Infactibilidade para Programação Não-Linear".
+Durante o doutorado, estudei Programção Linear, Otimização Não-Linear e
+Otimizaçào Sem Derivadas. Em Dezembro de 2013 eu acabei meu doutorado.
+
+Em Dezembro de 2013, comecei meu pós-doutorado, seguindo o trabalho do
+doutorado. Em Março de 2014, participei do concurso para UFPR, e fui aprovado em
+terceiro. Fui chamado para trabalhar em Novembro de 2014.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Academic Path]]></title>
+            <link>https://abelsiqueira.github.io/blog/2014-11-22-academic-path</link>
+            <guid>https://abelsiqueira.github.io/blog/2014-11-22-academic-path</guid>
+            <pubDate>Sat, 22 Nov 2014 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# Academic Path
+
+TL;DR:
+
+- 11/2014-present - Professor at UFPR;
+- 12/2013-11/2014 - Postdoctorate at UNICAMP, improving the work of my doctorate;
+- 01/2009-11/2013 - Doctorate at UNICAMP on the field of Applied Mathematics, working
+
+```
+with Nonlinear Optimization. My thesis was "Dynamic Control of Infeasibility
+for Nonlinear Programming"
+```
+
+- 03/2005-12/2008 - Bachelor of Applied Mathematics;
+
+Long version:
+
+I began working on mathematics on 2005, entering the course 51 of
+[UNICAMP](http://www.unicamp.br), where you study for one and half year the
+common classes to Mathematics, Applied Mathematics, Physics, and some other
+courses. Initially I planned to follow Pure Mathematics, but after my first
+programming class, I considerer changing to some area of Computations. The
+following semester I studied Numerical Calculus, which led me to the path of
+Applied Mathematics. This felling was reforced by Numerical Analysis and
+Nonlinear Programming, and I soon decided to follow the academic path.
+
+In 2007, I started a Scientific Initiation with my advisor and good friend
+[Francisco de Assis Magalhães Gomes Neto](http://www.ime.unicamp.br/~chico),
+entitled "Interior Point Methods for Quadratic Programming".
+My reason for choosing Chico, as he is commonly known, was that he was from the
+Nonlinear Optimization area and had previously worked with C++, which I intended
+to learn. The work was completed by 2008.
+
+In 2008, having interest in the academic path, I decided to "rush" some
+teaching of the post-graduate level. I rushed two in the first semester, and
+one in the second. The teaching rushed were "Matrices", which is a discipline
+about theoretical properties of matrices, norms, eigenvalues, linear systems,
+and decompositions, with some algorithmic considerations, but no programming.
+The other was "Numerical Methods for Linear Algebra", which is basically the
+programming part of "Matrices". This was my first contact with FORTRAN, which
+was awful. The last discipline was "Topics of Numerical Analysis", which in this
+case was about finite differences. I finished my graduation on december of this
+year.
+
+In 2009, I started my Doctorate on Applied Mathematics, also on UNICAMP, in the
+work "Dynamic Control of Infeasibility for Nonlinear Programming". During the
+doctorate, I studied Linear Programming, Nonlinear Optimization and
+Derivative-Free Optimization. On December, 2013, I finished my doctorate.
+
+On December, 2013, I started my post-doctorate, following the work of my
+doctorate. On March, 2014, I participated on the selection process to work on
+UFPR, and was approved at third position. I was called to work on November,
+2014;
+]]></content:encoded>
+        </item>
+    </channel>
+</rss>

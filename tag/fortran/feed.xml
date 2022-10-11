@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Abel Soares Siqueira</title>
+        <link>https://abelsiqueira.github.io/tag/fortran/feed.xml</link>
+        <description>RSS feed for abelsiqueira.github.io</description>
+        <lastBuildDate>Tue, 11 Oct 2022 22:59:04 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/nuxt-community/feed-module</generator>
+        <category>Nuxt.js</category>
+        <item>
+            <title><![CDATA[A Study in Julia]]></title>
+            <link>https://abelsiqueira.github.io/blog/2015-01-22-a-study-in-julia</link>
+            <guid>https://abelsiqueira.github.io/blog/2015-01-22-a-study-in-julia</guid>
+            <pubDate>Thu, 22 Jan 2015 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# A Study in Julia
+
+Today I begin a study in [Julia](http://julialang.org/).
+This fantastic tool has syntax similar to that of Octave/Matlab,
+but is much faster. Furthermore, the interface with functions
+made in C and Fortran is much easier to accomplish, and since
+most things in computational mathematics are on these languages,
+this feature is wonderful.
+
+My intented work is
+
+- make a simple julia and C interface, with auto-compiling
+
+```
+and test on GitHub and Travis CI;
+```
+
+- develop a nonlinear optimization tool completely in Julia,
+
+```
+then improve the slow bits by using C and/or Fortran;
+```
+
+- implement/improve the CUTEst interface
+
+```
+[[1]](https://github.com/abelsiqueira/ugly),
+[[2]](https://github.com/abelsiqueira/CUTEst.jl),
+possibly creating a SIF converter.
+```
+
+- if things work out, submit to [JuliaOpt](http://www.juliaopt.org/).
+
+My work starts with the [Julia-C
+Samples](https://github.com/abelsiqueira/julia-c-sample.git).
+If you need me, I might be on `#julia` on IRC/freenode.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[The End of Fortran]]></title>
+            <link>https://abelsiqueira.github.io/blog/2014-11-22-the-end-of-fortran</link>
+            <guid>https://abelsiqueira.github.io/blog/2014-11-22-the-end-of-fortran</guid>
+            <pubDate>Sat, 22 Nov 2014 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# The End of Fortran
+
+One of my main interest is the end of Fortran **as the only programming language
+used by mathematicias**. If you're not in the area of mathematical programming,
+you probably find it strange for me to be talking about Fortran, so I explain.
+Fortran is considered the fastest programming language in mathematics, and most
+things made are in this language. Other often used languages such as
+MatLab/Octave and Mathematica are high-level, which means they are slower and
+are not considered for serious applications.
+
+In reality, Fortran is one of the fastest programming language **for linear
+algebra with dense matrices**. Since most things in this area are matrices, and
+most vectors are dense, this can't be overlooked. In addition, fortran has a
+relatively easy way to go, bypassing the painstankingly formatting and GOTO,
+which were left behind by the newer versions.
+
+The problem is that, since learning Fortran is almost imperative in the area,
+there is little else used to code in the area. Hence, easy tasks without need of
+fast execution become hard programming jobs. And furthermore, tasks that need
+fast execution, but can't (shouldn't) be implement as matrices, become slow in
+Fortran, and sometimes this is overlooked.
+
+My proposition is **use the best tool for the job**, which is just common sense,
+but applied to our area. Try [Python](http://www.python.org). Try
+[Ruby](http://www.ruby-lang.org). Try [Julia](http://www.julialang.org). Try
+to implementing a graph using a list of pointers. Try to implement a argument
+parser. Try to implement reading, storing, and calculating the transpose of a
+sparse matrix. Try to implement a tool to read all citations on your .tex, read
+from a bibtex file such references and print then all in a nice format.
+
+Now, rather than stay in that language, go for another. Try other languages.
+When the job comes, you can choose the best tool for it. And you can combine.
+Some languages, such as Julia, Fortran and C, are very easy to combine with
+others. Implement your algorithm in Julia, then improve it later with Fortran.
+And if you are really in need of speed, why not implement the hardest part in
+machine language (ASSEMBLY)?
+Implementing the fastest possible algorithm is very good for a specific
+application, but in our line of work, we must take into account the method, not
+only the implementation.
+]]></content:encoded>
+        </item>
+    </channel>
+</rss>
