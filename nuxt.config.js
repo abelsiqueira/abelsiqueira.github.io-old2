@@ -29,6 +29,7 @@ function createTagFeed(tag) {
         description: article.description ? article.description : '',
         content: article.bodyPlainText,
         tags: article.tags ? article.tags : [],
+        image: article.img ? article.img : '',
       })
     })
 

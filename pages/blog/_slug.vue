@@ -6,6 +6,7 @@
       :description="page.description"
     />
     <v-container>
+      <v-img v-if="page.img" :src="page.img" />
       <span>{{ formatDate(page.date) }}</span>
       <nuxt-content :document="page" />
     </v-container>
