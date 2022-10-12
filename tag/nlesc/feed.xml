@@ -4,10 +4,25 @@
         <title>Abel Soares Siqueira</title>
         <link>https://abelsiqueira.github.io/tag/nlesc/feed.xml</link>
         <description>RSS feed for abelsiqueira.github.io</description>
-        <lastBuildDate>Wed, 12 Oct 2022 06:56:11 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 12 Oct 2022 21:40:19 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/nuxt-community/feed-module</generator>
         <category>Nuxt.js</category>
+        <item>
+            <title><![CDATA[Can Python with Julia be faster than low-level code?]]></title>
+            <link>https://abelsiqueira.github.io/blog/2022-02-11-python-and-julia-3</link>
+            <guid>https://abelsiqueira.github.io/blog/2022-02-11-python-and-julia-3</guid>
+            <pubDate>Fri, 11 Feb 2022 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+# Can Python with Julia be faster than low-level code?
+
+I worked on this blog post working for eScience Center.
+Co-authored by Faruk Diblen.
+
+Check the blog post [here](https://blog.esciencecenter.nl/can-python-with-julia-be-faster-than-low-level-code-cd71a72fbcf4).
+]]></content:encoded>
+            <enclosure url="https://miro.medium.com/max/720/1*Bta22zk1Dv3nsfacxEyK0A.jpeg" length="0" type="image/jpeg"/>
+        </item>
         <item>
             <title><![CDATA[Speed up your Python code using Julia]]></title>
             <link>https://abelsiqueira.github.io/blog/2022-01-26-python-and-julia-2</link>
@@ -36,6 +51,7 @@ Co-authored by Faruk Diblen.
 
 Check the blog post [here](https://blog.esciencecenter.nl/how-to-call-julia-code-from-python-8589a56a98f2).
 ]]></content:encoded>
+            <enclosure url="https://miro.medium.com/max/720/1*rO_VWgfXj4zuFDtX28Uc1g.jpeg" length="0" type="image/jpeg"/>
         </item>
         <item>
             <title><![CDATA[cffinit: NOW is the time to get more recognition for your software!]]></title>
