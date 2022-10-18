@@ -7,7 +7,17 @@
     </v-main>
 
     <v-footer :absolute="false" app class="dark accent--text justify-center">
-      <span>Abel Soares Siqueira &copy; {{ new Date().getFullYear() }}</span>
+      <span>
+        Abel Soares Siqueira &copy; {{ new Date().getFullYear() }}
+        <v-btn
+          icon
+          small
+          color="secondary"
+          href="https://abelsiqueira.github.io/feed.xml"
+        >
+          <v-icon> mdi-rss </v-icon>
+        </v-btn>
+      </span>
     </v-footer>
   </v-app>
 </template>
